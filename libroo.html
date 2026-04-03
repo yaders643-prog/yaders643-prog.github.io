@@ -13,8 +13,8 @@
   <meta name="copyright" content="Todos los derechos reservados Yader Sanchez" />
 
   <!-- Meta Open Graph (para compartir en redes) -->
-  <meta property="og:title" content="🌌 Un libro - Una historia especial">
-  <meta property="og:description" content="Explore el universo y descubra un mensaje lleno de amor y magia ✨">
+  <meta property="og:title" content=" 📕 Un libro - Una historia especial">
+  <meta property="og:description" content="Amor de mi vida ✨">
   <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/89f7361e524f628ad3f27b5f4f628531891afd1a/copilot_image_1775222161833.jpeg">
   <meta property="og:url" content="https://yaders643-prog.github.io/libroo.html.html">
   <meta property="og:type" content="website">
@@ -640,6 +640,8 @@ book.appendChild(portada);
 
   // 🖼️ 10 IMÁGENES
 const imagenes = [
+
+  "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/b57c9961c3372e8860b284f0090f5599b02dc1d5/morr.jpg",
 "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor6.jpg",
 "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor8.jpeg",
 "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor2.jpg",
@@ -649,7 +651,7 @@ const imagenes = [
 "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/4e0f3a1c2689b2e4f7acc230acd330f4e41307c6/Te%20amo%20porque%20eres%20mi%20raz%C3%B3n%20m%C3%A1s%20bonita%20%F0%9F%92%96%F0%9F%A5%B0_%20porque%20tu%20sonrisa%20ilumina%20mis%20d%C3%ADas%20%F0%9F%8C%9F%F0%9F%98%8A%20y%20tu%20amor%20calma%20mi%20alma%20%F0%9F%A4%8D%E2%9C%A8_%20te%20amo%20porque%20contigo%20tod_2.jpeg",
 "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/b57c9961c3372e8860b284f0090f5599b02dc1d5/OIP.jpeg",
 "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/b57c9961c3372e8860b284f0090f5599b02dc1d5/mi.jpg",
-"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/b57c9961c3372e8860b284f0090f5599b02dc1d5/morr.jpg",
+ "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/89f7361e524f628ad3f27b5f4f628531891afd1a/copilot_image_1775222161833.jpeg", 
   ];
 // Yader Sánchez.
 
@@ -679,14 +681,14 @@ const videos = [
 "https://github.com/yaders643-prog/imagenes-web/raw/d8aa8d93d797012b3cc62d7ddce7d15c2e651560/c3dcdd056e41066750b8cc75fb6ff91e.mp4",
   
   ];
-
-for(let i = 15; i >= 1; i--){
+for(let i = 16; i >= 1; i--){
   const page = document.createElement("div");
   page.className = "page";
   page.style.zIndex = i;
 
-  if(i <= 5){ // últimas 5 páginas = videos
-    const indexVideo = 5 - i; // i=5 → 0, i=1 → 4
+  if(i <= 5){ 
+    // últimas 5 páginas = videos
+    const indexVideo = 5 - i; 
     page.innerHTML = `
       <div class="content no-scroll">
         <video controls playsinline>
@@ -694,9 +696,10 @@ for(let i = 15; i >= 1; i--){
         </video>
       </div>
     `;
-  } else { // primeras 10 páginas = imágenes y textos
-    const indexImg = i - 6; // i=15 → 9, i=14 → 8, ..., i=6 → 0
-    const textClass = `text-page${indexImg + 1}`; // Clase individual para cada página
+    } else { 
+    // páginas normales = imágenes y textos
+    const indexImg = i - 6; 
+    const textClass = `text-page${indexImg + 1}`; 
     page.innerHTML = `
       <div class="content">
         <img class="img-page${indexImg + 1}" src="${imagenes[indexImg]}">
@@ -707,7 +710,7 @@ for(let i = 15; i >= 1; i--){
 
   book.appendChild(page);
 }
-  // 🔹 ESTILOS DECORATIVOS
+ // 🔹 ESTILOS DECORATIVOS
 const style = document.createElement('style');
 style.innerHTML = `
 /* 1️⃣ Fondo degradado en cada página */
