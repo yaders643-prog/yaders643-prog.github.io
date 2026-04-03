@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Amor - Yader</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph para redes sociales -->
+  <meta property="og:title" content="🌌 Un libro especial - Para usted">
+  <meta property="og:description" content="Un libro que demuestra todo mi amor por usted. ✨">
+  <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/89f7361e524f628ad3f27b5f4f628531891afd1a/copilot_image_1775222161833.jpeg">
+  <meta property="og:url" content="https://yaders643-prog.github.io/libro.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Autor y copyright -->
+  <meta name="author" content="Yader Sanchez">
+  <meta name="copyright" content="Todos los derechos reservados Yader Sanchez">
+
+  <!-- Estilos internos (si los quieres dentro del head) -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+    }
+    /* Aquí puedes poner más estilos si quieres */
+  </style>
+</head>
+<style>
+
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Arial, sans-serif;
+  overflow:hidden;
+  background:#fff;
+}
+
+/* Texto lado izquierdo */
+.love-words{
+  position:fixed;
+  left:10px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:18px;
+  font-weight:bold;
+  letter-spacing:2px;
+  line-height:1.6;
+
+  animation: amor 1.5s infinite;
+}
+
+/* Colores románticos */
+@keyframes amor{
+
+0%{
+color:#ff1744;
+text-shadow:0 0 10px #ff1744,0 0 25px #ff1744;
+}
+
+25%{
+color:#ff4081;
+text-shadow:0 0 10px #ff4081,0 0 25px #ff4081;
+}
+
+50%{
+color:#ff80ab;
+text-shadow:0 0 10px #ff80ab,0 0 25px #ff80ab;
+}
+
+75%{
+color:#e91e63;
+text-shadow:0 0 10px #e91e63,0 0 25px #e91e63;
+}
+
+100%{
+color:#d81b60;
+text-shadow:0 0 10px #d81b60,0 0 25px #d81b60;
+}
+
+}
+
+/* Corazones lluvia */
+.heart{
+  position:fixed;
+  top:-50px;
+  font-size:22px;
+  animation: caer linear infinite;
+}
+
+/* animación caída */
+@keyframes caer{
+
+0%{
+transform:translateY(-50px) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+/* Libro */
+.book{
+  width:280px;
+  height:425px;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  margin-left:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="love-words">
+¡Sujey<br>
+Yader!
+</div>
+
+<!-- lluvia de corazones -->
+<div class="heart" style="left:5%; animation-duration:6s;">❤️</div>
+<div class="heart" style="left:15%; animation-duration:8s;">💖</div>
+<div class="heart" style="left:25%; animation-duration:7s;">💕</div>
+<div class="heart" style="left:35%; animation-duration:9s;">💘</div>
+<div class="heart" style="left:45%; animation-duration:6s;">💗</div>
+<div class="heart" style="left:55%; animation-duration:8s;">❤️</div>
+<div class="heart" style="left:65%; animation-duration:7s;">💖</div>
+<div class="heart" style="left:75%; animation-duration:9s;">💕</div>
+<div class="heart" style="left:85%; animation-duration:6s;">💘</div>
+<div class="heart" style="left:95%; animation-duration:8s;">💗</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi historia contigo 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+background:linear-gradient(135deg,#1a1a1a,#2c003e);
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+
+@keyframes amor{
+0%{color:#ff1744;}
+25%{color:#ff4081;}
+50%{color:#ff80ab;}
+75%{color:#e91e63;}
+100%{color:#d81b60;}
+}
+
+/* LIBRO */
+.book {
+  width: 280px;   /* más ancho */
+  height: 425px;  /* más alto */
+  perspective: 1500px;
+  position: relative;
+}
+
+/* Página */
+.page {
+  width: 280px;
+  height: 425px;
+  position: absolute;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  overflow: hidden;
+  border-radius: 0 3px 3px 0;
+  transform-origin: left; /* 🔹 Clave para abrir como libro */
+  transition: transform 1s;
+}
+
+.page.flipped{
+transform:rotateY(-180deg);
+}
+
+.content{
+  padding:10px;
+  text-align:center;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+  /* Letras más pequeñas en las páginas internas */
+.page .content p {
+    font-size: 0.8rem;       /* Tamaño más pequeño */
+    line-height: 1.5;        /* Espacio entre líneas para que no se amontonen */
+    margin-top: 10px;         /* Espacio superior al texto */
+    margin-bottom: 10px;      /* Espacio inferior entre párrafos */
+    user-select: none;        /* Evita copiar el texto */
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+}
+
+
+.content p {
+  margin-top: 30px; /* mueve el texto más abajo */ /* o arriba */
+}
+  
+img {
+  width: 100%;
+ height: 80%;
+  object-fit: cover;
+  border-radius: 6px;
+
+  border: 3px solid;  /* borde solido */
+  animation: bordeImg 2s infinite linear;
+}
+/*  @keyframes bordeImg {
+  0% {
+    border-color: #ff1744;
+    box-shadow: 0 0 10px #ff1744;
+  }
+  25% {
+    border-color: #ff4081;
+    box-shadow: 0 0 15px #ff4081;
+  }
+  50% {
+    border-color: #ffd700;
+    box-shadow: 0 0 20px #ffd700;
+  }
+  75% {
+    border-color: #9c27b0;
+    box-shadow: 0 0 15px #9c27b0;
+  }
+  100% {
+    border-color: #ff1744;
+    box-shadow: 0 0 10px #ff1744;
+  }
+}*/
+  .particle-container img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  border-color: #ff1744;
+    box-shadow: 0 0 10px #ff1744;  
+  }
+  .particle-container img {
+  border: none !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 0 5px #ff4081);
+}
+/* Textos individuales con posición relativa para moverlos libremente */
+
+.text-page1 {
+  position: absolute;
+  top: 265px;   /* Baja 20px, puede ajustar */
+}
+
+.text-page2 {
+  position: absolute;
+  top: 265px;  /* Sube 10px */
+}
+
+.text-page3 {
+  position: absolute;
+  top: 265px;   /* Baja 50px */
+}
+
+.text-page4 {
+  position: absolute;
+  top: 265px;    /* No mueve, ajuste aquí */
+}
+
+.text-page5 {
+  position: absolute;
+  top: 265px;   /* Baja 30px */
+}
+
+.text-page6 {
+  position: absolute;
+  top: 280px;  /* Sube 20px */
+}
+
+.text-page7 {
+  position: absolute;
+  top: 280px;   /* Baja 0px */
+}
+
+.text-page8 {
+  position: absolute;
+  top: 280px;   /* Baja 10px */
+}
+
+.text-page9 {
+  position: absolute;
+  top: 280px;  /* Sube 15px */
+}
+
+.text-page10 {
+  position: absolute;
+  top: 275px;   /* Baja 0 */
+}
+
+  
+/* 🔥 CONTROL DE IMÁGENES INDIVIDUALES */
+
+/* Imagen 1 */
+.img-page1 {
+  position: relative;
+  top: -22px;      /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;     /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* 🔥 más grande */
+}
+
+/* Imagen 2 */
+.img-page2 {
+  position: relative;
+  top: -22px;     /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;    /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* normal */
+}
+
+/* Imagen 3 */
+.img-page3 {
+  position: relative;
+  top: -22px;      /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;      /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* 🔥 más grande */
+}
+
+/* Imagen 4 */
+.img-page4 {
+  position: relative;
+  top: -22px;       /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;     /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* 🔥 un poco más grande */
+}
+
+/* Imagen 5 */
+.img-page5 {
+  position: relative;
+  top: -22px;     /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;      /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* 🔥 más grande */
+}
+
+/* Imagen 6 */
+.img-page6 {
+  position: relative;
+  top: -22px;      /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;    /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* 🔥 más grande */
+}
+
+/* Imagen 7 */
+.img-page7 {
+  position: relative;
+  top:  -22px;     /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;     /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* normal */
+}
+
+/* Imagen 8 */
+.img-page8 {
+  position: relative;
+  top: -22px;      /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;      /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* 🔥 más grande */
+}
+
+/* Imagen 9 */
+.img-page9 {
+  position: relative;
+  top: -22px;     /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;     /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* 🔥 más grande */
+}
+
+/* Imagen 10 */
+.img-page10 {
+  position: relative;
+  top: -22px;      /* 🔽 baja */  /*🔼 -sube */
+  left: -3px;      /* 👉 se mueve a la derecha *//* 👉 - se mueve  a la izquierda */
+  transform: scale(0.9); /* 🔥 Para hacerla más grande y pequeña*/
+}
+  /* VIDEO */
+.no-scroll{
+padding:0 !important;
+overflow:hidden !important;
+height:100%;
+}
+
+.no-scroll video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.final{
+position:fixed;
+bottom:20px;
+background:#e91e63;
+color:white;
+padding:10px 20px;
+border-radius:20px;
+display:none;
+}
+
+  /* TEXTO FLOTANTE */
+.floating-text {
+  position: fixed;
+  pointer-events: none;
+  font-weight: bold;
+  font-size: 20px;
+  z-index: 9999;
+  animation: floatUp 4s ease-out forwards, neonColor 3s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+/* 🌈 CAMBIO DE COLORES AUTOMÁTICO */
+/*@keyframes neonColor {
+  0%   { color: #ff1744; text-shadow: 0 0 10px #ff1744, 0 0 20px #ff1744; }
+  25%  { color: #ff4081; text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081; }
+  50%  { color: #ffd700; text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700; }
+  75%  { color: #e91e63; text-shadow: 0 0 10px #e91e63, 0 0 20px #e91e63; }
+  100% { color: #ff1744; text-shadow: 0 0 10px #ff1744, 0 0 20px #ff1744; }
+}
+
+@keyframes floatUp {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -150%) scale(0.8); }
+}*/
+  
+/* PORTADA ELEGANTE */
+.cover .front {
+  background: linear-gradient(135deg, #ff80ab, #6a1b9a);  
+  color: white;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 
+    inset 0 0 20px rgba(255,255,255,0.2),
+    0 10px 25px rgba(0,0,0,0.4);
+  position: relative;
+
+  .cover .front {
+  padding-bottom: 220px;
+transform: translateY(100px);
+  height: 100%; /* 🔥 CLAVE */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* lo manda abajo */
+  align-items: center;
+  padding-bottom: 0px; /* ajusta aquí */
+}
+  
+  /* 🔥 POSICIÓN DEL TEXTO */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom:  0px;
+}
+
+/* Marco dorado */
+.cover .front::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 3px solid;
+  border-radius: 10px;
+  animation: bordeColor 4s infinite linear;
+}
+  @keyframes bordeColor {
+  0% {
+    border-color: #ff1744;
+    box-shadow: 0 0 15px #ff1744, 0 0 30px #ff1744;
+  }
+  50% {
+    border-color: #ffd700;
+    box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700;
+  }
+  100% {
+    border-color: #9c27b0;
+    box-shadow: 0 0 15px #9c27b0, 0 0 30px #9c27b0;
+  }
+}
+
+/* Línea decorativa */
+.cover .front::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  animation: lineaGlow 4s infinite;
+}
+  @keyframes lineaGlow {
+  0% {
+    background: #ff80ab;
+    box-shadow: 0 0 10px #ff80ab;
+  }
+  50% {
+    background: #ffd700;
+    box-shadow: 0 0 20px #ffd700;
+  }
+  100% {
+    background: #9c27b0;
+    box-shadow: 0 0 10px #9c27b0;
+  }
+}
+
+/* Texto portada */
+.cover h1 {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: #FFD700;
+  text-shadow: 
+    0 0 10px #FFD700,
+    0 0 25px rgba(255,215,0,0.8);  }
+
+.cover p {
+  color: #ffe4ec;
+  font-size: 0.9rem;
+}
+
+/* Corazón con brillo */
+.cover .heart {
+  font-size: 2.5rem;
+  animation: latido 1.5s infinite;
+}
+
+/* Animación latido */
+@keyframes latido {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+  /* 🚫 EVITAR QUE LA PORTADA USE ESTILOS DE PÁGINA */
+.cover .content {
+  display: block;
+  padding: 0;
+  height: auto;
+}
+
+/* 🎯 CENTRAR TODO EN LA PORTADA */
+.cover .front {
+  border-radius: 0; /* esquinas cuadradas */
+  overflow: hidden; /* asegura que nada sobresalga */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ← cambia a center si quieres centrado */
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+
+.cover .front h1 {
+  margin-top: 90px; /* 🔥 ajusta aquí */
+}
+  .cover .front .heart {
+  margin-top: 130px; /* ajusta el número para subir/bajar */ 
+  font-size: 2.5rem; /* tamaño del corazón */
+  animation: latido 1.5s infinite; /* mantiene la animación */
+}
+  /* Estilo del autor en la portada */
+.cover .author {
+    font-size: 0.9rem;
+    color: #ffe4ec;       /* color rosa suave */
+    font-style: italic;    /* cursiva */
+    position: absolute;
+    bottom: 20px;          /* distancia desde la base de la portada */
+    width: 100%;
+    text-align: center;    /* centrado */
+}
+  /* Evita seleccionar texto */
+.book, .page, .front, .back {
+  user-select: none;       /* Para la mayoría de navegadores modernos */
+  -webkit-user-select: none; /* Para Chrome/Safari */
+  -moz-user-select: none;    /* Para Firefox */
+  -ms-user-select: none;     /* Para IE/Edge */
+}
+</style>
+</head>
+
+<body>
+
+
+
+<div class="book" id="book"></div>
+<div class="final" id="finalMsg">La amo muchísimo 💖</div>
+
+<script>
+  
+  // 🔹 AUDIO
+const audio = new Audio("https://github.com/Gerardcraft777/Musicas-sensuales/raw/refs/heads/main/AUD-20260209-WA0021.mp3");
+audio.loop = true;
+let musicaIniciada = false;
+
+const book = document.getElementById("book");
+
+  const portada = document.createElement("div");
+portada.className = "page cover";
+portada.style.zIndex = 999;
+
+portada.innerHTML = `
+<div class="front">
+     <div class="heart">💘</div>
+    <h1>Nuestra Historia</h1>
+<p>Un libro que no quiero que termine 💘</p>
+       <p>Para: Anielka.</p>
+       <p>De: Yader.</p>
+ <!-- Autor con copyright en la parte inferior -->
+    <p class="author">© 2026 Yader Sánchez</p>
+  </div>
+</div>
+`;
+
+book.appendChild(portada);
+
+  // 🖼️ 10 IMÁGENES
+const imagenes = [
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor6.jpg",
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor8.jpeg",
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor2.jpg",
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor7.jpg", 
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor9.webp",
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor11.jpeg",
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/4e0f3a1c2689b2e4f7acc230acd330f4e41307c6/Te%20amo%20porque%20eres%20mi%20raz%C3%B3n%20m%C3%A1s%20bonita%20%F0%9F%92%96%F0%9F%A5%B0_%20porque%20tu%20sonrisa%20ilumina%20mis%20d%C3%ADas%20%F0%9F%8C%9F%F0%9F%98%8A%20y%20tu%20amor%20calma%20mi%20alma%20%F0%9F%A4%8D%E2%9C%A8_%20te%20amo%20porque%20contigo%20tod_2.jpeg",
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/b57c9961c3372e8860b284f0090f5599b02dc1d5/OIP.jpeg",
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/b57c9961c3372e8860b284f0090f5599b02dc1d5/mi.jpg",
+"https://raw.githubusercontent.com/yaders643-prog/imagenes-web/b57c9961c3372e8860b284f0090f5599b02dc1d5/morr.jpg",
+  ];
+// Yader Sánchez.
+
+  
+  // 📝 HISTORIA REAL EN LENGUAJE FORMAL (usted)
+const textos = [
+  "Anielka, desde el primer momento en que nos vimos, sentí una conexión que jamás había experimentado. 💖",
+  "Recuerdo cómo su sonrisa iluminó todo a mi alrededor, y desde entonces su presencia se volvió esencial en mi vida. 🌟",
+  "Cada conversación con usted me enseñó que la verdadera compañía se encuentra en la comprensión y la paciencia. 💘",
+  "Anielka, cada gesto suyo, cada detalle, me hace valorar la belleza de su alma y su corazón generoso. 💕",
+  "A su lado, los días ordinarios se transforman en recuerdos extraordinarios que deseo conservar para siempre. ✨",
+  "Su risa es la melodía que anima mis horas y sus palabras la guía que calma cualquier inquietud. ❤️",
+  "Anielka, al pensar en usted, siento que el mundo se reduce a nuestra historia compartida, única e inigualable. 💗",
+  "Cada momento a su lado me reafirma que el amor verdadero se construye con respeto, confianza y cariño. 💞",
+  "Usted ha enseñado a mi corazón a latir con alegría, y a mis sueños a soñar con un futuro lleno de esperanza. 💖",
+  "Juntos hemos escrito capítulos de felicidad que quedarán grabados en nuestra memoria para siempre, Anielka. 💘"
+  ];
+
+
+
+// 🎬 5 VIDEOS DIFERENTES
+const videos = [
+"https://github.com/yaders643-prog/imagenes-web/raw/4e0f3a1c2689b2e4f7acc230acd330f4e41307c6/2dff3331785f8d3d75cac327cdfc94c0.mp4",
+"https://github.com/yaders643-prog/imagenes-web/raw/1af07aaa93aea89c4d787e17452021c3e5a1b6e3/7d0181a76cdc7c718b6f85df95c64373.mp4",
+"https://github.com/yaders643-prog/imagenes-web/raw/5cbc5f81adda319e7f57970b71d590b3963359b4/beaf3d9a76c24187aba0895beef3ae19.mp4",
+"https://github.com/yaders643-prog/imagenes-web/raw/5cbc5f81adda319e7f57970b71d590b3963359b4/ded1d4c5c11dcb841c4c940468830ec8.mp4",
+"https://github.com/yaders643-prog/imagenes-web/raw/d8aa8d93d797012b3cc62d7ddce7d15c2e651560/c3dcdd056e41066750b8cc75fb6ff91e.mp4",
+  
+  ];
+
+for(let i = 15; i >= 1; i--){
+  const page = document.createElement("div");
+  page.className = "page";
+  page.style.zIndex = i;
+
+  if(i <= 5){ // últimas 5 páginas = videos
+    const indexVideo = 5 - i; // i=5 → 0, i=1 → 4
+    page.innerHTML = `
+      <div class="content no-scroll">
+        <video controls playsinline>
+          <source src="${videos[indexVideo]}" type="video/mp4">
+        </video>
+      </div>
+    `;
+  } else { // primeras 10 páginas = imágenes y textos
+    const indexImg = i - 6; // i=15 → 9, i=14 → 8, ..., i=6 → 0
+    const textClass = `text-page${indexImg + 1}`; // Clase individual para cada página
+    page.innerHTML = `
+      <div class="content">
+        <img class="img-page${indexImg + 1}" src="${imagenes[indexImg]}">
+        <p class="${textClass}">${textos[indexImg]}</p>
+      </div>
+    `;
+  }
+
+  book.appendChild(page);
+}
+  // 🔹 ESTILOS DECORATIVOS
+const style = document.createElement('style');
+style.innerHTML = `
+/* 1️⃣ Fondo degradado en cada página */
+.page .content {
+    background: linear-gradient(135deg, #ffe4ec, #fff0f5); /* rosa pastel */
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+}
+
+/* 2️⃣ Bordes y sombra de la página */
+.page {
+    border: 2px solid #ff80ab;  /* borde rosa */
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4); /* sombra suave */
+    overflow: hidden;
+}
+
+/* 3️⃣ Imagen con borde y sombra */
+.page img {
+    width: 110%;        /* 🔥 más ancho visual */
+    height: 70%;
+    object-fit: cover;
+    
+  margin-left: -5%;   /* 🔥 centra el exceso */
+    border-radius: 8px;
+    border: 2px solid #f48fb1; /* borde rosa */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+/* 4️⃣ Texto romántico */
+.page .content p {
+    font-family: 'Cursive', Arial;
+    color: #880e4f;
+    text-shadow: 1px 1px 2px #ffb6c1;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 10px 0;
+    user-select: none; /* evita copiar texto */
+}
+
+/* 5️⃣ Iconos decorativos */
+.page .content::before {
+    content: "💖";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    opacity: 0.3;
+}
+.page .content::after {
+    content: "✨💘";
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1rem;
+    opacity: 0.2;
+}
+
+/* 6️⃣ Animación al abrir página */
+.page.flipped .content {
+    animation: fadeInPage 0.8s ease forwards;
+}
+@keyframes fadeInPage {
+    0% { opacity: 0; transform: scale(0.95);}
+    100% { opacity: 1; transform: scale(1);}
+}
+`;
+document.head.appendChild(style);
+  
+const pages = document.querySelectorAll(".page");
+let current=0;
+
+// 🎬 OBTENER VIDEO
+const getVideo = (index) => document.getElementById("video"+index);
+
+
+book.addEventListener("click",()=>{
+
+  // ⛔ PAUSAR TODOS LOS VIDEOS ANTES DE CAMBIAR
+  for(let i=1;i<=5;i++){
+    const v = getVideo(i);
+    if(v){ v.pause(); }
+  }
+
+  if(current < pages.length){
+    pages[current].classList.add("flipped");
+    current++;
+
+    // MOSTRAR MENSAJE FINAL
+    if(current === pages.length){
+      document.getElementById("finalMsg").style.display="block";
+    }
+
+  }else{
+
+    // 🔄 REINICIAR LIBRO
+    for(let i=pages.length-1;i>=0;i--){
+      setTimeout(()=>pages[i].classList.remove("flipped"), (pages.length-i)*150);
+    }
+
+    // RESET VIDEOS
+    for(let i=1;i<=5;i++){
+      const v = getVideo(i);
+      if(v){
+        v.pause();
+        v.currentTime = 0;
+      }
+    }
+
+    current=0;
+    document.getElementById("finalMsg").style.display="none";
+  }
+
+});
+  // 🔥 IMAGEN QUE EXPLOTA //imagenes desactivadas activar para verlas en las particulas.
+       const imagePaths = [
+/* "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/9d1e989fa1e78909d5280c6f32a046c2652886c3/2.png",
+ "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/9d1e989fa1e78909d5280c6f32a046c2652886c3/3.png",
+ "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/9d1e989fa1e78909d5280c6f32a046c2652886c3/4.png",
+ "https://raw.githubusercontent.com/yaders643-prog/imagenes-web/9d1e989fa1e78909d5280c6f32a046c2652886c3/5.png",*/
+];
+  
+// CONTENEDOR
+const particleContainer = document.createElement('div');
+particleContainer.className = "particle-container"; // 👈 AGREGA ESTO
+
+particleContainer.style.position = 'fixed';
+particleContainer.style.top = '0';
+particleContainer.style.left = '0';
+particleContainer.style.width = '100%';
+particleContainer.style.height = '100%';
+particleContainer.style.pointerEvents = 'none';
+particleContainer.style.zIndex = '9999';
+
+document.body.appendChild(particleContainer);
+// 💥 EXPLOSIÓN DE IMÁGENES
+// 💥 EXPLOSIÓN MEJORADA
+function createParticle(x, y) {
+
+  const frases = [
+    "La amo ",
+    "Anielka ",
+    "Solo usted ",
+    "Mi amor ",
+    "Es única ",
+    "Me encanta ",
+    "Es mi todo "
+  ];
+
+  const texto = frases[Math.floor(Math.random() * frases.length)];
+
+  for (let i = 0; i < texto.length; i++) {
+
+    const span = document.createElement('span');
+    span.innerText = texto[i];
+
+    span.style.position = 'absolute';
+    span.style.left = x + 'px';
+    span.style.top = y + 'px';
+    span.style.fontSize = "24px";
+    span.style.fontWeight = "bold";
+    span.style.pointerEvents = 'none';
+    span.style.opacity = 0;
+
+    const colores = ["#ff1744", "#ff4081", "#ff80ab", "#e91e63", "#ffd700"];
+    span.style.color = colores[Math.floor(Math.random() * colores.length)];
+
+    particleContainer.appendChild(span);
+
+    const offsetX = (i - texto.length / 2) * 20;
+    const finalX = x + offsetX;
+    const finalY = y;
+
+    let posX = x;
+    let posY = y;
+
+    function animate() {
+      posX += (finalX - posX) * 0.1;
+      posY += (finalY - posY) * 0.1;
+
+      span.style.left = posX + 'px';
+      span.style.top = posY + 'px';
+      span.style.opacity = 1;
+
+      if (Math.abs(posX - finalX) > 0.5) {
+        requestAnimationFrame(animate);
+      }
+    }
+
+    animate();
+
+    setTimeout(() => {
+      span.style.transition = "opacity 1s";
+      span.style.opacity = 0;
+      setTimeout(() => span.remove(), 1000);
+    }, 2500);
+  }
+}
+// ❤️ TEXTO
+function showText(x, y) {
+  const text = document.createElement('span');
+  text.classList.add('floating-text');
+
+  
+  /* FRASES están desactivadas borradas poner para verlas*/
+ const frases = [
+  "",
+  "",
+]; 
+  text.innerText = frases[Math.floor(Math.random() * frases.length)];
+
+  text.style.left = x + 'px';
+  text.style.top = y + 'px';
+
+  document.body.appendChild(text);
+
+  setTimeout(() => text.remove(), 1500);
+}
+// 👆 CLICK EN TODA LA PANTALLA
+document.addEventListener("click", function(e) {
+  createParticle(e.clientX, e.clientY);
+  showText(e.clientX, e.clientY);
+
+  // 🔊 Reproducir música solo si clic fuera del libro
+  if(!book.contains(e.target) && !musicaIniciada){
+    audio.play().catch(err => console.log("No se pudo reproducir audio:", err));
+    musicaIniciada = true;
+  }
+});
+
+</script>
+
+</body>
+</html>
