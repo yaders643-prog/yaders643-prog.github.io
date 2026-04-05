@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título de la página -->
+
+  <title>Dedicatoria✨</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/love.png">
+
+<!-- Autor -->
+<meta name="author" content="Yader Sanchez">
+<meta name="copyright" content="© Yader Sanchez">
+
+<!-- Open Graph (REDES SOCIALES) -->
+<meta property="og:title" content="🌌 Un universo especial…">
+<meta property="og:description" content="No es solo una página… es algo que vale la pena descubrir ✨">
+<meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/love.png">
+<meta property="og:url" content="https://yaders643-prog.github.io/mi-pagina/usted-mi-universo.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dedicatoria…">
+<meta property="og:description" content="No es solo una página… es algo que vale la pena descubrir ✨">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/love.png">
+  
+  
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.center-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  position: relative;
+}
+
+.center-gif img {
+  width: 900px;
+  max-width: 100%;
+}
+
+/* BURBUJA NEGRA */
+.mensaje-animado {
+  position: absolute;
+  top: 1vh;  /* 🔼 más arriba */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  font-size: 1rem; /* 🔽 MÁS PEQUEÑO */
+padding: 0.3em 0.8em;   /* 🔒 evita que se haga muy ancho */  
+        
+  color: #fff;
+  background: linear-gradient(90deg, #111, #333);
+  
+  padding: 0.4em 1em;  /* 🔽 menos espacio interno */
+  border-radius: 1.5em;
+  
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  
+  animation: aparecerTexto 2s ease forwards;
+  opacity: 0;
+}
+@keyframes aparecerTexto {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* BURBUJAS */
+.bubble {
+  position: absolute;
+  padding: 0.8em 1.4em;
+  background: #fff;
+  border-radius: 999px; /* 🔥 completamente suave */
+  border: 2px solid #ddd;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.5s;
+  max-width: 80vw;
+  text-align: center;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* ✨ sombra bonita */
+}
+
+.bubble.visible {
+  opacity: 1;
+}
+
+.bubble.pop {
+  opacity: 0;
+  transform: scale(1.2);
+}
+</style>
+</head>
+
+<body>
+
+<div class="center-gif">
+  <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/2a3554b2fb66a79a85650039503f6f2f7c7f1846/c3919b8cc41556446b3875b7bad72219.gif">
+
+  <div class="mensaje-animado">
+    Mi amor presiona las burbujas para ver cada mensaje 💖✨
+  </div>
+</div>
+
+<audio id="bg-music" loop>
+  <source src="https://github.com/yaders643-prog/M-sica-amor./raw/refs/heads/main/musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bg-music");
+let musicStarted = false;
+
+const phrases = [
+"Me encanta la forma en que estás en mi vida",
+"Contigo todo se siente más bonito y más real",
+"No se trata de perfección… se trata de lo bien que se siente contigo",
+"Me gusta saber que estás",
+"Estar contigo es donde todo se siente en calma",
+"Hay algo en ti que siempre logra hacerme bien",
+"Tu sonrisa sigue siendo de mis cosas favoritas",
+"Contigo, todo fluye sin esfuerzo",
+"Se siente bien tenerte cerca",
+"Eres ese lugar al que siempre se quiere volver",
+"No cansa estar contigo… al contrario",
+"Lo que hay entre nosotros se siente especial",
+"Me gusta lo que somos cuando estamos juntos",
+"Eres parte de mis días, y eso ya dice mucho",
+"Contigo, hasta lo simple se vuelve bonito",
+"No es solo cariño… es conexión",
+"Se extraña incluso después de coincidir",
+"Cada momento contigo tiene algo diferente",
+"Hay tranquilidad, pero también emoción contigo",
+"No hace falta más cuando estás",
+"Lo nuestro no es perfecto… pero es real",
+"Se siente bien elegirte",
+"Hay algo aquí… y vale la pena",
+"Me gusta lo que estamos construyendo",
+"Contigo, todo tiene un poco más de sentido"
+];
+
+const finalPhrase = " Fin de los mensajes 💖✨";
+
+let phrasePool = [...phrases];
+let showingBubble = false;
+
+function showPhrase(text) {
+  showingBubble = true;
+
+  const el = document.createElement("div");
+  el.className = "bubble";
+  el.textContent = text;
+
+  document.body.appendChild(el);
+
+  requestAnimationFrame(() => {
+    const rect = el.getBoundingClientRect();
+
+    const x = Math.random() * (window.innerWidth - rect.width - 20);
+    const y = Math.random() * (window.innerHeight - rect.height - 20);
+
+    el.style.left = x + "px";
+    el.style.top = y + "px";
+  });
+
+  setTimeout(() => el.classList.add("visible"), 50);
+
+  el.onclick = () => {
+    el.classList.add("pop");
+    setTimeout(() => {
+      el.remove();
+      showingBubble = false;
+      next();
+    }, 300);
+  };
+
+  setTimeout(() => {
+    if (document.body.contains(el)) {
+      el.classList.add("pop");
+      setTimeout(() => {
+        el.remove();
+        showingBubble = false;
+        next();
+      }, 300);
+    }
+  }, 8000);
+}
+
+function next() {
+  if (showingBubble) return;
+
+  if (phrasePool.length === 0) {
+    showPhrase(finalPhrase);
+    return;
+  }
+
+  const text = phrasePool.splice(Math.floor(Math.random() * phrasePool.length), 1)[0];
+  showPhrase(text);
+}
+
+document.body.addEventListener("click", () => {
+  if (!musicStarted) {
+    music.play().catch(()=>{});
+    musicStarted = true;
+  }
+  next();
+});
+
+next();
+</script>
+
+</body>
+</html>
