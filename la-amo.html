@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <!-- Título de la página -->
+    <title>𝘿𝙀𝘿𝙄𝘾𝘼𝙏𝙊𝙍𝙄𝘼......</title>
+
+    <!-- Favicon -->
+   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+    
+    <!-- Autor y copyright -->
+    <meta name="author" content="Yader Sanchez" />
+    <meta name="copyright" content="Todos los derechos reservados Yader Sanchez" />
+    <meta property="og:description" content="No es solo una página… es algo que vale la pena descubrir ✨">
+    
+    <!-- Meta Open Graph (para compartir en redes) -->
+    <meta property="og:title" content="𝙎𝙐𝙅𝙀𝙔, 𝙐𝙎𝙏𝙀𝘿 𝙀𝙇 𝘾𝙊𝙍𝘼𝙕𝙊́𝙉 𝘿𝙀 𝙈𝙄 𝙑𝙄𝘿𝘼.">
+    <meta property="og:description" content="Mi amor no es solo una página… es algo que vale la pena descubrir">
+    <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+    <meta property="og:url" content="https://yaders643-prog.github.io/te-amo.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">        
+  
+  
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.center-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  position: relative;
+}
+
+.center-gif img {
+  width: 900px;
+  max-width: 100%;
+}
+
+/* BURBUJA NEGRA */
+.mensaje-animado {
+  position: absolute;
+  top: 1vh;  /* 🔼 más arriba */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  font-size: 0.9rem; /* 🔽 MÁS PEQUEÑO */
+padding: 0.2em 0.7em;   /* 🔒 evita que se haga muy ancho */  
+        
+  color: #fff;
+  background: linear-gradient(90deg, #111, #333);
+  
+  padding: 0.4em 1em;  /* 🔽 menos espacio interno */
+  border-radius: 1.5em;
+  
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  
+  animation: aparecerTexto 2s ease forwards;
+  opacity: 0;
+}
+@keyframes aparecerTexto {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* BURBUJAS */
+.bubble {
+  position: absolute;
+  padding: 0.8em 1.4em;
+  background: #fff;
+  border-radius: 999px; /* 🔥 completamente suave */
+  border: 2px solid #ddd;
+  font-size: 1 rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: 0.5s;
+  max-width: 80vw;
+  text-align: center;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* ✨ sombra bonita */
+}
+
+.bubble.visible {
+  opacity: 1;
+}
+
+.bubble.pop {
+  opacity: 0;
+  transform: scale(1.2);
+}
+</style>
+</head>
+
+<body>
+
+<div class="center-gif">
+  <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/2a3554b2fb66a79a85650039503f6f2f7c7f1846/c3919b8cc41556446b3875b7bad72219.gif">
+
+  <div class="mensaje-animado">
+    Sujey, amor presione las burbujas para ver cada mensaje 💖
+  </div>
+</div>
+
+<audio id="bg-music" loop>
+  <source src="https://github.com/yaders643-prog/M-sica-amor./raw/refs/heads/main/musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bg-music");
+let musicStarted = false;
+
+const phrases = [
+"A veces, su silencio es el único refugio de su alma",
+"Pienso en usted en cada atardecer pálido",
+"Aunque el árbol esté sin hojas, mi amor por usted florece",
+"La soledad se disipa al recordar su sonrisa",
+"Usted es mi esperanza en los días grises",
+"Le extraño más allá de lo que puedo decir",
+"Un árbol sin hojas, pero lleno de esperanza por usted",
+"Usted y Yo",
+"Su luz jamás se apaga en mi corazón",
+"El tiempo fluye, pero su recuerdo permanece",
+"Le quiero, aun cuando el mundo parece vacío",
+"A veces, la luna es mi única compañía pensando en usted",
+"Las flores caen, pero su amor permanece",
+"Un pájaro canta solo para usted",
+"Las hojas vuelan, y mi pensamiento va con usted",
+"Las estrellas me recuerdan su mirada",
+"El frío me abraza, pero su recuerdo me calienta",
+"Su cachorrito le quiere muchísimo",
+"Entre nubes y lluvia, pienso en usted",
+"Un suspiro, una mariposa, un pensamiento para usted",
+
+// 🔥 FRASES NUEVAS
+"Hay algo en usted que no se puede explicar, pero sí sentir",
+"Pensar en usted se ha vuelto parte de mis días",
+"Su recuerdo llega incluso sin buscarlo",
+"En el silencio, siempre aparece usted",
+"Hay momentos en los que todo me lleva a usted",
+"Usted tiene una forma especial de quedarse en mi mente",
+"No importa el día… siempre termino pensando en usted",
+"Hay algo en su esencia que simplemente permanece",
+"Pensarle se siente natural, como si siempre hubiera estado",
+"Entre tantos pensamientos, usted siempre destaca",
+"A veces basta un recuerdo suyo para cambiarlo todo",
+"Su presencia vive incluso en la distancia",
+"Hay sentimientos que solo llevan su nombre, aunque no se diga",
+"Usted es ese pensamiento que nunca molesta",
+"El tiempo pasa… pero usted sigue aquí, en mí",
+"Hay algo en usted que no se olvida fácilmente",
+"Pensar en usted ya es parte de mi calma",
+"Su recuerdo tiene algo que se siente diferente",
+"Aunque no esté, de alguna forma siempre está",
+"Usted se queda incluso cuando todo lo demás se va"
+];
+
+const finalPhrase = " Fin de los mensajes 💖✨";
+
+let phrasePool = [...phrases];
+let showingBubble = false;
+
+function showPhrase(text) {
+  showingBubble = true;
+
+  const el = document.createElement("div");
+  el.className = "bubble";
+  el.textContent = text;
+
+  document.body.appendChild(el);
+
+  requestAnimationFrame(() => {
+    const rect = el.getBoundingClientRect();
+
+    const x = Math.random() * (window.innerWidth - rect.width - 20);
+    const y = Math.random() * (window.innerHeight - rect.height - 20);
+
+    el.style.left = x + "px";
+    el.style.top = y + "px";
+  });
+
+  setTimeout(() => el.classList.add("visible"), 50);
+
+  el.onclick = () => {
+    el.classList.add("pop");
+    setTimeout(() => {
+      el.remove();
+      showingBubble = false;
+      next();
+    }, 300);
+  };
+
+  setTimeout(() => {
+    if (document.body.contains(el)) {
+      el.classList.add("pop");
+      setTimeout(() => {
+        el.remove();
+        showingBubble = false;
+        next();
+      }, 300);
+    }
+  }, 8000);
+}
+
+function next() {
+  if (showingBubble) return;
+
+  if (phrasePool.length === 0) {
+    showPhrase(finalPhrase);
+    return;
+  }
+
+  const text = phrasePool.splice(Math.floor(Math.random() * phrasePool.length), 1)[0];
+  showPhrase(text);
+}
+
+document.body.addEventListener("click", () => {
+  if (!musicStarted) {
+    music.play().catch(()=>{});
+    musicStarted = true;
+  }
+  next();
+});
+
+next();
+</script>
+
+</body>
+</html>
