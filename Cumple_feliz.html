@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Título -->
+    <title>💙</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+
+    <!-- Autor -->
+    <meta name="author" content="Yader Sanchez" />
+    <meta name="copyright" content="© Yader Sanchez" />
+
+    <!-- Descripción normal -->
+    <meta name="description" content="Una sorpresa especial hecha con cariño 💙✨">
+
+    <!-- Open Graph (Facebook, WhatsApp, etc.) -->
+	   <meta property="og:title" content="💙 Para alguien muy especial...">
+<meta property="og:description" content="Abre esto… te prometo que te va a gustar ✨">	
+    <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+    <meta property="og:url" content="https://yaders643-prog.github.io/Cumple_feliz">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter (también usado por WhatsApp a veces) -->
+    <meta name="twitter:card" content="summary_large_image">
+</head>		
+		<style>
+			:root {
+				--bg: #e8f4ff; /* azul claro en lugar de rosado */
+				--card: rgba(255, 255, 255, 0.85);
+				--text: #1a2a3a;
+				--accent: #2b6cff;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				height: 100%;
+			}
+
+			body {
+				margin: 0;
+				font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+					"Noto Sans", "Liberation Sans", sans-serif;
+				color: var(--text);
+				background: radial-gradient(1200px 800px at 20% 10%, #e7f2ff 0%, var(--bg) 45%, #cadeff 100%);
+				overflow: hidden;
+			}
+
+			/* Fondo de partículas */
+			#stars {
+				position: fixed;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				display: block;
+				z-index: 0;
+				pointer-events: none;
+			}
+
+			/* Contenido */
+			.wrap {
+				position: relative;
+				z-index: 1;
+				min-height: 100%;
+				display: grid;
+				place-items: center;
+				padding: 32px 18px;
+			}
+
+			.card {
+				width: min(760px, 100%);
+				background: transparent;
+				border: none;
+				border-radius: 22px;
+				backdrop-filter: none;
+				-webkit-backdrop-filter: none;
+				box-shadow: none;
+				padding: 26px 22px;
+			}
+
+			h1 {
+				margin: 0 0 8px;
+				font-size: clamp(30px, 4.5vw, 54px);
+				letter-spacing: 0.2px;
+			}
+
+			p {
+				margin: 0;
+				font-size: clamp(16px, 2.2vw, 20px);
+				line-height: 1.5;
+				opacity: 0.92;
+			}
+
+			.pill {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				margin-top: 14px;
+				padding: 10px 14px;
+				border-radius: 999px;
+				background: rgba(255, 255, 255, 0.75);
+				border: 1px solid rgba(43, 108, 255, 0.2);
+				font-weight: 600;
+			}
+
+			.dot {
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: var(--accent);
+				box-shadow: 0 0 14px rgba(43, 108, 255, 0.7);
+			}
+
+			.gif {
+				display: grid;
+				place-items: center;
+				margin-top: 10px;
+			}
+
+			.gif img {
+				width: min(520px, 100%);
+				height: auto;
+				border-radius: 0;
+				border: none;
+				box-shadow: none;
+				cursor: pointer;
+			}
+
+			/* Modal MÁS GRANDE */
+			.modal {
+				position: fixed;
+				inset: 0;
+				z-index: 5;
+				display: none;
+				align-items: center;
+				justify-content: center;
+				padding: 18px;
+			}
+
+			.modal[aria-hidden="false"] {
+				display: flex;
+			}
+
+			.modal__backdrop {
+				position: absolute;
+				inset: 0;
+				background: rgba(0, 0, 0, 0.5);
+				backdrop-filter: blur(4px);
+				-webkit-backdrop-filter: blur(4px);
+			}
+
+			.modal__panel {
+				position: relative;
+				width: min(1000px, 95%);
+				height: min(90vh, 900px);
+				background-image: url("https://i.pinimg.com/736x/10/3e/c7/103ec7b89932ce814fb49e6da142a3f5.jpg");
+				background-size: cover;
+				background-position: center;
+				border-radius: 20px;
+				overflow: hidden;
+				box-shadow: 0 25px 90px rgba(0, 0, 0, 0.4);
+			}
+
+			.modal__content {
+				position: absolute;
+				inset: 0;
+				display: grid;
+				place-items: center;
+				padding: 60px 30px;
+				text-align: center;
+				overflow-y: auto;
+			}
+
+			.modal__textwrap {
+				width: min(800px, 95%);
+				color: rgba(26, 42, 58, 0.98);
+				text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+				background: rgba(255, 255, 255, 0.85);
+				border-radius: 20px;
+				padding: 30px 35px;
+				backdrop-filter: blur(8px);
+				-webkit-backdrop-filter: blur(8px);
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+				margin: 20px 0;
+			}
+
+			.modal__title {
+				margin: 0 0 20px;
+				font-size: clamp(28px, 4vw, 42px);
+				letter-spacing: 0.3px;
+				color: #1a3a5f;
+			}
+
+			.modal__text {
+				margin: 0;
+				font-size: clamp(18px, 2.5vw, 22px);
+				line-height: 1.6;
+				opacity: 0.95;
+				text-align: left;
+				margin-bottom: 18px;
+			}
+
+			.modal__text + .modal__text {
+				margin-top: 0;
+			}
+
+			.modal__sign {
+				margin-top: 25px;
+				font-weight: 800;
+				letter-spacing: 0.3px;
+				opacity: 0.95;
+				font-size: clamp(18px, 2.2vw, 22px);
+				color: #1a3a5f;
+				text-align: right;
+				padding-top: 15px;
+				border-top: 1px solid rgba(43, 108, 255, 0.2);
+			}
+
+			.modal__close {
+				position: absolute;
+				top: 15px;
+				right: 15px;
+				width: 48px;
+				height: 48px;
+				border: none;
+				border-radius: 999px;
+				background: rgba(255, 255, 255, 0.9);
+				color: #1a0c12;
+				font-size: 24px;
+				line-height: 48px;
+				cursor: pointer;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+				transition: all 0.2s;
+				z-index: 10;
+			}
+
+			.modal__close:hover {
+				background: rgba(255, 255, 255, 1);
+				transform: scale(1.05);
+			}
+
+			.top-gif {
+				position: fixed;
+				top: 14px;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 1;
+				pointer-events: none;
+			}
+
+			.top-gif img {
+				width: min(420px, 92vw);
+				height: auto;
+				border-radius: 0;
+				border: none;
+				box-shadow: none;
+			}
+
+			/* Respeta "reducir movimiento" */
+			@media (prefers-reduced-motion: reduce) {
+				body {
+					overflow: auto;
+				}
+			}
+
+			/* Scroll personalizado para el modal */
+			.modal__content::-webkit-scrollbar {
+				width: 8px;
+			}
+
+			.modal__content::-webkit-scrollbar-track {
+				background: rgba(255, 255, 255, 0.1);
+				border-radius: 10px;
+			}
+
+			.modal__content::-webkit-scrollbar-thumb {
+				background: rgba(43, 108, 255, 0.5);
+				border-radius: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="stars" aria-hidden="true"></canvas>
+
+		<div class="top-gif" aria-hidden="true">
+			<img
+				src="https://i.pinimg.com/originals/d1/76/4a/d1764aba330385413cbef4855f91dd63.gif"
+				alt=""
+				loading="lazy"
+				decoding="async"
+			/>
+		</div>
+
+		<main class="wrap">
+			<section class="card">
+				<div class="gif">
+					<img
+						id="mainGift"
+						src="https://i.pinimg.com/originals/32/86/22/32862299f971a476048df2b5ffbdbd15.gif"
+						alt="GIF de feliz cumpleaños"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
+			</section>
+		</main>
+
+		<div
+			id="giftModal"
+			class="modal"
+			role="dialog"
+			aria-modal="true"
+			aria-hidden="true"
+		>
+			<div class="modal__backdrop" data-close="true"></div>
+			<div class="modal__panel" aria-label="Fondo especial">
+				<button class="modal__close" type="button" aria-label="Cerrar" data-close="true">×</button>
+				<div class="modal__content">
+					<div class="modal__textwrap">
+					
+    <h2 class="modal__title">¡Feliz Cumpleaños, amiga hermosa!</h2>
+
+    <p class="modal__text">
+        Hoy celebro tu vida, pero también celebro el regalo tan bonito que es tenerte como amiga.
+    </p>
+
+    <p class="modal__text">
+        Gracias por estar en mis días buenos y en los no tan buenos, por escucharme, entenderme y nunca soltarme.
+    </p>
+
+    <p class="modal__text">
+        Eres de esas personas que llegan y se quedan para siempre en el corazón.
+    </p>
+
+    <p class="modal__text">
+        Amiga hermosa, hoy es tu día y quiero que lo disfrutes al máximo, porque te lo mereces todo.
+    </p>
+
+    <p class="modal__text">
+        Tu forma de ser, tu alegría y tu manera de ver la vida hacen que todo sea más bonito.
+    </p>
+
+    <p class="modal__text">
+        Nunca cambies, porque así como eres… eres simplemente increíble.
+    </p>
+
+    <p class="modal__text">
+        No todas las personas tienen la suerte de encontrar una amistad real, y yo tuve la dicha de encontrarte a ti.
+    </p>
+
+    <p class="modal__text">
+        Eres más que una amiga, eres mi confidente, mi apoyo y alguien muy importante en mi vida.
+    </p>
+
+    <p class="modal__text">
+        Gracias por cada momento, cada risa y cada recuerdo que hemos creado juntas.
+    </p>
+
+    <p class="modal__text">
+        Que este nuevo año de vida te traiga muchas bendiciones, sueños cumplidos y momentos inolvidables.
+    </p>
+
+    <p class="modal__text">
+        Que nunca te falten motivos para sonreír ni razones para seguir adelante con esa fuerza tan tuya.
+    </p>
+
+    <p class="modal__text">
+        Porque si alguien merece cosas bonitas en la vida, eres tú.
+    </p>
+
+    <p class="modal__text">
+        Hoy te abrazo con palabras, pero con todo mi cariño.
+    </p>
+
+    <p class="modal__text">
+        Feliz cumpleaños, mi amiga preciosa… gracias por existir y por ser parte de mi vida.
+    </p>
+
+    <div class="modal__sign">
+        Con mucho cariño, de tu amiga que te quiere muchísimo 💙✨
+    </div>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<audio
+			id="birthdaySong"
+			src="https://github.com/Baque2005/Organizador/raw/refs/heads/master/As%20The%20World%20Caves%20In%20-%20Matt%20Maltese%20(Cover%20by%20Sarah%20Cothran).mp3"
+			preload="auto"
+		></audio>
+
+		<script>
+			(function () {
+				const prefersReducedMotion = window.matchMedia(
+					"(prefers-reduced-motion: reduce)"
+				).matches;
+
+				const mainGift = document.getElementById("mainGift");
+				const giftModal = document.getElementById("giftModal");
+				const birthdaySong = document.getElementById("birthdaySong");
+				const closeTargets = giftModal.querySelectorAll('[data-close="true"]');
+				let lastFocusedEl = null;
+
+				function openModal() {
+					lastFocusedEl = document.activeElement;
+					giftModal.setAttribute("aria-hidden", "false");
+					const closeBtn = giftModal.querySelector(".modal__close");
+					closeBtn && closeBtn.focus();
+
+					if (birthdaySong) {
+						try {
+							birthdaySong.currentTime = 0;
+						} catch {
+							// ignore
+						}
+						const p = birthdaySong.play();
+						if (p && typeof p.catch === "function") p.catch(() => {});
+					}
+				}
+
+				function closeModal() {
+					giftModal.setAttribute("aria-hidden", "true");
+					if (lastFocusedEl && typeof lastFocusedEl.focus === "function") {
+						lastFocusedEl.focus();
+					}
+					lastFocusedEl = null;
+				}
+
+				mainGift.addEventListener("click", openModal);
+				mainGift.addEventListener("keydown", (e) => {
+					if (e.key === "Enter" || e.key === " ") {
+						e.preventDefault();
+						openModal();
+					}
+				});
+				mainGift.setAttribute("tabindex", "0");
+				mainGift.setAttribute("role", "button");
+				mainGift.setAttribute("aria-label", "Abrir mensaje especial");
+
+				for (const el of closeTargets) {
+					el.addEventListener("click", closeModal);
+				}
+
+				window.addEventListener("keydown", (e) => {
+					if (e.key === "Escape" && giftModal.getAttribute("aria-hidden") === "false") {
+						closeModal();
+					}
+				});
+
+				const canvas = document.getElementById("stars");
+				const ctx = canvas.getContext("2d", { alpha: true });
+
+				let width = 0;
+				let height = 0;
+				let dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+				let particles = [];
+				let rafId = 0;
+
+				function rand(min, max) {
+					return min + Math.random() * (max - min);
+				}
+
+				function resize() {
+					width = window.innerWidth;
+					height = window.innerHeight;
+					dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+
+					canvas.width = Math.floor(width * dpr);
+					canvas.height = Math.floor(height * dpr);
+					canvas.style.width = width + "px";
+					canvas.style.height = height + "px";
+					ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+					const baseCount = Math.floor((width * height) / 14000);
+					const count = Math.max(80, Math.min(220, baseCount));
+					particles = new Array(count).fill(0).map(() => createParticle());
+				}
+
+				function createParticle() {
+					const r = rand(0.8, 2.1);
+					return {
+						x: rand(0, width),
+						y: rand(0, height),
+						r,
+						phase: rand(0, Math.PI * 2),
+						speed: rand(0.8, 2.2),
+						base: rand(0.05, 0.22),
+						vx: rand(-0.08, 0.08),
+						vy: rand(-0.06, 0.06),
+					};
+				}
+
+				function step(t) {
+					ctx.clearRect(0, 0, width, height);
+
+					for (const p of particles) {
+						p.x += p.vx;
+						p.y += p.vy;
+
+						if (p.x < -10) p.x = width + 10;
+						if (p.x > width + 10) p.x = -10;
+						if (p.y < -10) p.y = height + 10;
+						if (p.y > height + 10) p.y = -10;
+
+						const tw = (Math.sin((t / 1000) * p.speed + p.phase) + 1) / 2;
+						const alpha = Math.min(0.9, p.base + tw * 0.75);
+
+						ctx.beginPath();
+						ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+						ctx.closePath();
+
+						ctx.fillStyle = `rgba(43, 108, 255, ${alpha})`;
+						ctx.shadowColor = `rgba(43, 108, 255, ${Math.max(0.15, alpha)})`;
+						ctx.shadowBlur = 10;
+						ctx.fill();
+
+						ctx.beginPath();
+						ctx.arc(p.x, p.y, p.r + 2.2, 0, Math.PI * 2);
+						ctx.closePath();
+						ctx.fillStyle = `rgba(43, 108, 255, ${alpha * 0.16})`;
+						ctx.shadowBlur = 0;
+						ctx.fill();
+					}
+
+					rafId = requestAnimationFrame(step);
+				}
+
+				function start() {
+					resize();
+					if (!prefersReducedMotion) rafId = requestAnimationFrame(step);
+				}
+
+				function stop() {
+					if (rafId) cancelAnimationFrame(rafId);
+					rafId = 0;
+				}
+
+				window.addEventListener("resize", () => {
+					resize();
+				});
+
+				try {
+					const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+					mq.addEventListener("change", () => {
+						stop();
+						if (!mq.matches) start();
+					});
+				} catch {
+					// Safari/compat
+				}
+
+				start();
+			})();
+		</script>
+	</body>
+</html>
