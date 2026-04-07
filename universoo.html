@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
  <!-- Título de la página -->
-    <title>🌌 Universo - Para usted mi amor Sujey......</title>
+    <title>Para Anielna - Yader......</title>
 
     <!-- Favicon -->
    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
@@ -14,12 +14,13 @@
     <!-- Autor y copyright -->
     <meta name="author" content="Yader Sanchez" />
     <meta name="copyright" content="Todos los derechos reservados Yader Sanchez" />
-
+    <meta property="og:description" content="No es solo una página… es algo que vale la pena descubrir ✨">
+    
     <!-- Meta Open Graph (para compartir en redes) -->
-    <meta property="og:title" content="🌌 Sujey - usted - mi - universo">
-    <meta property="og:description" content="Explore el universo y descubra un mensaje lleno de amor y magia dónde usted es la principal protagonista ✨">
+    <meta property="og:title" content="🌌 Universo - Una galaxia especial">
+    <meta property="og:description" content="✨">
     <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
-    <meta property="og:url" content="https://yaders643-prog.github.io/mi-pagina/galaxia.html">
+    <meta property="og:url" content="https://yaders643-prog.github.io/universoo.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">        
     
@@ -310,9 +311,16 @@
     background: #ffd700;
     border-radius: 3px;
 }
+    
+.no-copy {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}    
    </style>
 </head>
-<body>
+<body class="no-copy">
     <div id="universe">
        <<h1 class="title">Para usted Anielka🌌</h1>
 
@@ -674,7 +682,24 @@ progressContainer.addEventListener('click', (e) => {
     const percent = x / rect.width;
     audio.currentTime = percent * audio.duration;
 }); 
-        
+ // 🚫 Bloquear clic derecho
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// 🚫 Bloquear copiar, seleccionar, inspeccionar
+document.addEventListener('keydown', function(e) {
+    if (
+        (e.ctrlKey && ['c','x','u','s','a'].includes(e.key.toLowerCase())) ||
+        e.key === 'F12'
+    ) {
+        e.preventDefault();
+    }
+}); 
+// 🚫 Bloquear selección manual
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+});        
     </script>
 </body>
 </html>
