@@ -299,21 +299,50 @@
     -moz-user-select: none;
     -ms-user-select: none;
 }    
+    /* INTRO */
+.intro{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background: radial-gradient(circle,#000010,#000);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    z-index: 9999;
+    text-align: center;
+}
+
+.intro button{
+    margin-top:20px;
+    padding:12px 25px;
+    background:gold;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+    
    </style>
 </head>
-<body class="no-copy">
-    <div id="universe">
-       <<h1 class="title">Para usted Anielka🌌</h1>
-
-<div id="audio-container">
-  <div class="custom-player">
-    <button id="play">▶️</button>
-    <div class="progress">
-      <div class="bar"></div>
-    </div>
-    <audio id="audio" src="https://github.com/yaders643-prog/M-sica-amor./raw/3d05fbd8b5bbdcdd84db24f7bd6ccddbbdf1c2b9/starostin-universe-cosmic-planet-galaxy-music-258633%20(1).mp3"></audio>
-  </div>
+<body 
+    
+    class="no-copy">
+    
+    <div class="intro" id="intro">
+    <h1>✨ Bienvenida a algo especial ✨</h1>
+    <p>Hay un universo esperándola… 🌌</p>
+    <button onclick="entrarUniverso()">Entrar</button>
 </div>
+    <div id="universe" style="display:none;">
+        
+      <h1 class="title">Para usted Anielka🌌</h1>
+
         <div id="solar-system">
             <div class="sun" onclick="showInfo('Sol', this)"></div>
             <div id="planets-container"></div>
@@ -324,8 +353,27 @@
             <p id="planet-description"></p>
         </div>
     </div>
-
+<!-- ================= MUSICA ================= --> <!-- NUEVO -->
+<audio id="musica" loop>
+<source src="https://github.com/yaders643-prog/M-sica-amor./raw/3d05fbd8b5bbdcdd84db24f7bd6ccddbbdf1c2b9/starostin-universe-cosmic-planet-galaxy-music-258633%20(1).mp3">
+</audio>
     <script>
+    
+    /* ================= INTRO ================= */ /* NUEVO */
+function entrarUniverso(){
+    const intro = document.getElementById('intro');
+    const universo = document.getElementById('universe');
+    const musica = document.getElementById('musica');
+
+    // Ocultar intro
+    intro.style.display = "none";
+
+    // Mostrar universo
+    universo.style.display = "block";
+
+    // Iniciar música
+    musica.play();
+}
         const planetData = {
             
            'Mercurio': {
@@ -635,15 +683,7 @@ const audio = document.getElementById('audio');
 const bar = document.querySelector('.bar');
 const progressContainer = document.querySelector('.progress');
 
-playBtn.addEventListener('click', () => {
-    if(audio.paused){
-        audio.play();
-        playBtn.textContent = '⏸️';
-    } else {
-        audio.pause();
-        playBtn.textContent = '▶️';
-    }
-});
+
 
 // Actualizar barra de progreso
 audio.addEventListener('timeupdate', () => {
