@@ -17,9 +17,9 @@
     <meta property="og:description" content="No es solo una página… es algo que vale la pena descubrir ✨">
     
     <!-- Meta Open Graph (para compartir en redes) -->
- <meta property="og:title" content="🌌 Usted no llegó a mi vida… llegó a mi universo 💖">
-<meta property="og:description" content="Y desde entonces, todo comenzó a girar alrededor de usted ✨💫"> 
-  <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+    <meta property="og:title" content="🌌 Universo - Una galaxia especial">
+    <meta property="og:description" content="✨">
+    <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
     <meta property="og:url" content="https://yaders643-prog.github.io/universoo.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">        
@@ -104,12 +104,13 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            border-radius: 50%;
+            border-radius: 0%;/* hacer aparecer todo la imagen*/
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             z-index: 5;
         }
 
+    
         .planet:hover {
             transform: translate(-50%, -50%) scale(1.4) !important;
         }
@@ -222,26 +223,6 @@
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
             z-index: 100;
         }
-.ring{
-  position:absolute;
-  top:50%;
-  left:50%;
-
-  width:180px;
-  height:180px;
-
-  border-radius:50%;
-
-  transform:translate(-50%, -50%);
-
-  background: radial-gradient(
-    ellipse at center,
-    transparent 45%,
-    rgba(255,255,255,0.2) 50%,
-    rgba(255,255,255,0.5) 55%,
-    rgba(255,255,255,0.2) 60%,
-    transparent 65%
-  );
 
   box-shadow:0 0 20px rgba(255,255,255,0.3);
 
@@ -416,14 +397,14 @@
     size: 110,
     orbitRadius: 420,
     speed: 0.6,
-    image: 'https://w7.pngwing.com/pngs/810/795/png-transparent-jupiter-the-nine-planets-solar-system-saturn-jupiter-sphere-venus-solar-system-thumbnail.png'
+    image: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/5960316032272eff44a0db4f84f50875f5fce47f/jupiter_PNG23.png'
 },
 {
     name: 'Saturno',
     size: 90,
     orbitRadius: 550,
     speed: 0.5,
-    image: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/76764420ded5531781c8beaf1c0f233b9d034321/pngimg.com%20-%20jupiter_PNG7.png'
+    image: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/cf64da0ae488b7822368865e5b24746e55a14276/ai-generated-realistic-saturn-planet-isolated-image-free-png.png'
 },
 {
     name: 'Urano',
@@ -496,7 +477,7 @@
     planetEl.style.backgroundImage = `url(${planet.image})`;
     planetEl.style.backgroundSize = 'cover';
     planetEl.style.backgroundPosition = 'center';
-    planetEl.style.boxShadow = `0 0 15px ${planet.color || '#fff'}, inset -5px -5px 10px rgba(0,0,0,0.5)`;
+    
     planetEl.onclick = () => showInfo(planet.name, planetEl);
 
     // Nombre del planeta
@@ -505,12 +486,7 @@
     nameLabel.textContent = planet.name;
     planetEl.appendChild(nameLabel);
 
-    // Anillos de Saturno
-    if(planet.name === 'Saturno'){
-        const ring = document.createElement('div');
-        ring.className = 'ring';
-        planetEl.appendChild(ring);
-    }
+    
 
     // Añadir planeta al contenedor
     planetContainer.appendChild(planetEl);
