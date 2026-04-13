@@ -15,10 +15,10 @@
     <meta name="copyright" content="Todos los derechos reservados Yader Sanchez" />
 
     <!-- Meta Open Graph (para compartir en redes) -->
-    <meta property="og:title" content="🌌 Universo - Una galaxia especial">
+    <meta property="og:title" content="🌌 Universo - pata - ti">
     <meta property="og:description" content="Explora el universo y descubre un mensaje lleno de amor y magia ✨">
     <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/love.png">
-    <meta property="og:url" content="https://yaders643-prog.github.io/tu-mi-universo.html">
+    <meta property="og:url" content="https://yaders643-prog.github.io/Eres_mi_universo.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -35,6 +35,47 @@
             background: #000;
         }
 
+    /* ================= INTRO ================= */
+.intro{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle,#000010,#000);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    text-align:center;
+    animation:fadeIn 2s ease;
+}
+
+.intro h1{
+    font-size:2em;
+    margin-bottom:20px;
+}
+
+.intro p{
+    opacity:0.8;
+    margin-bottom:30px;
+}
+
+.intro button{
+    padding:12px 25px;
+    background:gold;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
         .universo {
             width: 100vw;
             height: 100vh;
@@ -366,7 +407,13 @@
     </style>
 </head>
 <body>
-      
+         <!-- ================= INTRO ================= -->
+<div class="intro" id="intro">
+    <h1>✨ Bienvenido a mi universo ✨</h1>
+    <p>Hay algo especial que quiero que descubras 🌌</p>
+    <button onclick="entrarUniverso()">Entrar</button>
+</div>
+  
     <div class="universo" id="universo">
         <div class="nebulosa"></div>
      <!-- 👨‍🚀 astronauta -->
@@ -435,8 +482,27 @@
             <button onclick="cerrarMensaje()">Cerrar</button>
         </div>
     </div>
-<div class="estrella-fugaz"></div>
+  <!-- ================= MUSICA ================= -->
+<audio id="musica" loop>
+    <source src="https://github.com/yaders643-prog/M-sica-amor./raw/3d05fbd8b5bbdcdd84db24f7bd6ccddbbdf1c2b9/starostin-universe-cosmic-planet-galaxy-music-258633%20(1).mp3" type="audio/mpeg">
+</audio>
+
+  <div class="estrella-fugaz"></div>
     <script>
+  /* INTRO + MUSICA */
+function entrarUniverso(){
+    const intro=document.getElementById('intro');
+    const musica=document.getElementById('musica');
+
+    intro.style.opacity="0";
+
+    setTimeout(()=>{
+        intro.style.display="none";
+    },1000);
+
+    musica.play();
+}
+
         function crearEstrellas() {
             const lejanas = document.getElementById('estrellasLejanas');
             for (let i = 0; i < 300; i++) {
