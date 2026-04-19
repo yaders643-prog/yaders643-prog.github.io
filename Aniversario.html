@@ -9,7 +9,7 @@
     <title>💖 Feliz Aniversario 💫</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/1.png">
 
     <!-- Autor -->
     <meta name="author" content="Yader Sanchez">
@@ -202,6 +202,12 @@ color: white;
         #mainContent {
             display: none;
         }
+
+#felicitacion {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
         </style>
 </head>
 
@@ -498,6 +504,26 @@ Usted es mi paz 🕊️💞, mi alegría 🌟💌 y mi refugio 🌸💖, y nada 
             }, 700);
         }, 3500);
     })();
+
+// Bloquear clic derecho
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Bloquear copiar con teclado
+document.addEventListener('keydown', function(e) {
+    if (
+        e.ctrlKey &&
+        (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')
+    ) {
+        e.preventDefault();
+    }
+});
+
+// Bloquear selección de texto
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+});
 </script>
 
 
