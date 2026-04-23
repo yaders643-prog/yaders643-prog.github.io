@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- Título de la página -->
+    <title>11/11</title>
+
+    <!-- Favicon -->
+   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+    <!-- Autor y copyright -->
+    <meta name="author" content="Yader Sanchez" />
+    <meta name="copyright" content="Todos los derechos reservados Yader Sanchez" />
+
+    <!-- Meta Open Graph (para compartir en redes) -->
+    <meta property="og:title" content="11/11">
+  
+     
+  <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor2.jpg">
+  
+    <meta property="og:url" content="https://yaders643-prog.github.io/Mensaje-raspa.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --txt:#fff;
+}
+
+*{margin:0; padding:0; box-sizing:border-box;}
+body{
+  font-family:Poppins, sans-serif;
+  background:#0a0014;
+  color:var(--txt);
+  overflow:hidden;
+}
+
+/* FUEGOS PEQUEÑOS (CANVAS) */
+#fx{
+  position:fixed;
+  inset:0;
+  z-index:20;
+  pointer-events:none;
+}
+
+/* ESCENA 1 */
+#scene1{
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  z-index:10;
+}
+
+.title{
+  font-size:clamp(22px,5vw,32px);
+  text-shadow:0 0 12px #000;
+  transition:.6s;
+}
+
+.heart{
+  width:clamp(120px,32vw,180px);
+  cursor:pointer;
+  animation:latido 2s infinite ease-in-out;
+  filter:drop-shadow(0 0 12px rgba(255,0,120,0.6));
+  transition:.6s;
+}
+
+@keyframes latido{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.13)}
+  100%{transform:scale(1)}
+}
+
+.fadeOut{
+  opacity:0;
+  transform:scale(.7);
+  filter:blur(3px);
+}
+
+/* ESCENA 2 */
+#scene2{
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  padding-top:40%;
+  gap:22px;
+  opacity:0;
+  pointer-events:none;
+  transition:.6s;
+  z-index:12;
+}
+
+#scene2.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.card{
+  width:min(92vw,420px);
+  height:190px;
+  background:#ffffff15;
+  border-radius:20px;
+  border:1px solid #ffffff30;
+  box-shadow:0 0 20px #0008;
+  position:relative;
+  overflow:hidden;
+}
+
+.msg{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  font-size:clamp(22px,4.8vw,28px);
+  text-shadow:0 0 12px #000;
+}
+
+#scratchCanvas{
+  position:absolute;
+  inset:0;
+  touch-action:none;
+}
+
+/* BOTÓN */
+#btnGift{
+  position:fixed;
+  left:30%;
+  bottom:30%;
+  transform:translateX(-50%);
+
+  padding:15px 34px;
+  border:none;
+  border-radius:22px;
+  font-size:clamp(18px,4vw,22px);
+  background:linear-gradient(90deg,#ff2f86,#ff6bb5);
+  color:#fff;
+  box-shadow:0 0 25px #ff2f86aa;
+  font-weight:700;
+
+  opacity:0;
+  display:none;
+
+  z-index:5000; /* ✅ MÁS ALTO PARA QUE NO LO TAPE NADA */
+  animation:latido 2s infinite ease-in-out;
+  transition:.5s;
+}
+
+
+
+/* ✅ ESCENA FINAL CENTRADA PERFECTAMENTE */
+#finalScreen{
+  display:none; /* inicia oculto */
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  z-index:9999999;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+/* ✅ TEXTO TE QUIERO — UNA SOLA LÍNEA y CENTRADO */ 
+.finalText{
+  font-size:clamp(45px,13vw,80px);
+  font-weight:900;
+  color:#ff4fa6;
+  opacity:0;
+  line-height:1;
+
+  text-shadow:
+    0 0 15px #ff007d,
+    0 0 35px #ff2fa6,
+    0 0 55px #ff2fa6;
+
+  animation:
+    showText 1.8s ease-out forwards,
+    glowPulse 2.6s ease-in-out infinite 1.8s;
+}
+
+@keyframes showText{
+  0%{opacity:0; transform:scale(.3);}
+  60%{opacity:1; transform:scale(1.25);}
+  100%{opacity:1; transform:scale(1);}
+}
+
+@keyframes glowPulse{
+  0%{text-shadow:0 0 10px #ff2fa6,0 0 25px #ff007d;}
+  50%{text-shadow:0 0 25px #ff5bbf,0 0 55px #ff2fa6;}
+  100%{text-shadow:0 0 10px #ff2fa6,0 0 25px #ff007d;}
+}
+
+/* ✅ FUEGOS ARTIFICIALES REALISTAS */
+.fireParticle{
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  pointer-events:none;
+  opacity:1;
+  transform:translate(-50%,-50%);
+  animation:particleMove 1.1s ease-out forwards;
+}
+
+@keyframes particleMove{
+  0%{opacity:1;}
+  100%{
+    opacity:0;
+    transform:translate(var(--dx), var(--dy)) scale(.1);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fx"></canvas>
+
+<!-- ESCENA 1 -->
+<div id="scene1">
+  <div class="title">Toca el corazón ❤️</div>
+  <div class="heart" id="btnHeart">
+    <svg viewBox="0 0 512 512">
+      <path fill="#ff2f86" d="M471.7 73.6c-54.5-46.4-136-38.3-186.4 13.5L256 116.3l-29.3-29.2C176.3 35.3 94.8 27.2 40.3 73.6-20 126.8-13.3 218.3 43 275.4l175.8 176.1c20.2 20.2 53 20.2 73.2 0L469.9 275.4c56.3-57.1 63-148.6 1.8-201.8z"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ESCENA 2 -->
+<section id="scene2">
+  <div class="hint">Raspa para revelar tu mensaje ✨</div>
+
+  <div class="card" id="card">
+    <div class="msg">
+      <div>Hoy es <b>11/11</b></div>
+      <div>y mi deseo siempre serás <b>tú</b> ❤️✨</div>
+    </div>
+    <canvas id="scratchCanvas"></canvas>
+  </div>
+</section>
+
+<button id="btnGift">Abrir regalo 🎁</button>
+
+<!-- ESCENA FINAL -->
+<div id="finalScreen"></div>
+
+<script>
+/* ===== FUEGOS PEQUEÑOS (CANVAS) ===== */
+const fx=document.getElementById("fx");
+const ctxfx=fx.getContext("2d");
+let W,H,parts=[];
+function sizeFX(){W=fx.width=innerWidth;H=fx.height=innerHeight;}
+addEventListener('resize',sizeFX); sizeFX();
+
+function burst(x,y){
+  for(let i=0;i<60;i++){
+    parts.push({
+      x,y,
+      vx:(Math.random()*2-1)*5,
+      vy:(Math.random()*2-1)*5,
+      life:1,
+      color:`hsl(${Math.random()*360},100%,70%)`
+    });
+  }
+}
+
+(function anim(){
+  ctxfx.clearRect(0,0,W,H);
+  parts.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    p.life-=0.015;
+    ctxfx.globalAlpha=Math.max(p.life,0);
+    ctxfx.fillStyle=p.color;
+    ctxfx.fillRect(p.x,p.y,3,3);
+  });
+  parts=parts.filter(p=>p.life>0);
+  requestAnimationFrame(anim);
+})();
+
+/* ===== ESCENA 1 → ESCENA 2 ===== */
+const scene1=document.getElementById("scene1");
+const scene2=document.getElementById("scene2");
+const btnHeart=document.getElementById("btnHeart");
+const btnGift=document.getElementById("btnGift");
+
+btnHeart.onclick=(e)=>{
+  burst(e.clientX,e.clientY);
+
+  scene1.style.opacity=0;
+  setTimeout(()=>scene1.style.display="none",400);
+
+  setTimeout(()=>{
+    scene2.classList.add("show");
+    initScratch();
+
+    setTimeout(()=>{
+      btnGift.style.display="block";
+      requestAnimationFrame(()=> btnGift.style.opacity=1);
+    },2500);
+  },500);
+};
+
+/* ===== RASPADO ===== */
+function initScratch(){
+  const canvas=document.getElementById("scratchCanvas");
+  const card=document.getElementById("card");
+  const ctx=canvas.getContext("2d");
+  const DPR=window.devicePixelRatio||1;
+
+  function fit(){
+    const w=card.clientWidth;
+    const h=card.clientHeight;
+    canvas.style.width=w+"px";
+    canvas.style.height=h+"px";
+    canvas.width=w*DPR;
+    canvas.height=h*DPR;
+    ctx.scale(DPR,DPR);
+
+    const g=ctx.createLinearGradient(0,0,0,h);
+    g.addColorStop(0,"#bfbfbf");
+    g.addColorStop(1,"#8a8a8a");
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,w,h);
+  }
+
+  fit();
+  addEventListener("resize",fit);
+
+  let draw=false,x=0,y=0;
+  const R=26;
+
+  canvas.onpointerdown=e=>{
+    draw=true;
+    const r=canvas.getBoundingClientRect();
+    x=e.clientX-r.left; y=e.clientY-r.top;
+  }
+
+  canvas.onpointermove=e=>{
+    if(!draw) return;
+    const r=canvas.getBoundingClientRect();
+    const nx=e.clientX-r.left, ny=e.clientY-r.top;
+
+    ctx.globalCompositeOperation="destination-out";
+    ctx.beginPath();
+    ctx.arc(nx,ny,R,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(nx,ny);
+    ctx.lineWidth=R*2;
+    ctx.stroke();
+
+    x=nx; y=ny;
+  }
+
+  canvas.onpointerup=()=>draw=false;
+}
+
+/* ===== FUEGOS REALISTAS ===== */
+function bigFireworks(x, y) {
+  const finalScreen = document.getElementById("finalScreen");
+
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement("div");
+    p.className = "fireParticle";
+
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 60 + Math.random() * 140;
+
+    const dx = Math.cos(angle) * distance + "px";
+    const dy = Math.sin(angle) * distance + "px";
+
+    p.style.setProperty("--dx", dx);
+    p.style.setProperty("--dy", dy);
+
+    const color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+    p.style.background = color;
+    p.style.boxShadow = `0 0 12px ${color}`;
+
+    p.style.left = x + "px";
+    p.style.top = y + "px";
+
+    finalScreen.appendChild(p);
+
+    setTimeout(() => p.remove(), 1200);
+  }
+}
+
+/* ===== ESCENA FINAL ===== */
+const finalScreen=document.getElementById("finalScreen");
+
+btnGift.onclick=e=>{
+  burst(e.clientX,e.clientY);
+  bigFireworks(e.clientX,e.clientY);
+
+  btnGift.style.opacity=0;
+  setTimeout(()=>btnGift.style.display="none",300);
+
+  scene2.classList.remove("show");
+
+  setTimeout(()=>{
+
+    /* ✅ MOSTRAR ESCENA FINAL COMO FLEX CENTRADO */ 
+    finalScreen.style.display="flex";
+    finalScreen.style.justifyContent="center";
+    finalScreen.style.alignItems="center";
+    finalScreen.style.flexDirection="column"; 
+
+    /* ✅ TEXTO TE QUIERO EN UNA LÍNEA */
+    const txt=document.createElement("div");
+    txt.className="finalText";
+    txt.textContent="TE AMO";
+    finalScreen.appendChild(txt);
+
+    /* ✅ FUEGOS CONTINUOS */
+    setInterval(()=>{
+      bigFireworks(
+        Math.random()*innerWidth,
+        Math.random()*innerHeight*0.7
+      );
+    },900);
+
+  },400);
+};
+</script>
+
+</body>
+</html>
