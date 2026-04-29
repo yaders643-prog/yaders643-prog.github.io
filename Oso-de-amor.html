@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Título de la página -->
+    <title>Te amo</title>
+
+    <!-- Favicon -->
+   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+    <!-- Autor y copyright -->
+    <meta name="author" content="Yader Sanchez" />
+    <meta name="copyright" content="Todos los derechos reservados Yader Sanchez" />
+
+    <!-- Meta Open Graph (para compartir en redes) -->
+    <meta property="og:title" content="Eres mi todo">
+    
+    <meta property="og:description" content="Apareces en mi vida como una luz en la oscuridad 🌙✨, y desde entonces todo tiene más sentido 💖🌹. No eres solo alguien especial… te has vuelto mi razón favorita ❤️💫.">
+       
+  <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/amor11.jpeg">
+  
+    <meta property="og:url" content="https://yaders643-prog.github.io/Mensaje-raspa.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    <style>
+        /* --- REGLAS GLOBALES PARA QUITAR SELECCIÓN Y RESALTADO --- */
+        * {
+            /* Evita que se seleccione texto o imágenes al arrastrar/doble clic */
+            -webkit-user-select: none; /* Safari/Chrome */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;     /* IE/Edge */
+            user-select: none;         /* Estándar */
+            
+            /* Quita el recuadro azul/gris al tocar en móviles */
+            -webkit-tap-highlight-color: transparent;
+            
+            /* Quita el borde de enfoque al hacer clic */
+            outline: none;
+        }
+
+        /* --- FONDO --- */
+        body { 
+            margin: 0; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background: radial-gradient(circle at center, #2b0a0a 0%, #000000 100%);
+            overflow: hidden;
+            font-family: sans-serif;
+            cursor: default; /* Flecha normal siempre */
+        }
+
+        /* --- CORAZONES --- */
+        .hearts-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+        .heart {
+            position: absolute; bottom: -50px; color: #ff3344; opacity: 0.3; font-size: 24px;
+            animation: floatUp 10s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            20% { opacity: 0.4; }
+            100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+        }
+
+        /* --- CANVAS --- */
+        .canvas { 
+            width: 90%; max-width: 401px; aspect-ratio: 401 / 521; 
+            display: flex; justify-content: center; align-items: center; 
+            position: relative; z-index: 5;
+        }
+        
+        svg { 
+            width: 100%; height: 100%; overflow: visible; 
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2)); 
+            pointer-events: none; /* El SVG no recibe clics para evitar selecciones accidentales */
+        }
+
+        /* Animación de línea (controlada por JS) */
+        @keyframes drawLine { 
+            to { stroke-dashoffset: 0; } 
+        }
+
+        /* Estilo base de los trazos (ocultos al inicio) */
+        path {
+            opacity: 0;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: transparent;
+        }
+
+        /* --- BOTONES --- */
+        .gift-btn, .restart-btn {
+            background: linear-gradient(45deg, #ff004c, #ff4d4d);
+            color: white; 
+            border: none; 
+            padding: 18px 45px;
+            font-size: 20px; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-weight: bold;
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(255, 0, 76, 0.6);
+            animation: heartbeat 1.5s infinite; 
+            transition: 0.3s;
+            /* Asegura que el botón sí reciba clics */
+            pointer-events: auto; 
+        }
+
+        .gift-btn:hover, .restart-btn:hover { 
+            transform: scale(1.1); 
+            box-shadow: 0 0 40px rgba(255, 0, 76, 0.9); 
+        }
+        
+        .gift-btn {
+            position: absolute; 
+            z-index: 20;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 76, 0.8); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- CONTENEDOR REINICIO --- */
+        .restart-container {
+            margin-top: 40px; 
+            z-index: 10; 
+            opacity: 0; 
+            transition: opacity 1s;
+            pointer-events: none;
+            text-align: center;
+        }
+        .restart-container.visible { 
+            opacity: 1; 
+            pointer-events: all;
+        }
+        
+    </style>  
+</head>
+<body>
+
+    <div class="hearts-container" id="heartsBg"></div>
+
+    <div class="canvas">
+        <button id="giftBtn" class="gift-btn" onclick="openGift()">🎁 Abrir Regalo</button>
+
+        <svg id="main-svg" viewBox="0 0 401 521" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M144.177 468.464C183.233 492.354 208.788 492.577 261.177 468.464" stroke="white" stroke-width="7"/>
+            <path d="M343.195 399.049C333.03 447.932 319.005 471.233 280.767 506.272C256.286 528.705 243.042 511.99 228.388 483.586" stroke="white" stroke-width="7"/>
+            <path d="M56.1772 399.464C56.1772 399.464 71.7862 473.188 107.177 498.464C118.264 506.382 124.559 514.833 138.177 514.464C148.84 514.175 155.721 511.092 163.177 503.464C169.281 497.22 173.177 483.464 173.177 483.464" stroke="white" stroke-width="7"/>
+            <path d="M349.177 274.464C349.177 274.464 373.53 297.75 378.177 317.464C382.689 336.606 381.411 350.101 372.177 367.464C359.096 392.064 338.822 407.935 311.177 404.464C291.08 401.941 271.29 395.478 268.177 375.464C265.681 359.414 273.401 347.07 287.177 338.464C301.419 329.568 316.606 348.355 330.177 338.464C338.143 332.659 344.177 317.464 344.177 317.464" stroke="white" stroke-width="7"/>
+            <path d="M64.1771 288.464C-9.75952 190.18 21.3896 84.9813 108.177 32.4644C167.65 -3.52357 258.177 15.8804 286.177 32.4644C373.821 84.3747 417.566 185.21 336.177 288.464" stroke="white" stroke-width="7"/>
+            <path d="M55.1771 278.464C55.1771 278.464 25.7352 301.915 21.1771 323.464C16.9771 343.321 19.9559 357.552 31.1771 374.464C46.4383 397.465 68.0294 409.458 95.1771 404.464C115.001 400.818 132.858 394.153 137.177 374.464C140.432 359.627 138.914 343.948 125.177 337.464C114.436 332.395 106.951 344.026 95.1771 342.464C76.0502 339.927 63.5355 330.854 55.1771 313.464" stroke="white" stroke-width="7"/>
+            <path d="M37.1772 110.464C-47.8228 53.4643 47.1771 -42.5357 112.177 29.4642" stroke="white" stroke-width="7"/>
+            <path d="M291.59 34.0826C353.493 -47.416 443.737 53.0684 368.037 113.719" stroke="white" stroke-width="7"/>
+            <path d="M310.274 49.4371C343.39 10.9338 392.506 59.0438 351.86 87.5843" stroke="white" stroke-width="7"/>
+            <path d="M45.0769 84.5582C8.39635 49.4338 59.0598 2.956 85.3897 45.068" stroke="white" stroke-width="7"/>
+            <path d="M256.177 161.464C272.059 145.843 281.626 145.046 300.177 161.464" stroke="white" stroke-width="7"/>
+            <path d="M142.177 239.464C113.177 146.464 288.177 147.464 258.177 239.464" stroke="white" stroke-width="7"/>
+            <path d="M173.177 213.464C182.395 227.028 188.624 227.701 201.177 219.464C215.213 231.107 220.865 227.635 229.177 213.464" stroke="white" stroke-width="7"/>
+            <path d="M202.177 219.464V201.464" stroke="white" stroke-width="7"/>
+            <path d="M183.177 187.464C185.127 196.715 202.177 202.464 202.177 202.464C202.177 202.464 218.29 196.418 220.177 187.464C223.158 173.326 180.197 173.326 183.177 187.464Z" stroke="white" stroke-width="7"/>
+            <path d="M189.948 183.733C191.723 183.544 204.048 183.161 210.952 184.564C214.38 185.261 203.198 185.793 197.54 185.22C195.597 185.023 192.95 185.122 191.586 185.634C190.222 186.146 190.213 187.17 190.674 187.977C191.642 189.67 194.515 190.105 197.33 190.198C202.045 190.353 205.794 187.337 211.576 187.231C212.964 187.206 213.975 187.79 214.03 188.214C214.46 191.54 207.047 191.553 199.387 193.354C197.398 193.822 195.633 193.664 195.296 193.943C194.417 194.671 198.153 196.004 200.029 196.802C203.638 198.338 207.548 193.237 211.55 190.227C212.521 189.496 212.823 188.186 212.732 187.177C212.552 185.179 210.542 183.781 208.69 182.733C204.245 180.218 199.233 182.904 193.248 183.092C190.638 183.174 188.272 182.328 187.108 182.604C185.263 183.041 190.94 185.048 192.928 185.401C197.861 184.15 203.198 182.815 208.509 183.037C210.434 183.18 213.134 183.273 215.343 183.365" stroke="white" stroke-width="7"/>
+            <path d="M145.177 159.464C144.702 145.322 136.325 131.157 122.177 131.464C108.274 131.766 100.639 145.566 100.177 159.464C99.6946 173.985 107.652 189.154 122.177 189.464C136.936 189.779 145.673 174.219 145.177 159.464Z" stroke="white" stroke-width="7"/>
+            <path d="M144.15 157.021C143.991 150.682 141.202 144.334 136.49 144.471C131.86 144.606 129.317 150.792 129.163 157.021C129.003 163.529 131.653 170.328 136.49 170.467C141.405 170.608 144.315 163.634 144.15 157.021Z" stroke="white" stroke-width="7"/>
+            <path d="M123.616 139.596C123.965 139.736 125.044 140.112 126.422 139.857C127.547 139.648 128.816 139.708 129.936 140.155C130.433 140.354 130.866 140.649 131.112 140.977C131.714 141.779 129.465 142.503 128.526 143.091C127.527 143.716 126.764 144.417 125.999 145.969C125.455 147.072 125.348 148.302 125.157 149.43C124.947 150.673 124.481 152.155 124.088 153.368C123.73 154.471 123.767 157.671 124.082 160.4C124.242 161.789 124.834 162.904 125.292 164.363C125.67 165.564 126.595 166.596 127.289 167.878C128.006 169.203 129.131 169.935 130.234 170.722C131.319 171.495 132.484 172.047 134.164 172.469C134.911 172.656 135.496 172.846 135.777 173.068C136.582 173.704 134.376 174.654 132.621 175.98C131.485 176.839 130.904 177.569 130.75 178.051C130.485 178.885 132.779 177.702 133.674 177.993C133.873 178.057 133.763 178.448 133.598 178.708C132.88 179.841 131.583 180.19 130.654 180.802C129.649 181.464 128.59 181.979 125.058 182.039C123.033 182.073 121.625 182.563 120.095 182.844C118.514 183.134 117.078 181.486 115.935 180.695C114.353 179.598 113.102 178.79 112.093 178.124C111.011 177.408 109.836 176.061 108.221 173.611C107.07 171.865 106.491 169.477 105.933 167.562C105.578 166.341 105.548 164.409 105.366 162.146C105.136 159.265 105.544 157.867 105.922 155.7C106.463 152.606 107.302 151.467 107.655 150.298C108.025 149.073 108.652 147.799 109.587 145.906C110.542 143.971 111.895 142.658 112.733 141.875C114.034 140.66 116.102 139.696 117.458 139.351C119.023 138.953 120.907 138.321 121.756 137.76C122.177 137.482 122.601 137.007 123.398 136.899C123.753 136.85 124.022 136.955 124.217 137.119C124.412 137.283 124.528 137.539 124.512 137.815C124.443 138.983 123.175 139.775 121.961 140.861C120.668 142.016 119.054 142.944 115.755 145.87C113.858 147.552 112.933 149.651 111.748 152.029C110.771 153.99 110.526 156.1 110.181 158.993C109.643 163.512 110.572 165.085 110.914 166.295C111.406 168.032 113.554 170.396 114.511 171.844C115.714 173.665 116.519 174.486 117.547 175.213C119.028 176.261 121.573 175.362 123.246 174.755C123.945 174.502 124.853 174.562 125.488 174.439C126.438 174.255 122.263 171.563 120.203 169.703C118.729 168.373 118.164 167.277 117.639 166.113C116.64 163.9 117.049 162.063 117.049 160.456C117.048 158.48 117.81 156.655 118.064 154.902C118.375 152.751 119.044 151.071 119.47 149.806C119.721 149.314 119.958 148.813 120.145 148.255C120.24 147.98 120.333 147.722 120.711 146.957" stroke="white" stroke-width="8"/>
+            
+            <path d="M200.177 276.746C164.922 224.384 81.6806 238.929 58.1772 313.592" stroke="#FF0000" stroke-width="7"/>
+            <path d="M200.177 274.283C235.681 215.761 319.508 232.017 343.177 315.464" stroke="#FF0505" stroke-width="7"/>
+            <path d="M102.177 409.464C128.7 439.923 149.575 455.069 201.177 477.464C247.774 458.083 271.098 443.038 308.177 409.464" stroke="#FF0000" stroke-width="7"/>
+            <path d="M134.536 299.019C135.331 299.019 142.443 299.162 147.995 299.053C154.714 298.92 164.218 298.71 173.969 298.471C177.387 297.776 179.304 297.471 180.58 297.17C181.289 296.969 182.124 296.671 182.984 296.365" stroke="#FF0000" stroke-width="8"/>
+            <path d="M163.821 299.292C164.143 300.057 164.491 303.081 163.996 306.978C163.567 310.356 163.821 312.955 163.71 316.672C163.649 333.866 163.477 339.562 163.326 341.634C163.299 342.532 163.371 343.119 163.596 343.874" stroke="#FF0000" stroke-width="8"/>
+            <path d="M198.442 293.675C198.834 295.682 199.082 304.633 198.876 314.823C198.74 321.561 198.195 328.71 198.394 335.016C198.494 335.962 198.643 336.607 198.769 337.287C198.895 337.966 198.995 338.661 199.097 339.977" stroke="#FF0000" stroke-width="8"/>
+            <path d="M199.945 292.219C200.683 291.919 203.626 291.329 208.121 290.953C211.721 290.429 215.788 290.287 218.774 290.072C220.37 289.999 222.132 289.999 223.946 289.999" stroke="#FF0000" stroke-width="8"/>
+            <path d="M200.253 314.922C200.352 314.922 205.705 314.922 214.022 314.835C217.602 314.574 218.942 314.395 220.625 314.358C221.552 314.322 222.626 314.248 224.335 313.868" stroke="#FF0000" stroke-width="8"/>
+            <path d="M200.341 343.215C201.814 343.068 215.928 342.771 223.6 342.214C224.21 342.05 224.826 341.927 225.813 341.863C226.8 341.799 228.139 341.799 230.571 341.342" stroke="#FF0000" stroke-width="8"/>
+            <path d="M136.307 421.183C136.706 420.629 137.804 418.398 139.058 415.861C140.91 412.113 141.919 406.949 142.643 404.068C143.627 400.155 146.466 392.363 147.691 387.777C148.728 383.899 149.636 381.579 149.959 381.129C151.356 379.184 151.733 385.726 152.485 388.95C153.791 394.547 154.416 397.137 155.189 399.976C156.532 404.909 158.113 408.097 159.322 411.022C161.318 415.852 165.946 423.838 168.891 429.294C169.313 430.241 169.832 431.253 170.199 432.048C170.565 432.842 170.764 433.388 171.119 434.401" stroke="#FF0000" stroke-width="8"/>
+            <path d="M142.708 407.116C143.444 407.116 144.36 407.116 145.492 407.08C146.087 407.043 146.723 406.97 148.357 406.932C149.991 406.894 152.603 406.894 155.295 406.894" stroke="#FF0000" stroke-width="8"/>
+            <path d="M177.545 413.147C177.494 411.553 177.537 403.331 177.243 396.029C177.168 393.074 177.168 388 177.218 385.109C177.267 382.218 177.366 381.665 177.469 381.095" stroke="#FF0000" stroke-width="8"/>
+            <path d="M178.819 381.083C180.182 381.874 183.814 385.347 186.223 387.43C188.476 389.99 190.904 393.311 193.882 396.725C194.611 397.64 195.302 398.653 196.315 399.846" stroke="#FF0000" stroke-width="8"/>
+            <path d="M196.007 400.142C196.325 399.35 198.427 395.854 200.485 391.099C202.362 386.766 205.448 384.381 206.517 382.065C206.925 380.661 207.5 379.028 208.126 377.281C208.404 376.407 208.602 375.555 209.107 374.069" stroke="#FF0000" stroke-width="8"/>
+            <path d="M210.159 372.851C210.657 374.361 211.858 379.007 212.437 381.623C213.107 384.646 213.413 389.377 213.998 392.75C214.642 396.459 215.646 399.569 216.853 402.429C218.644 406.674 218.815 411.377 219.714 414.452C220.542 417.914 221.611 421.511 222.121 423.318C222.359 424.113 222.558 424.658 222.912 425.972" stroke="#FF0000" stroke-width="8"/>
+            <path d="M235.929 371.639C235.526 372.484 234.008 374.687 232.585 377.539C231.308 380.1 230.402 382.049 229.893 384.715C229.257 388.049 229.187 390.879 228.983 393.312C228.779 395.736 228.602 399.374 229.005 402.964C229.636 408.582 232.711 411.358 234.865 413.168C236.628 414.649 239.609 414.9 244.867 414.876C246.722 414.868 247.844 414.037 248.769 413.43C250.964 411.99 251.151 408.973 252.279 405.433C253.49 401.633 253.309 395.156 252.463 389.25C251.957 385.722 251.105 383.294 250.344 381.088C249.477 378.578 247.758 376.457 246.465 374.64C244.975 372.546 242.214 370.76 239.907 369.514C239.347 369.359 238.693 369.359 238.079 369.433C237.466 369.508 236.912 369.657 236.341 369.96" stroke="#FF0000" stroke-width="8"/>
+        </svg>
+    </div>
+
+    <div class="restart-container" id="restartContainer">
+        <button class="restart-btn" onclick="restart()">Reiniciar Regalo</button>
+    </div>
+
+    <script>
+        function createHearts() {
+            const container = document.getElementById('heartsBg');
+            const heartCount = 20; 
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        function openGift() {
+            const giftBtn = document.getElementById('giftBtn');
+            const svg = document.getElementById('main-svg');
+            const restartContainer = document.getElementById('restartContainer');
+            const paths = svg.querySelectorAll('path');
+
+            // 1. Animación del botón
+            giftBtn.style.transform = "scale(1.5)";
+            giftBtn.style.opacity = "0";
+            
+            setTimeout(() => {
+                giftBtn.style.display = 'none';
+                
+                // 2. Lógica de dibujo secuencia perfecta (JS)
+                let currentDelay = 0;
+                let speed = 550; // Velocidad en píxeles por segundo (ajústalo si quieres más lento/rápido)
+
+                paths.forEach((path) => {
+                    const length = path.getTotalLength();
+                    const duration = length / speed; // Duración proporcional a la longitud
+
+                    // Configuración inicial del trazo invisible
+                    path.style.strokeDasharray = length;
+                    path.style.strokeDashoffset = length;
+                    path.style.opacity = "1"; // Hacemos visible el elemento (pero el trazo está oculto por offset)
+
+                    // Asignamos la animación
+                    path.style.animation = `drawLine ${duration}s linear forwards`;
+                    path.style.animationDelay = `${currentDelay}s`;
+
+                    // Sumamos el tiempo para el siguiente trazo
+                    currentDelay += duration;
+                });
+
+                // 3. Mostrar botón de reinicio al terminar todo
+                setTimeout(() => {
+                    restartContainer.classList.add('visible');
+                }, (currentDelay * 1000) + 100); // Esperamos el tiempo total calculado + un margen
+
+            }, 400); 
+        }
+
+        function restart() {
+            location.reload();
+        }
+
+        createHearts();
+    </script>
+</body>
+</html>
