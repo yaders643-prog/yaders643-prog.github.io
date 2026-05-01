@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <!-- Título optimizado -->
+<title>Anielka</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+
+<!-- Autor -->
+<meta name="author" content="Yader Sanchez">
+<meta name="copyright" content="© Yader Sanchez">
+
+<!-- SEO básico -->
+<meta name="description" content="Un mensaje especial dedicado a Anielka.">
+
+<!-- Open Graph (Facebook, WhatsApp, etc.) -->
+<meta property="og:title" content="Anielka… usted es mi universo 💖">
+<meta property="og:description" content="Apareció en mi vida como un suspiro de luz en medio de la oscuridad 🌙✨, y desde entonces todo tiene sentido 💖. Porque usted no es solo alguien especial… es la razón más hermosa de mi vida ❤️🌹.">
+<meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor2.jpg">
+<meta property="og:url" content="https://yaders643-prog.github.io/Solo-para-usted.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+
+<!-- Twitter (se usa también en algunas apps) -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anielka 💖 usted es mi universo">
+<meta name="twitter:description" content="No es solo un mensaje… es lo que siento por usted 💖">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/048d1579be6261cd37dd3424999bc46443422f2a/amor2.jpg">
+
+<!-- Color del navegador (móvil) -->
+<meta name="theme-color" content="#b83068">    
+        
+    <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+           
+        padding: 20px;
+        transition: background-color 0.8s ease;
+        position: relative;
+        font-family: Arial, sans-serif;
+    }
+
+   
+    .love-word {
+        position: fixed;
+        top: -60px;
+        font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+        font-weight: bold;
+        pointer-events: none;
+        z-index: 0;
+        animation: fall linear infinite;
+        white-space: nowrap;
+        opacity: 0;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    @keyframes fall {
+        0%   { transform: translateY(0)   rotate(-8deg); opacity: 0; }
+        8%   { opacity: 0.85; }
+        90%  { opacity: 0.7; }
+        100% { transform: translateY(110vh) rotate(8deg); opacity: 0; }
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        width: min(94vw, 660px);
+        padding: 28px 20px 32px;
+        background: rgba(255,255,255,0.96);
+        border: 2px solid #b8d8ea;
+        border-radius: 22px;
+        box-shadow:
+            0 0 0 6px rgba(184,216,234,0.22),
+            0 10px 36px rgba(0,0,0,0.1);
+        transition: border-color 0.8s ease;
+    }
+
+    .container::before, .container::after {
+        content: '✿';
+        font-size: 1.2rem;
+        color: #7ab8d4;
+        position: absolute;
+        top: 12px;
+        transition: color 0.8s;
+    }
+    .container::before { left: 16px; }
+    .container::after  { right: 16px; }
+
+    #mainPhoto {
+        width: 72%;
+        max-width: 300px;
+        border-radius: 16px;
+        border: 3px solid #b8d8ea;
+        display: block;
+        margin: 0 auto 18px;
+        transition: opacity 0.4s ease, border-color 0.8s ease;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+    }
+
+  
+    #mainText {
+        font-size: clamp(1.05rem, 3.8vw, 1.4rem);
+        line-height: 1.75;
+        margin: 0 0 22px;
+        color: #1a5a8a;
+        font-weight: 600;
+        transition: opacity 0.4s ease, color 0.5s ease;
+        padding: 0 4px;
+    }
+
+   
+    #mainBtn {
+        padding: 13px 30px;
+        font-size: clamp(1rem, 3.5vw, 1.15rem);
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #2a80b8;
+        color: white;
+        border: none;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(42,128,184,0.4);
+        transition: background-color 0.5s, transform 0.15s, box-shadow 0.3s;
+        max-width: min(88vw, 460px);
+        white-space: normal;
+        word-break: break-word;
+        line-height: 1.4;
+    }
+    #mainBtn:hover  { filter: brightness(1.1); transform: scale(1.03); }
+    #mainBtn:active { transform: scale(0.97); }
+
+    
+    #finalMsg {
+        display: none;
+        font-size: clamp(1.05rem, 3.8vw, 1.35rem);
+        font-weight: 700;
+        line-height: 1.75;
+        padding: 8px 4px;
+        animation: fadeUp 0.8s ease;
+    }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade {
+    opacity: 0 !important;
+    transform: translateY(10px);
+}    
+    body, img, button, p, div, span {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+    
+@keyframes fadeScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.container {
+    animation: fadeScale 0.7s ease;
+    }  
+    
+    @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+#mainBtn {
+    animation: pulse 2s infinite;
+}
+    
+    </style>
+</head>
+<body>
+
+
+    <div id="loveRain"></div>
+
+    <div class="container" id="card">
+
+        <img id="mainPhoto"
+             src="https://i.postimg.cc/SsHCzGYm/165609c0bd25d5bff405f0ac3f1c701f.jpg"
+             alt="foto">
+
+        <p id="mainText">
+            💙 Amorcita, le voy a dejar bien claro…<br>
+            No hay otra, no habrá otra.<br>
+            No me gusta otra, no quiero estar con otra.<br>
+            No hay nadie más.<br>
+            No tengo ojos para otra.<br>
+            Mis ojos la miran a usted,<br>
+            y mi cuerpo y mi corazón<br>
+            <strong>solo le quieren a usted.</strong> 💙
+        </p>
+
+        <p id="finalMsg"></p>
+
+        <button id="mainBtn">💙 Quiero sentirme segura 💙</button>
+
+    </div>
+
+    <audio id="music" loop>
+        <source src="https://github.com/codeninja543/codeninja5433/raw/refs/heads/main/TEAMO%20MI%20AMOR%20%20Canci%C3%B3n%20Rom%C3%A1ntica%20Bajo%20la%20Luna%20Llena.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+
+    let musicStarted = false;
+    const music = document.getElementById('music');
+    document.addEventListener('click', function startM() {
+        if (!musicStarted) {
+            musicStarted = true;
+            music.currentTime = 15;
+            music.volume = 0.55;
+            music.play().catch(() => {});
+        }
+    }, { once: true });
+
+    const loveWords = [
+        'La amo 💙','La quiero 💛','Ustes es mía 💗','Solo usted ✨',
+        'Mi amor 🌸','La adoro 💜','Es todo 💖','Mi vida 🌟',
+        'La amo Anielka 💙','Solo usted existe 💗','Mi corazón 🧡',
+        'Para siempre 💍','La quiero tanto 💛','Es única 🌺',
+        'Sujey 💙','Mi todo 💖','Anielka 🌸'
+    ];
+    const colors = ['#1a6aaa','#b03080','#0a8040','#c06000','#6030b0','#c02020','#207080'];
+
+    function createWord() {
+        const span = document.createElement('span');
+        span.className = 'love-word';
+        span.textContent = loveWords[Math.floor(Math.random() * loveWords.length)];
+        span.style.left  = (Math.random() * 95) + 'vw';
+        span.style.color = colors[Math.floor(Math.random() * colors.length)];
+        const dur = (Math.random() * 7 + 6).toFixed(1);
+        const delay = (Math.random() * 4).toFixed(1);
+        span.style.animationDuration = dur + 's';
+        span.style.animationDelay   = delay + 's';
+        document.getElementById('loveRain').appendChild(span);
+        setTimeout(() => span.remove(), (parseFloat(dur) + parseFloat(delay) + 0.5) * 1000);
+    }
+    setInterval(createWord, 600);
+    for (let i = 0; i < 10; i++) setTimeout(createWord, i * 200);
+
+    // ── Pasos ──
+    const pasos = [
+        {
+            foto: 'https://i.postimg.cc/90TTPqyc/cb0ad639e6587f44d7c433b9fbb681f3.jpg',
+            texto: '💛 Es la única persona en la que pienso al despertar y la última en la que pienso antes de dormir.<br>No existe nadie más en mi mente.<br><strong>Solo usted, siempre usted.</strong> 💛',
+            bg: '#fffbe8', borde: '#d4b840', txt: '#7a4a00', btn: '#c09020', btnTxt: '💛 Cuénteme más 💛'
+        },
+        {
+            foto: 'https://i.postimg.cc/pT3znB5d/cbb3eaef3320c1961d433b960ffb7c4b.jpg',
+            texto: '❤️ Cuando estoy con usted el mundo entero desaparece.<br>No veo a nadie más porque nadie más importa.<br><strong>Mi mirada solo le busca a usted.</strong> ❤️',
+            bg: '#fff0f0', borde: '#d07070', txt: '#8a1010', btn: '#c03030', btnTxt: '❤️ Siga... ❤️'
+        },
+        {
+            foto: 'https://i.postimg.cc/brbb021p/d347e5a64ec3fd40cdd2b633e384d1c2.jpg',
+            texto: '💜 Nunca hubo nadie antes que me hiciera sentir lo que usted me hace sentir.<br>Y sé que después de usted, no habrá nadie más.<br><strong>Usted es mi todo.</strong> 💜',
+            bg: '#f6eeff', borde: '#b080d8', txt: '#4a1080', btn: '#8040c0', btnTxt: '💜 Necesito más 💜'
+        },
+        {
+            foto: 'https://i.postimg.cc/2yvvdBnz/f5b67344682ddbae1a6293b89ea5b54c.jpg',
+            texto: '🌿 La elijo a usted cada día.<br>No porque no haya otras personas en el mundo,<br>sino porque ninguna es usted.<br><strong>Y usted es exactamente lo que quiero.</strong> 🌿',
+            bg: '#eef8ee', borde: '#70b870', txt: '#0a4a0a', btn: '#2a8a2a', btnTxt: '🌿 Quiero escuchar más 🌿'
+        },
+        {
+            foto: 'https://i.postimg.cc/0jmmGJ7k/images.jpg',
+            texto: '🧡 Mi corazón no tiene espacio para más nadie.<br>Está tan lleno de usted que no cabe ni una sola duda.<br><strong>Usted es mi única y mi siempre.</strong> 🧡',
+            bg: '#fff5e8', borde: '#d89050', txt: '#7a3000', btn: '#c06010', btnTxt: '🧡 Más, por favor 🧡'
+        },
+        {
+            foto: 'https://i.postimg.cc/gjRRy63F/images-(1).jpg',
+            texto: '💗 No tengo ojos para otra porque mis ojos solo saben verle a usted.<br>No tengo corazón para otra porque el mío ya tiene dueña:<br><strong>Usted.</strong> 💗',
+            bg: '#fff0f8', borde: '#d880b0', txt: '#7a0848', btn: '#b82870', btnTxt: '💗 Continúe... 💗'
+        },
+        {
+            foto: 'https://i.postimg.cc/SsHCzGYm/165609c0bd25d5bff405f0ac3f1c701f.jpg',
+            texto: '🌊 Aunque pase el tiempo, aunque cambien las cosas,<br>mis sentimientos por usted no cambian.<br><strong>Ayer, hoy y siempre: solo usted.</strong> 🌊',
+            bg: '#e8f4fc', borde: '#6ab0d8', txt: '#083858', btn: '#1070a8', btnTxt: '🌊 Más palabras... 🌊'
+        },
+        {
+            foto: 'https://i.postimg.cc/90TTPqyc/cb0ad639e6587f44d7c433b9fbb681f3.jpg',
+            texto: '✨ Quiero que sepa que no hay duda, no hay incertidumbre, no hay miedo.<br>Hay certeza absoluta:<br><strong>La quiero a usted, solo a usted, siempre a usted.</strong> ✨',
+            bg: '#f4f0ff', borde: '#a090d8', txt: '#2a1868', btn: '#5848b8', btnTxt: '✨ Una más ✨'
+        },
+        {
+            foto: 'https://i.postimg.cc/pT3znB5d/cbb3eaef3320c1961d433b960ffb7c4b.jpg',
+            texto: '🌸 Usted es mi calma, mi alegría, mi hogar.<br>Donde esté usted, ahí quiero estar yo.<br><strong>No existe lugar ni persona que me mueva de su lado.</strong> 🌸',
+            bg: '#fff0f8', borde: '#e090c0', txt: '#680830', btn: '#b83068', btnTxt: '🌸 Siga... 🌸'
+        },
+        {
+            foto: 'https://i.postimg.cc/brbb021p/d347e5a64ec3fd40cdd2b633e384d1c2.jpg',
+            texto: ' Y si todavía duda, se lo repito mil veces más:<br>No hay otra. No habrá otra.<br>No quiero a otra.<br><strong>Solo la quiero a usted, ahora y para siempre.<br>La amo.</strong> ',
+            bg: '#eaf4fb', borde: '#80b8d8', txt: '#082a48', btn: '#1060a0', btnTxt: '💙 Ya lo creo 💙',
+            esFinal: true
+        }
+    ];
+
+    let paso = 0;
+    const mainPhoto = document.getElementById('mainPhoto');
+    const mainText  = document.getElementById('mainText');
+    const mainBtn   = document.getElementById('mainBtn');
+    const finalMsg  = document.getElementById('finalMsg');
+    const card      = document.getElementById('card');
+
+    mainBtn.addEventListener('click', () => {
+        if (paso >= pasos.length) return;
+        const p = pasos[paso];
+
+        mainPhoto.classList.add('fade');
+        mainText.classList.add('fade');
+
+        setTimeout(() => {
+            mainPhoto.src            = p.foto;
+            mainText.innerHTML       = p.texto;
+            mainText.style.color     = p.txt;
+            document.body.style.backgroundColor = p.bg;
+            card.style.borderColor   = p.borde;
+            mainBtn.style.backgroundColor = p.btn;
+            mainBtn.innerHTML        = p.btnTxt;
+
+            mainPhoto.classList.remove('fade');
+            mainText.classList.remove('fade');
+
+            if (p.esFinal) {
+                mainBtn.style.display = 'none';
+                finalMsg.style.display = 'block';
+                finalMsg.style.color   = p.txt;
+                finalMsg.innerHTML =
+                    ' ¡Gracias por creerme, amorcita!<br>Cada palabra que te dije viene del fondo de mi corazón.<br><strong>Eres mi única, mi todo, mi amor para siempre.</strong> 🌸';
+            }
+            paso++;
+        }, 380);
+    });
+        
+       // Bloquear clic derecho
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Bloquear selección
+document.addEventListener('selectstart', e => e.preventDefault());
+
+// Bloquear copiar, cortar, pegar
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('cut', e => e.preventDefault());
+document.addEventListener('paste', e => e.preventDefault());
+
+// Bloquear teclas comunes (Ctrl+C, Ctrl+U, F12, etc.)
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === 'F12' ||
+        (e.ctrlKey && ['c','u','x','s','a','p'].includes(e.key.toLowerCase())) ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase()))
+    ) {
+        e.preventDefault();
+    }
+}); 
+        
+        document.addEventListener('dragstart', e => e.preventDefault());
+        
+      mainBtn.addEventListener('click', () => {
+    mainBtn.style.transform = "scale(0.95)";
+    setTimeout(() => {
+        mainBtn.style.transform = "";
+    }, 150);
+});  
+    </script>
+</body>
+</html>
