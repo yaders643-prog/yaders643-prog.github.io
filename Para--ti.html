@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- Título de la página -->
+<title>Ella no te ama 💔</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+
+<!-- Autor -->
+<meta name="author" content="Yader Sanchez">
+<meta name="copyright" content="© Yader Sanchez">
+
+<!-- Configuración base -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph (WhatsApp, Facebook, etc.) -->
+<meta property="og:title" content="⚠️ Ella no te ama… abre esto 😬">
+<meta property="og:description" content="Si crees que ella te ama… mejor prepárate 💔🐂. Este mensaje no es para débiles 😅🔥.">
+<meta property="og:image" content="https://i.postimg.cc/2yMVX1hR/toro.jpg">
+<meta property="og:url" content="https://yaders643-prog.github.io/Mensaje-raspa.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mensaje para un amigo">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="⚠️ Ella no te ama… 😬">
+<meta name="twitter:description" content="Mejor descúbrelo antes de que sea tarde 💔🐂">
+<meta name="twitter:image" content="">
+
+<!-- Color navegador -->
+<meta name="theme-color" content="#b30000"> 
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 15px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        max-width: 450px;
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: clamp(20px, 5vw, 36px);
+        color: #b30000;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: clamp(18px, 4.5vw, 28px);
+        color: #ff4d4d;
+        margin: 12px 0;
+        line-height: 1.3;
+    }
+
+    p {
+        font-size: clamp(13px, 3.5vw, 16px);
+        margin: 8px 0;
+        color: #333;
+        line-height: 1.5;
+    }
+
+    img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+        border-radius: 12px;
+        margin: 12px auto;
+        display: block;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        object-fit: cover;
+    }
+
+    @media (max-width: 400px) {
+        img {
+            max-width: 180px;
+        }
+        
+        .card {
+            padding: 15px;
+        }
+    }
+
+    .botones {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 18px;
+    }
+
+    button {
+        padding: 14px 20px;
+        font-size: clamp(13px, 3.5vw, 16px);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    button:active {
+        transform: scale(0.98);
+    }
+
+    .btn1 {
+        background-color: #ff4d4d;
+        color: white;
+    }
+
+    .btn1:hover, .btn1:active {
+        background-color: #cc0000;
+    }
+
+    .btn2 {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .btn2:hover, .btn2:active {
+        background-color: #2e7d32;
+    }
+
+    .btn-regresar {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        margin-top: 18px;
+    }
+
+    .btn-regresar:hover, .btn-regresar:active {
+        background: linear-gradient(135deg, #764ba2, #667eea);
+    }
+
+    .oculto {
+        display: none;
+    }
+
+    #mensajeRojo, #mensajeVerde {
+        animation: aparecer 0.5s ease-in;
+    }
+
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .emoji-grande {
+        font-size: clamp(35px, 8vw, 70px);
+        margin: 12px 0;
+    }
+
+    .lista-items {
+        font-size: clamp(14px, 3.8vw, 20px);
+        color: #b30000;
+        font-weight: bold;
+        line-height: 1.8;
+        margin: 12px 0;
+    }
+
+    .lista-items-verde {
+        font-size: clamp(14px, 3.8vw, 20px);
+        color: #2e7d32;
+        font-weight: bold;
+        line-height: 1.8;
+        margin: 12px 0;
+    }
+
+    .frase-final {
+        margin-top: 15px;
+        font-style: italic;
+        font-size: clamp(12px, 3.2vw, 15px);
+        color: #666;
+    }
+
+    @media (min-width: 600px) {
+        .botones {
+            flex-direction: row;
+        }
+        
+        img {
+            max-width: 250px;
+        }
+        
+        .card {
+            padding: 30px;
+        }
+    }
+
+    @media (max-height: 600px) and (orientation: landscape) {
+        body {
+            padding: 10px;
+        }
+        
+        .card {
+            padding: 15px;
+            margin: 5px auto;
+        }
+        
+        img {
+            max-width: 150px;
+        }
+        
+        .emoji-grande {
+            font-size: 40px;
+        }
+    }
+
+    .pantalla-inicio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000, #434343);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.inicio-box {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 350px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: aparecer 0.5s ease;
+}
+
+.inicio-box h1 {
+    color: #b30000;
+    margin-bottom: 10px;
+}
+
+.inicio-box p {
+    margin: 8px 0;
+    color: #333;
+}
+
+.inicio-box button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.inicio-box button:hover {
+    background: #cc0000;
+}
+    </style>
+</head>
+<body>
+<div id="pantallaInicio" class="pantalla-inicio">
+    <div class="inicio-box">
+        <h1>⚠️ Espera un momento ⚠️</h1>
+        <p>Este contenido no es para cualquiera… 😬</p>
+        <p>Si decides continuar, puede que descubras algo que no te guste 💔</p>
+
+        <button onclick="entrarPagina()">Entrar 😈</button>
+    </div>
+</div>
+    
+<audio id="musicaFondo" loop autoplay>
+    <source src="https://github.com/codeninja543/codeninja5433/raw/refs/heads/main/LOS%20PAKINES%20-%20EL%20VENADO%20VIDEO%20OFICIAL.mp3" type="audio/mpeg">
+</audio>
+
+  
+<div class="card">
+
+    <div id="contenidoInicial">
+        <h1>⚠️ Atención Mi Querido Amigo ⚠️</h1>
+        
+        <p>Este es un mensaje oficial para ti...</p>
+        <h2>¡EL CACHUDO SUPREMO! 🐂</h2>
+
+        <img src="https://i.postimg.cc/wjJ6gf83/images.jpg" alt="imagen graciosa">
+
+        <p>Tenemos que decirte algo muy importante...</p>
+
+        <div class="botones">
+            <button class="btn1" onclick="mostrarMensajeRojo()">Haz clic si quieres saber la verdad 😬</button>
+            <button class="btn2" onclick="mostrarMensajeVerde()">Haz clic si crees que ella te ama 🤡</button>
+        </div>
+    </div>
+
+    <div id="mensajeRojo" class="oculto">
+        <div class="emoji-grande">💔😭</div>
+        <h1>¡LA DURA REALIDAD!</h1>
+        <img src="https://i.postimg.cc/fL04fkzV/pikachu.jpg" alt="meme triste">
+        <h2>Lo sentimos bro...</h2>
+        <p class="lista-items">
+            Ella solo te quiere por:<br>
+            📶 El WiFi<br>
+            🍔 La comida<br>
+            💳 La tarjeta<br>
+            ETC 
+        </p>
+        <p class="frase-final">
+            "El amor es ciego... ¡pero los cuernos se ven a kilómetros!" 🐂
+        </p>
+        <button class="btn-regresar" onclick="regresarInicio()">⬅️ Regresar al Inicio</button>
+    </div>
+
+    <div id="mensajeVerde" class="oculto">
+        <div class="emoji-grande">🤡😂</div>
+        <h1>¡JAJAJAJA!</h1>
+        <img src="https://i.postimg.cc/2yMVX1hR/toro.jpg" alt="meme payaso">
+        
+        <h2>¡Pobre iluso!</h2>
+        <p class="lista-items-verde">
+            Mientras tú piensas que ella te ama...<br>
+            Ella está pensando en:<br>
+            👔 Su jefe que siempre lo mira<br>
+            🏋️ Su entrenador de trabajo<br>
+            👨‍⚕️ Su "mejor amigo"
+        </p>
+        <p class="frase-final">
+            "La ignorancia es felicidad... hasta que ves los mensajes" 📱💀
+        </p>
+        <button class="btn-regresar" onclick="regresarInicio()">⬅️ Regresar al Inicio</button>
+    </div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+    var musica = document.getElementById('musicaFondo');
+    musica.play().catch(function(error) {
+        console.log("El navegador bloqueó la reproducción automática. Toca la pantalla para activar la música.");
+        document.body.addEventListener('click', function iniciarMusica() {
+            musica.play();
+            document.body.removeEventListener('click', iniciarMusica);
+        }, { once: true });
+    });
+});
+
+function mostrarMensajeRojo() {
+    document.getElementById('contenidoInicial').classList.add('oculto');
+    document.getElementById('mensajeRojo').classList.remove('oculto');
+}
+
+function mostrarMensajeVerde() {
+    document.getElementById('contenidoInicial').classList.add('oculto');
+    document.getElementById('mensajeVerde').classList.remove('oculto');
+}
+
+function regresarInicio() {
+    document.getElementById('mensajeRojo').classList.add('oculto');
+    document.getElementById('mensajeVerde').classList.add('oculto');
+    document.getElementById('contenidoInicial').classList.remove('oculto');
+}
+    function entrarPagina() {
+    document.getElementById('pantallaInicio').style.display = 'none';
+
+    // Activar música al entrar (más seguro para navegadores)
+    var musica = document.getElementById('musicaFondo');
+    musica.play().catch(()=>{});
+}
+</script>
+
+</body>
+</html>
