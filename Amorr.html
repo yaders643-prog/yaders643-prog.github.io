@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <!-- Título -->
+  <title>Amor</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7db5e7033ca09571ab5a1da0282f87d1dc026bfd/love.jpg">
+
+  <!-- Autor -->
+  <meta name="author" content="Yader Sanchez">
+  <meta name="copyright" content="Todos los derechos reservados Yader Sanchez">
+
+  <!-- Open Graph (Facebook / WhatsApp) -->
+ <meta property="og:title" content="🌌 Para ti amor. 💖">
+<meta property="og:description" content="Ni todas las estrellas, ni los anillos de Saturno brillan tanto como tú en mi vida 💫🪐. Si el universo tuviera un centro… serías tú. ✨💖.">
+<meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/amor5.jpg">
+  
+  <meta property="og:url" content="https://yaders643-prog.github.io/Saturno.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+body {
+  background-image: url("https://raw.githubusercontent.com/yaders643-prog/imagenes-web/main/images%20(6).jpeg");
+  background-size: cover;        /* que cubra toda la pantalla */
+  background-position: center;   /* centrada */
+  background-repeat: no-repeat;  /* que no se repita */
+  background-attachment: fixed;  /* efecto elegante fijo */
+
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo-pareja {
+  margin-top: 30px;
+  font-size: 22px;
+  color: #FFFFFF;   /* blanco */
+  font-weight: bold;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  font-weight: bold;
+  text-align: center;
+}
+
+    .card {
+      width: 500px;
+      height: 550px;
+      margin-top: 50px;
+      perspective: 1200px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .card:hover .outside {
+      transform: rotateY(-130deg);
+    }
+
+    .outside, .inside {
+      height: 100%;
+      width: 50%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+    }
+
+    .outside {
+      transform-style: preserve-3d;
+      transform-origin: left;
+      transition: transform 2s;
+      z-index: 1;
+    }
+
+    .inside {
+  background: linear-gradient(to right, #f5f5dc, #f0e6d2);
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 15px;
+ color: #FFFFFF;
+  font-weight: 900;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+
+  background-image: url("AQUI_LINK_DE_TU_SEGUNDA_IMAGEN.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+    .back {
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      background-color: #fff0f5;
+      height: 100%;
+    }
+
+    .outside p {
+      font-size: 22px;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+    }
+
+    .inside p {
+      font-size: 14px;
+      color: #333;
+      margin: 6px 0;
+      line-height: 1.35;
+      text-align: justify;
+    }
+
+    .inside h1 {
+      font-size: 36px;
+      margin: 5px 0;
+      color: #ff1493; /* fucsia */
+      text-align: center;
+    }
+
+    .fecha {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 5px;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .mensaje-especial {
+      margin: 8px 0;
+      padding: 8px;
+      background-color: #fff0f5;
+      border-radius: 6px;
+      font-style: italic;
+    }
+  
+
+    .mensaje-especial p {
+      font-size: 13px;
+      margin: 6px 0;
+      line-height: 1.4;
+    }
+/* ======================= */
+/* TEXTO DE LA TAPA DE ENCIMA */
+/* ======================= */
+.front p {
+  color: black;          /* pone el texto negro */
+  font-weight: bold;      /* resalta el texto */
+  font-size: 22px;        /* tamaño del texto */
+  margin-top: 150px;      /* sube o baja el texto, ajusta este valor */
+  text-align: center;     /* opcional: centra el texto */
+}
+  
+.front {
+  background-image: url("https://raw.githubusercontent.com/yaders643-prog/imagenes-web/main/images.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backface-visibility: hidden;
+
+  width: 110%;          /* cubre todo el ancho de la carta */
+  height: 95%;         /* cubre toda la altura de la carta */
+  
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* puedes cambiar a flex-start o center según dónde quieras el texto */
+  padding-bottom: 60px;  /* mantiene el texto un poco arriba del borde inferior */
+}
+
+
+    audio {
+      display: none;
+    }
+  </style>
+  
+</head>
+
+<body>
+
+  <!-- 💙 NOMBRE DE LA PAREJA -->
+  <div class="titulo-pareja">
+    Amor –💙 
+  </div>
+  <div class="card" id="card">
+    <div class="outside">
+      <div class="front">
+        <p>Mi Amor 💖🌸</p>
+      </div>
+      <div class="back"></div>
+    </div>
+
+    <div class="inside">
+
+      <!-- 📅 Fecha automática -->
+      <div class="fecha" id="fecha"></div>
+
+      <!-- TEXTO PRINCIPAL -->
+      <div class="texto-original">
+        <p>
+Desde que llegaste a mi vida, cada instante contigo se llena de luz ✨💞, de risas 😄💖 y de sueños compartidos 🌌💫. Eres mi alegría 🌸💖, mi calma 💓🌿 y cada día contigo me hace descubrir lo maravilloso del amor verdadero 💖🔥.
+        </p>
+
+        <p>
+          
+        </p>
+
+        <p>
+No hay palabras suficientes 💌💓 para expresar lo que siento 🌸💖, pero cada gesto, cada abrazo 🤗✨ y cada palabra que compartimos 💖🌿 me recuerdan que eres mi todo 💫💞, y que mi corazón siempre late por ti 💖🔥.
+        </p>
+      </div>
+
+      <!-- MENSAJE ESPECIAL -->
+      <div class="mensaje-especial">
+        <p><strong>Mi vida,</strong></p>
+Gracias por ser quien eres 💌💖, por tu cariño 🌸💞 y por llenar mi mundo de luz 🌟💫. Que nuestro amor siga creciendo 💖🌹 y que cada día juntos sea más hermoso que el anterior ✨💖.
+        <p>
+Te amo profundamente 💖🌸 y deseo que cada instante a tu lado 💞🔥 sea un recuerdo que guardemos para siempre 💫💌..
+        </p>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- 🖤 PIE DE LA CARTA -->
+  <div class="footer">
+    <p>Eres mi alma 💞💫, ese lugar donde habitan mis pensamientos más sinceros 💭✨ y mis sentimientos más puros 💖🌹.</p>
+    <p>Amor mío 💌💓, mi corazón siempre encuentra la forma de acercarse al tuyo 💖🌿, eres mi refugio, mi alegría y mi inspiración 💫💞.</p>
+    <p>Que esta carta 🌸💌 sea un abrazo invisible 🤗💖 y un recuerdo 💖🌟 de lo importante que eres para mí 💞🔥. 💖💫🌹.</p>
+    
+  </div>
+
+<!-- 🎵 Música -->
+<audio id="audioPlayer">
+  <source src="https://github.com/yaders643-prog/M-sica-amor./raw/refs/heads/main/AUD-20260220-WA0048.m4a" type="audio/mpeg">
+</audio>
+
+<script>
+    const card = document.getElementById('card');
+    const audio = document.getElementById('audioPlayer');
+    const fechaElemento = document.getElementById('fecha');
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+    let abierta = false;
+    let fadeInterval = null;
+
+    // 📅 Fecha automática
+    const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+    fechaElemento.textContent = "📅 " + new Date().toLocaleDateString('es-ES', opciones);
+
+    // 🌙 Fade out al cerrar
+    function fadeOutAudio() {
+      clearInterval(fadeInterval);
+      fadeInterval = setInterval(() => {
+        if (audio.volume > 0.05) {
+          audio.volume -= 0.05;
+        } else {
+          audio.volume = 0;
+          audio.pause();
+          audio.currentTime = 0;
+          clearInterval(fadeInterval);
+        }
+      }, 150);
+    }
+
+    card.addEventListener('click', function () {
+      if (!abierta) {
+        clearInterval(fadeInterval);
+        audio.volume = 1;
+        audio.currentTime = 0;
+        audio.play();
+        abierta = true;
+      } else {
+        fadeOutAudio();
+        abierta = false;
+      }
+    });
+</script>
+
+</body>
+</html>
