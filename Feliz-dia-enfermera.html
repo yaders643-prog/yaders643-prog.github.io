@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <!-- Título optimizado -->
+<!-- Título optimizado -->
+<title>Feliz Día de la Enfermera 👩‍⚕️💖</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/f1d88ea3f93855034c09e6c49266e5933c3f694b/Enferma1.jpeg">
+
+<!-- Autor -->
+<meta name="author" content="Yader Sanchez">
+<meta name="copyright" content="© Yader Sanchez">
+
+<!-- SEO básico -->
+<meta name="description" content="Un detalle especial dedicado a una enfermera increíble 👩‍⚕️💖">
+
+<!-- Open Graph (Facebook, WhatsApp, etc.) -->
+<meta property="og:title" content="👩‍⚕️ Feliz Día de la Enfermera 💖">
+<meta property="og:description" content="Hoy no solo celebro a una enfermera… celebro a una mujer increíble, con un corazón lleno de bondad, ternura y luz ✨💖.">
+<meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/bf7a24f076c92637bd307b9b970069ab134ab42b/Enfermera10.jpeg">
+<meta property="og:url" content="https://yaders643-prog.github.io/Feliz-dia-enfermera.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="👩‍⚕️ Feliz Día de la Enfermera 💖">
+<meta name="twitter:description" content="Un pequeño detalle para una mujer admirable 💖✨">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/bf7a24f076c92637bd307b9b970069ab134ab42b/Enfermera10.jpeg">
+
+<!-- Color navegador móvil -->
+<meta name="theme-color" content="#d94f70">        
+    <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+           
+        padding: 20px;
+        transition: background-color 0.8s ease;
+        position: relative;
+        font-family: Arial, sans-serif;
+    }
+
+   
+    .love-word {
+        position: fixed;
+        top: -60px;
+        font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+        font-weight: bold;
+        pointer-events: none;
+        z-index: 0;
+        animation: fall linear infinite;
+        white-space: nowrap;
+        opacity: 0;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    }
+    @keyframes fall {
+        0%   { transform: translateY(0)   rotate(-8deg); opacity: 0; }
+        8%   { opacity: 0.85; }
+        90%  { opacity: 0.7; }
+        100% { transform: translateY(110vh) rotate(8deg); opacity: 0; }
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        width: min(94vw, 660px);
+        padding: 28px 20px 32px;
+        background: rgba(255,255,255,0.96);
+        border: 2px solid #b8d8ea;
+        border-radius: 22px;
+        box-shadow:
+            0 0 0 6px rgba(184,216,234,0.22),
+            0 10px 36px rgba(0,0,0,0.1);
+        transition: border-color 0.8s ease;
+    }
+
+    .container::before, .container::after {
+        content: '✿';
+        font-size: 1.2rem;
+        color: #7ab8d4;
+        position: absolute;
+        top: 12px;
+        transition: color 0.8s;
+    }
+    .container::before { left: 16px; }
+    .container::after  { right: 16px; }
+
+    #mainPhoto {
+        width: 72%;
+        max-width: 300px;
+        border-radius: 16px;
+        border: 3px solid #b8d8ea;
+        display: block;
+        margin: 0 auto 18px;
+        transition: opacity 0.4s ease, border-color 0.8s ease;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+    }
+
+  
+    #mainText {
+        font-size: clamp(1.05rem, 3.8vw, 1.4rem);
+        line-height: 1.75;
+        margin: 0 0 22px;
+        color: #1a5a8a;
+        font-weight: 600;
+        transition: opacity 0.4s ease, color 0.5s ease;
+        padding: 0 4px;
+    }
+
+   
+    #mainBtn {
+        padding: 13px 30px;
+        font-size: clamp(1rem, 3.5vw, 1.15rem);
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #d94f70;
+        color: white;
+        border: none;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(42,128,184,0.4);
+        transition: background-color 0.5s, transform 0.15s, box-shadow 0.3s;
+        max-width: min(88vw, 460px);
+        white-space: normal;
+        word-break: break-word;
+        line-height: 1.4;
+    }
+    #mainBtn:hover  { filter: brightness(1.1); transform: scale(1.03); }
+    #mainBtn:active { transform: scale(0.97); }
+
+    
+    #finalMsg {
+        display: none;
+        font-size: clamp(1.05rem, 3.8vw, 1.35rem);
+        font-weight: 700;
+        line-height: 1.75;
+        padding: 8px 4px;
+        animation: fadeUp 0.8s ease;
+    }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade {
+    opacity: 0 !important;
+    transform: translateY(10px);
+}    
+    body, img, button, p, div, span {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+    
+@keyframes fadeScale {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.container {
+    animation: fadeScale 0.7s ease;
+    }  
+    
+    @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+#mainBtn {
+    animation: pulse 2s infinite;
+}
+    
+    
+   /* Pantalla inicial */
+#introScreen{
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255,240,246,0.92), rgba(255,245,250,0.92)),
+        url('https://raw.githubusercontent.com/yaders643-prog/imagenes-web/bf7a24f076c92637bd307b9b970069ab134ab42b/Enfermera10.jpeg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity .8s ease, visibility .8s ease;
+    padding: 20px;
+}
+
+.intro-box{
+    width: min(92vw, 520px);
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(8px);
+    border: 2px solid #f0a0c0;
+    border-radius: 26px;
+    padding: 32px 22px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0,0,0,.15);
+    animation: fadeScale 0.8s ease;
+}
+
+.intro-box h1{
+    color: #b83068;
+    margin-bottom: 14px;
+    font-size: clamp(1.8rem,5vw,2.5rem);
+}
+
+.intro-box p{
+    color: #7a2050;
+    line-height: 1.7;
+    font-size: clamp(1rem,3.6vw,1.2rem);
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+#enterBtn{
+    background: linear-gradient(135deg,#d94f70,#ff7aa8);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 14px 34px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(217,79,112,.35);
+    transition: .25s;
+    animation: pulse 2s infinite;
+}
+
+#enterBtn:hover{
+    transform: scale(1.05);
+}
+
+#introScreen.hide{
+    opacity: 0;
+    visibility: hidden;
+} 
+    </style>
+</head>
+<body>
+
+
+    <div id="loveRain"></div>
+
+    <div class="container" id="card">
+
+        <img id="mainPhoto"
+             src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/f1d88ea3f93855034c09e6c49266e5933c3f694b/Enferma1.jpeg"
+             alt="foto">
+
+        <p id="mainText">
+            🌸 Hoy no solo celebro a una enfermera…
+celebro a una mujer increíble 👩‍⚕️💖.<br>
+Porque detrás de ese uniforme blanco
+hay un corazón hermoso lleno de bondad.<br>
+<strong>Y eso la hace aún más especial.</strong> ✨      
+        </p>
+
+        <p id="finalMsg"></p>
+
+        <button id="mainBtn">👩‍⚕️ Quiero seguir leyendo 💖</button>
+    </div>
+
+    <!-- Pantalla inicial -->
+<div id="introScreen">
+    <div class="intro-box">
+        <h1>👩‍⚕️ Feliz Día de la Enfermera 💖</h1>
+        <p>
+            Tengo algo muy especial para usted ✨<br>
+            Toque la pantalla para entrar 💕
+        </p>
+
+        <button id="enterBtn">💖 Entrar 💖</button>
+    </div>
+</div>
+
+<audio id="music" loop>
+    <source src="https://github.com/yaders643-prog/M-sica-amor./raw/7aa5536b93528578a7c7d0899c5d6ed1570bf366/Enfermera2%20(Video%20Oficial)(MP3_160K).mp3" type="audio/mpeg">
+</audio>
+    <script>
+
+    const music = document.getElementById('music');
+const introScreen = document.getElementById('introScreen');
+const enterBtn = document.getElementById('enterBtn');
+
+enterBtn.addEventListener('click', () => {
+
+    music.volume = 0.55;
+    music.currentTime = 0;
+
+    music.play().then(() => {
+
+        introScreen.classList.add('hide');
+
+        setTimeout(() => {
+            introScreen.style.display = 'none';
+        }, 800);
+
+    }).catch(() => {});
+});
+
+    const loveWords = [
+    'Mi enfermera favorita 👩‍⚕️',
+    'Gracias por cuidar 💖',
+    'Ángel de blanco ✨',
+    'La admiro mucho 🌸',
+    'Corazón noble ❤️',
+    'Hermosa enfermera 💉',
+    'Orgullo de mujer 🌷',
+    'Siempre cuidando 💙',
+    'Mi inspiración 🌟',
+    'La mejor enfermera 👩‍⚕️💖'
+];
+    const colors = ['#1a6aaa','#b03080','#0a8040','#c06000','#6030b0','#c02020','#207080'];
+
+    function createWord() {
+        const span = document.createElement('span');
+        span.className = 'love-word';
+        span.textContent = loveWords[Math.floor(Math.random() * loveWords.length)];
+        span.style.left  = (Math.random() * 95) + 'vw';
+        span.style.color = colors[Math.floor(Math.random() * colors.length)];
+        const dur = (Math.random() * 7 + 6).toFixed(1);
+        const delay = (Math.random() * 4).toFixed(1);
+        span.style.animationDuration = dur + 's';
+        span.style.animationDelay   = delay + 's';
+        document.getElementById('loveRain').appendChild(span);
+        setTimeout(() => span.remove(), (parseFloat(dur) + parseFloat(delay) + 0.5) * 1000);
+    }
+    setInterval(createWord, 600);
+    for (let i = 0; i < 10; i++) setTimeout(createWord, i * 200);
+
+    // ── Pasos ──
+    const pasos = [
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/f1d88ea3f93855034c09e6c49266e5933c3f694b/Enfermera2.jpeg',
+        texto: '👩‍⚕️ Hoy quiero recordarle algo muy especial…<br>Detrás de ese uniforme existe una mujer increíble,<br>con un corazón lleno de bondad y ternura.<br><strong>Y eso la hace única.</strong> 💖',
+        bg: '#fff4f7',
+        borde: '#e090b0',
+        txt: '#8a2050',
+        btn: '#d94f70',
+        btnTxt: '💖 Seguir leyendo 💖'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/f1d88ea3f93855034c09e6c49266e5933c3f694b/Enfermera3.jpeg',
+        texto: '🌸 No todas las personas tienen el don de cuidar vidas,<br>de dar tranquilidad y esperanza.<br>Pero usted sí lo tiene.<br><strong>Y eso la vuelve admirable.</strong> 🌸',
+        bg: '#fff8f0',
+        borde: '#e0b080',
+        txt: '#7a4a00',
+        btn: '#d98b3a',
+        btnTxt: '🌸 Cuénteme más 🌸'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/f1d88ea3f93855034c09e6c49266e5933c3f694b/Enfermera4.jpeg',
+        texto: '💉 Cada sonrisa suya transmite paz,<br>cada palabra transmite dulzura,<br>y cada gesto demuestra el hermoso corazón que tiene.<br><strong>Es un verdadero ángel de blanco.</strong> ✨',
+        bg: '#f4f9ff',
+        borde: '#7ab8e8',
+        txt: '#105080',
+        btn: '#2d84c8',
+        btnTxt: '💉 Quiero seguir 💉'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/f1d88ea3f93855034c09e6c49266e5933c3f694b/Enfermera5.jpeg',
+        texto: '❤️ El mundo necesita más personas como usted,<br>personas que cuiden con amor,<br>que ayuden sin esperar nada a cambio,<br>y que iluminen la vida de otros.<br><strong>Usted merece todo lo bonito.</strong> ❤️',
+        bg: '#fff0f0',
+        borde: '#e09090',
+        txt: '#8a1010',
+        btn: '#d84040',
+        btnTxt: '❤️ Más palabras ❤️'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/f1d88ea3f93855034c09e6c49266e5933c3f694b/Enfermera6.jpeg',
+        texto: '🌷 Ser enfermera no es solo una profesión…<br>es tener vocación, paciencia y un corazón enorme.<br>Y sinceramente,<br><strong>usted nació para eso.</strong> 🌷',
+        bg: '#fff7fb',
+        borde: '#d890c0',
+        txt: '#7a0848',
+        btn: '#c05090',
+        btnTxt: '🌷 Siga... 🌷'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/bf7a24f076c92637bd307b9b970069ab134ab42b/Enfermera7.jpeg',
+        texto: '✨ Hoy el mundo celebra a las enfermeras,<br>pero yo celebro especialmente a una:<br><strong>a usted.</strong><br>Porque además de ser hermosa,<br>tiene un alma maravillosa. 💖',
+        bg: '#f7f4ff',
+        borde: '#b8a0e0',
+        txt: '#4a2080',
+        btn: '#7b55c7',
+        btnTxt: '✨ Una más ✨'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/bf7a24f076c92637bd307b9b970069ab134ab42b/Enfermera8.jpeg',
+        texto: '💙 Nunca dude del impacto tan bonito que tiene en las personas.<br>Con su dedicación y cariño,<br>usted logra dar esperanza incluso en los momentos difíciles.<br><strong>Eso vale muchísimo.</strong> 💙',
+        bg: '#eef8ff',
+        borde: '#80b8d8',
+        txt: '#104868',
+        btn: '#2d7da8',
+        btnTxt: '💙 Seguir 💙'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/bf7a24f076c92637bd307b9b970069ab134ab42b/Enfermera9.jpeg',
+        texto: '🌹 Admiro la manera en la que cuida,<br>la forma en la que sonríe,<br>y esa luz tan bonita que transmite.<br><strong>Usted hace más hermoso este mundo.</strong> 🌹',
+        bg: '#fff4f4',
+        borde: '#e0a0a0',
+        txt: '#802020',
+        btn: '#c05050',
+        btnTxt: '🌹 Más 💖 🌹'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/50c94573ce6baa45af2d53f3fb83b6a5a073dc1a/Enfermera11.jpeg',
+        texto: '👩‍⚕️ Gracias por existir,<br>por cuidar personas,<br>por tener un corazón tan noble,<br>y por demostrar que todavía existen almas bonitas.<br><strong>Usted es verdaderamente especial.</strong> 👩‍⚕️',
+        bg: '#f5fbff',
+        borde: '#90c8e8',
+        txt: '#105070',
+        btn: '#2f8bc0',
+        btnTxt: '👩‍⚕️ Último mensaje 👩‍⚕️'
+    },
+
+    {
+        foto: 'https://raw.githubusercontent.com/yaders643-prog/imagenes-web/bf7a24f076c92637bd307b9b970069ab134ab42b/Enfermera10.jpeg',
+        texto: '💖 Y hoy, en el Día de la Enfermera,<br>solo quiero decirle algo desde el corazón:<br><strong>La admiro muchísimo y me siento orgulloso de usted.</strong><br>Nunca deje de brillar porque personas como usted hacen falta en este mundo. ✨',
+        bg: '#fff0f7',
+        borde: '#e090c0',
+        txt: '#7a1048',
+        btn: '#d94f70',
+        btnTxt: '💖 Gracias 💖',
+        esFinal: true
+    }
+];
+    let paso = 0;
+    const mainPhoto = document.getElementById('mainPhoto');
+    const mainText  = document.getElementById('mainText');
+    const mainBtn   = document.getElementById('mainBtn');
+    const finalMsg  = document.getElementById('finalMsg');
+    const card      = document.getElementById('card');
+
+    mainBtn.addEventListener('click', () => {
+        if (paso >= pasos.length) return;
+        const p = pasos[paso];
+
+        mainPhoto.classList.add('fade');
+        mainText.classList.add('fade');
+
+        setTimeout(() => {
+            mainPhoto.src            = p.foto;
+            mainText.innerHTML       = p.texto;
+            mainText.style.color     = p.txt;
+            document.body.style.backgroundColor = p.bg;
+            card.style.borderColor   = p.borde;
+            mainBtn.style.backgroundColor = p.btn;
+            mainBtn.innerHTML        = p.btnTxt;
+
+            mainPhoto.classList.remove('fade');
+            mainText.classList.remove('fade');
+
+            if (p.esFinal) {
+                mainBtn.style.display = 'none';
+                finalMsg.style.display = 'block';
+                finalMsg.style.color   = p.txt;
+                finalMsg.innerHTML =
+                    ' ¡Gracias por creerme, amorcita!<br>Cada palabra que te dije viene del fondo de mi corazón.<br><strong>Eres mi única, mi todo, mi amor para siempre.</strong> 🌸';
+            }
+            paso++;
+        }, 380);
+    });
+        
+       // Bloquear clic derecho
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Bloquear selección
+document.addEventListener('selectstart', e => e.preventDefault());
+
+// Bloquear copiar, cortar, pegar
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('cut', e => e.preventDefault());
+document.addEventListener('paste', e => e.preventDefault());
+
+// Bloquear teclas comunes (Ctrl+C, Ctrl+U, F12, etc.)
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === 'F12' ||
+        (e.ctrlKey && ['c','u','x','s','a','p'].includes(e.key.toLowerCase())) ||
+        (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase()))
+    ) {
+        e.preventDefault();
+    }
+}); 
+        
+        document.addEventListener('dragstart', e => e.preventDefault());
+        
+      mainBtn.addEventListener('click', () => {
+    mainBtn.style.transform = "scale(0.95)";
+    setTimeout(() => {
+        mainBtn.style.transform = "";
+    }, 150);
+});  
+    </script>
+</body>
+</html>
