@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título -->
+    <title>Yader Sánchez</title>
+
+    <!-- Imagen del Favicon -->
+    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/dd11ffb546174c34009913cb39ae3c0f1df6c1d0/yader..jpg">
+    
+   
+    <!-- Autor -->
+    <meta name="author" content="Yader Sanchez">
+    <meta name="copyright" content="Todos los derechos reservados Yader Sanchez">
+
+    <!-- Open Graph (Facebook / WhatsApp) -->
+    <meta property="og:title" content="💖 Feliz cumpleaños cariño 💫">
+
+    <!-- Mensaje en la descripcion -->
+    <meta property="og:description" content="Hoy quiero dedicarte unas palabras que nacen desde lo más profundo de mi corazón 💓✨. Quiero que sepas que llegaste a mi vida de una manera tan especial que, poco a poco, te convertiste en alguien imposible de ignorar 💞🌹. Gracias por cada sonrisa que provocas en mí, por cada momento compartido y por cada recuerdo que hemos construido juntos ❤️🥺. Sin darte cuenta, te has vuelto una de mis razones favoritas para sonreír y una parte muy bonita de mis días 💫💘.">    
+    
+    <!-- Imagen arriba en la descripcion -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/Oye%20mi%20amor%20%F0%9F%AB%A3%F0%9F%A5%BA%20_fypreels%E3%82%B7%E3%82%9A%20_fypage(JPG)_1.jpg">
+    
+    <!-- Links del archivo/Nombre-->
+    <meta property="og:url" content="https://yaders643-prog.github.io/Aniversario.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    
+ <!-- Aquí seguiría tu CSS o scripts -->
+</head>
+
+<style>
+
+body {
+    background-color: #fce4ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow-y: auto;
+}
+
+/* 🔥 PANTALLA INICIAL */
+#inicio{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fce4ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: #7b1fa2;
+    z-index: 2000;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* 🔹 LIBRETA */
+/* 🔥 BORDE GIRATORIO NEÓN */
+.book{
+  position: relative;
+  display:flex;
+  background:white;
+  padding:6px;
+  border-radius:12px;
+  width:650px;
+  min-height:300px;
+  font-size:0.9rem;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* capa animada */
+.book::before{
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    #d1c4e9,
+    #f48fb1,
+    #80deea,
+    #a5d6a7,
+    #fff59d,
+    #d1c4e9
+  );
+  animation: girar 3s linear infinite;
+  z-index: -1;
+  filter: blur(8px); /* 💡 efecto neón */
+}
+
+/* capa interna */
+.book::after{
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  background: white;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+/* animación */
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* 🔹 PÁGINAS */
+
+    .page{
+  width:50%;
+  padding:12px;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  background: #ffffff; /* blanco */
+
+  /* efecto 3D elegante */
+  box-shadow: 
+    inset 0 0 8px rgba(0,0,0,0.05),   /* luz interna */
+    0 6px 15px rgba(0,0,0,0.2);       /* sombra externa */
+
+  border-radius: 8px;
+}
+    
+/* Línea divisora animada */
+.page:first-child {
+  border-right: 3px solid;
+  animation: cambiarColoresLinea 2s infinite;
+}
+
+@keyframes cambiarColoresLinea {
+  0%   { border-color: #d1c4e9; } /* lila */
+  20%  { border-color: #f48fb1; } /* rosado */
+  40%  { border-color: #80deea; } /* celeste */
+  60%  { border-color: #a5d6a7; } /* verde */
+  80%  { border-color: #fff59d; } /* amarillo */
+  100% { border-color: #d1c4e9; } /* lila */
+}
+
+h2 { color: #7b1fa2; font-size: 1.5rem; text-align: center; margin-top: -12px; /* sube el título */ }
+
+
+    .typewriter-text { 
+    line-height: 1.6; 
+    color: black; 
+     font-size: 1.3 rem; /* aumenta el tamaño */
+          margin-top: -12px; /* sube el texto */
+        min-height: 20px;
+    position: relative;
+}
+
+/* 🔹 LAPIZ */
+#lapiz {
+    position: fixed; 
+    width: 70px;
+    z-index: 1000;
+    pointer-events: none; 
+    transition: all 0.08s linear;
+    display: none; 
+    transform: rotate(-20deg); 
+}
+
+/* 🔹 GIF */
+.gif-container { 
+    text-align: center; 
+    margin: px 0; 
+    opacity: 0; 
+    transition: opacity 0.8s ease; 
+}
+.gif-container img { 
+    width: 100px; 
+    border-radius: 10px; 
+}
+
+/* 🔹 PREGUNTA */
+.question-box {
+    text-align: center;
+    margin-top: auto;
+    background: #f3e5f5;
+    padding: 8px;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 1s;
+    position: relative;
+    height: 65px;
+    font-size: 0.8rem;
+}
+
+/* 🔹 BOTONES */
+#btn-si { 
+    background-color: #ce93d8; 
+    color: white; 
+    position: absolute;
+    left: 20%;
+    top: 65%;
+    transform: translateY(-30%);
+}
+
+#btn-no { 
+    background-color: #ef9a9a; 
+    color: white; 
+    position: absolute;
+    right: 20%;
+    top: 65%;
+    transform: translateY(-30%);
+    transition: all 0.2s ease;
+}
+
+    #mensaje-final {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); /* más pequeño */
+    background: white;
+    padding: 10px; /* menos espacio interno */
+    border: 6px solid #7b1fa2;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 100;
+    width: 220px; /* ancho más pequeño */
+}
+    
+@keyframes humoDesaparece {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(100px);
+  }
+}
+
+.humo {
+  animation: humoDesaparece 1.5s ease forwards;
+}
+  /* Evita seleccionar texto */
+.book, .page, .front, .back {
+  user-select: none;       /* Para la mayoría de navegadores modernos */
+  -webkit-user-select: none; /* Para Chrome/Safari */
+  -moz-user-select: none;    /* Para Firefox */
+  -ms-user-select: none;     /* Para IE/Edge */
+}   
+</style>
+</head>
+
+<body>
+
+<!-- 🔥 PANTALLA INICIAL -->
+<div id="inicio">🔥Toca la pantalla para descubrir lo genial. Gira el celular para que se vea mejor.🔥</div>
+
+<audio id="miMusica" loop>
+<source src="https://github.com/yaders643-prog/M-sica-amor./raw/b66dced2c8800d77804dfa27960e0679852d9956/Camilo_%20Evaluna%20Montaner%20-%20Por%20Primera%20Vez%20(Official%20Video)(MP3_160K).mp3">
+</audio>
+
+<img id="lapiz" src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/main/lapiz.png">
+
+<div class="book">
+
+<div class="page">
+<h2>✨ Mis sentimientos... ✨</h2>
+
+<div id="text1" class="typewriter-text"></div>
+
+<div id="gif1" class="gif-container">
+<img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/main/migo.gif">
+</div>
+
+<div id="text1-footer" class="typewriter-text" style="font-weight: bold; text-align: center;"></div>
+</div>
+
+<div class="page">
+<h2>✨ Mis sueños con contigo ✨</h2>
+
+<div id="text2" class="typewriter-text"></div>
+
+<div id="pregunta" class="question-box">
+<p>¿Pasarías más tiempo a mi lado?</p>
+
+<button id="btn-si" onclick="mostrarFinal()">Sí</button>
+<button id="btn-no" onmouseover="moverBoton()">No</button>
+
+</div>
+</div>
+
+</div>
+
+<div id="mensaje-final">
+<h3>¡Te haré siempre muy feliz! 💝</h3>
+<img 
+  src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/Oye%20mi%20amor%20%F0%9F%AB%A3%F0%9F%A5%BA%20_fypreels%E3%82%B7%E3%82%9A%20_fypage(JPG)_1.jpg" 
+  width="150"
+  alt="Imagen"
+  style="border-radius:10px;">
+    <br><br>
+<button onclick="cerrarFinal()">Cerrar</button>
+</div>
+
+<script>
+
+    const frases = {
+    // 💖 MIS SENTIMIENTOS
+    t1: "Desde que llegaste a mi vida, algo en mí cambió. Sin darme cuenta te convertiste en esa persona capaz de alegrar mis días, acelerar mi corazón y ocupar mis pensamientos más bonitos. Hay personas que llegan y pasan... pero tú llegaste para quedarte en un lugar muy especial dentro de mí...",
+
+    t1f: "Tú te volviste la razón más hermosa de mis sonrisas y uno de mis pensamientos favoritos.",
+
+    // 💫 MIS SUEÑOS CONTIGO
+    t2: "Sueño con caminar a tu lado, crear recuerdos inolvidables y escribir una historia donde nunca falten el amor, las sonrisas y las ganas de seguir eligiéndonos cada día. Porque hay futuros que se imaginan... y otros que solo quiero vivir contigo... Te amo Santo"
+};
+const VELOCIDAD = 50;
+const lapiz = document.getElementById("lapiz");
+
+/* 🔥 INICIO CON CLICK */
+document.getElementById("inicio").onclick = iniciarHistoria;
+
+function iniciarHistoria(){
+
+document.getElementById("inicio").style.display = "none";
+document.getElementById("miMusica").play();
+
+escribirTexto("text1", frases.t1, () => {
+
+document.getElementById("gif1").style.opacity = "1";
+
+setTimeout(() => {
+
+escribirTexto("text1-footer", frases.t1f, () => {
+
+escribirTexto("text2", frases.t2, () => {
+
+document.getElementById("pregunta").style.opacity = "1";
+
+});
+
+});
+
+}, 800);
+
+});
+
+}
+
+/* 🔹 EFECTO ESCRITURA */
+function escribirTexto(id,texto,callback){
+
+let i=0;
+const elemento=document.getElementById(id);
+lapiz.style.display="block";
+
+const interval=setInterval(()=>{
+
+if(i<texto.length){
+
+const span=document.createElement("span");
+span.innerHTML=texto.charAt(i);
+elemento.appendChild(span);
+
+const rect=span.getBoundingClientRect();
+
+lapiz.style.left = (rect.left + 2 + Math.random()*2) + "px";
+lapiz.style.top = (rect.top - 50 + Math.random()*2) + "px";
+i++;
+
+}else{
+clearInterval(interval);
+lapiz.style.display="none";
+if(callback)callback();
+}
+
+},VELOCIDAD);
+
+}
+
+/* 🔹 BOTÓN NO */
+function moverBoton(){
+
+const btnNo=document.getElementById('btn-no');
+const contenedor=document.querySelector('.question-box');
+
+const rect=contenedor.getBoundingClientRect();
+
+const x=Math.random()*(rect.width-btnNo.offsetWidth);
+const y=Math.random()*(rect.height-btnNo.offsetHeight);
+
+btnNo.style.left=x+'px';
+btnNo.style.top=y+'px';
+btnNo.style.right='auto';
+
+}
+
+/* 🔹 FINAL */
+function mostrarFinal(){
+document.getElementById('mensaje-final').style.display='block';
+}
+function cerrarFinal(){
+    const box = document.getElementById('mensaje-final');
+
+    box.classList.add('humo');
+
+    setTimeout(() => {
+        box.style.display = 'none';
+        box.classList.remove('humo'); // para que funcione otra vez
+    }, 600);
+}
+</script>
+
+</body>
+</html>
