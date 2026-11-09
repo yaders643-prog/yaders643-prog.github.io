@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#1a1200">
+
+        <!-- Título -->
+    <title>Gleysis</title>
+
+    <!-- Imagen del Favicon -->
+    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/dd11ffb546174c34009913cb39ae3c0f1df6c1d0/yader..jpg">
+    
+   
+    <!-- Autor -->
+    <meta name="author" content="Yader Sanchez">
+    <meta name="copyright" content="Todos los derechos reservados Yader Sanchez">
+
+    <!-- Open Graph (Facebook / WhatsApp) -->
+    <meta property="og:title" content="Te quiero💞.">
+
+    <!-- Mensaje en la descripción -->
+<meta property="og:description" content="Entre millones de estrellas y nebulosas, hay una luz que hace que mi universo tenga sentido. Eres tú. 🌌❤️✨">
+        
+    <!-- Imagen arriba en la descripcion -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/Oye%20mi%20amor%20%F0%9F%AB%A3%F0%9F%A5%BA%20_fypreels%E3%82%B7%E3%82%9A%20_fypage(JPG)_1.jpg">
+    
+    <!-- Links del archivo/Nombre-->
+    <meta property="og:url" content="https://yaders643-prog.github.io/Galaxia.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image"> 
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Dancing+Script:wght@400;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100dvh;overflow:hidden;background:#050300;color:#fff;font-family:Outfit,Inter,sans-serif;user-select:none}
+#galaxy-canvas{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:1;touch-action:none}
+#intro-overlay{position:fixed;inset:0;z-index:9000;background:radial-gradient(ellipse at 50% 45%,#6b4a00 0%,#3a2700 25%,#1a1200 60%,#050300 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;transition:transform 1.4s cubic-bezier(.7,0,.3,1),opacity 1.2s ease;overflow:hidden}
+#intro-overlay.zooming{transform:scale(2.2);opacity:0;pointer-events:none}
+#intro-overlay.hidden{display:none}
+.intro-rays{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.5}
+.intro-rays::before,.intro-rays::after{content:"";position:absolute;left:50%;top:50%;width:200%;height:200%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,215,0,.18) 0%,transparent 45%);animation:raysRotate 22s linear infinite}
+.intro-rays::after{animation-duration:35s;animation-direction:reverse;background:radial-gradient(circle,rgba(255,235,59,.12) 0%,transparent 40%)}
+@keyframes raysRotate{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.intro-orbit{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:min(460px,92vw);height:min(460px,92vw);pointer-events:none}
+.intro-orbit::before,.intro-orbit::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(255,215,0,.25)}
+.intro-orbit::before{inset:8%;border-color:rgba(255,235,59,.35);animation:orbitSpin 30s linear infinite}
+.intro-orbit::after{inset:20%;border-color:rgba(255,193,7,.2);animation:orbitSpin 22s linear infinite reverse}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+.intro-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;max-width:520px}
+.intro-top{display:flex;flex-direction:column;align-items:center;gap:2px;color:#FFD700;opacity:.9}
+.intro-infinity{font-size:34px;line-height:1;text-shadow:0 0 22px rgba(255,215,0,.85);animation:infPulse 3s ease-in-out infinite}
+@keyframes infPulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.15);opacity:1}}
+.intro-love{font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:6px;color:#FFE082;font-weight:600;margin-top:-4px}
+.intro-title{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:clamp(2.2rem,9vw,3.4rem);color:#FFF3C4;letter-spacing:1px;line-height:1.05;text-shadow:0 0 24px rgba(255,200,0,.75),0 0 55px rgba(255,180,0,.5);margin-top:4px}
+.intro-subtitle{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:600;font-size:clamp(1.5rem,6vw,2.1rem);color:#FFC107;text-shadow:0 0 22px rgba(255,193,7,.75);margin-bottom:4px}
+.intro-character{width:min(280px,72vw);height:min(330px,82vw);filter:drop-shadow(0 18px 42px rgba(255,193,7,.55)) drop-shadow(0 4px 14px rgba(0,0,0,.7));animation:snoopyFloat 3.4s ease-in-out infinite;transform-origin:center bottom;margin:2px 0 6px;position:relative}
+.intro-character svg{width:100%;height:100%;display:block;overflow:visible}
+@keyframes snoopyFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+.bouquet-svg{transform-origin:60% 51%;transform-box:view-box;animation:bouquetPeek 3s ease-in-out infinite}
+@keyframes bouquetPeek{0%,30%{transform:scale(0.15) translate(80px, 80px) rotate(30deg);opacity:0}48%,78%{transform:scale(1) translate(0, 0) rotate(0deg);opacity:1}100%{transform:scale(0.15) translate(80px, 80px) rotate(30deg);opacity:0}}
+.hearts-svg{animation:heartsFloat 2.4s ease-in-out infinite;transform-origin:center}
+@keyframes heartsFloat{0%,100%{transform:translateY(0) scale(1);opacity:.95}50%{transform:translateY(-10px) scale(1.08);opacity:1}}
+.intro-btn{margin-top:14px;padding:15px 36px;border-radius:999px;border:2px solid #FFE082;background:linear-gradient(135deg,#FFB300 0%,#FF9800 50%,#FB8C00 100%);color:#3b1f00;font-family:Outfit,sans-serif;font-weight:800;font-size:15px;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:12px;cursor:pointer;box-shadow:0 10px 34px rgba(255,160,0,.75),0 0 60px rgba(255,215,0,.5),inset 0 -3px 0 rgba(0,0,0,.2),inset 0 2px 0 rgba(255,255,255,.4);animation:introBtnPulse 2.2s ease-in-out infinite;transition:transform .15s}
+.intro-btn:active{transform:scale(.94)}
+.intro-btn .arrow{display:inline-block;animation:arrowSlide 1.4s ease-in-out infinite;font-size:20px}
+@keyframes arrowSlide{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+@keyframes introBtnPulse{0%,100%{box-shadow:0 10px 34px rgba(255,160,0,.75),0 0 60px rgba(255,215,0,.5),inset 0 -3px 0 rgba(0,0,0,.2),inset 0 2px 0 rgba(255,255,255,.4),0 0 0 0 rgba(255,200,0,.65)}50%{box-shadow:0 10px 34px rgba(255,160,0,.75),0 0 60px rgba(255,215,0,.5),inset 0 -3px 0 rgba(0,0,0,.2),inset 0 2px 0 rgba(255,255,255,.4),0 0 0 22px rgba(255,200,0,0)}}
+.petal{position:absolute;font-size:22px;pointer-events:none;opacity:.85;filter:drop-shadow(0 0 8px rgba(255,200,0,.7));animation:petalFloat 6s ease-in-out infinite}
+@keyframes petalFloat{0%,100%{transform:translateY(0) rotate(-8deg);opacity:.7}50%{transform:translateY(-18px) rotate(8deg);opacity:1}}
+.watermark{position:fixed;right:10px;top:max(12px,env(safe-area-inset-top));font-size:11px;color:#1a0e00;z-index:500;text-decoration:none;font-weight:800;background:linear-gradient(135deg,rgba(255,235,59,.98),rgba(255,193,7,.98));padding:7px 11px;border-radius:20px;border:2px solid #fff8e1;max-width:140px;text-align:center;line-height:1.15;box-shadow:0 6px 20px rgba(255,193,7,.65);font-family:Outfit,sans-serif}
+#music-btn{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0));z-index:950;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#FFE082,#FFC107);border:2px solid #fff8e1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 26px rgba(255,193,7,.7),0 4px 12px rgba(0,0,0,.5);transition:transform .2s,box-shadow .2s;color:#3b1f00;font-size:23px}
+#music-btn:active{transform:scale(.92)}
+#music-btn.playing{animation:musicPulse 1.6s ease-in-out infinite}
+@keyframes musicPulse{0%,100%{box-shadow:0 8px 26px rgba(255,193,7,.7),0 4px 12px rgba(0,0,0,.5),0 0 0 0 rgba(255,215,0,.65)}50%{box-shadow:0 8px 26px rgba(255,193,7,.7),0 4px 12px rgba(0,0,0,.5),0 0 0 14px rgba(255,215,0,0)}}
+#music-panel{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0));z-index:960;width:240px;background:linear-gradient(160deg,rgba(30,20,0,.97),rgba(15,10,0,.97));border:1px solid rgba(255,193,7,.45);border-radius:16px;padding:14px;backdrop-filter:blur(14px);display:none;flex-direction:column;gap:10px;box-shadow:0 16px 44px rgba(0,0,0,.75),0 0 40px rgba(255,193,7,.25)}
+#music-panel.show{display:flex;animation:panelIn .3s ease}
+@keyframes panelIn{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+#music-panel .mp-title{font-size:11px;color:#FFD700;text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+#music-panel .mp-progress{height:5px;background:rgba(255,255,255,.15);border-radius:3px;cursor:pointer;overflow:hidden}
+#music-panel .mp-bar{height:100%;width:0%;background:linear-gradient(90deg,#FFE082,#FFB300);border-radius:3px;transition:width .1s;box-shadow:0 0 12px rgba(255,193,7,.9)}
+#music-panel .mp-time{font-size:10px;color:#FFC107;text-align:right;opacity:.85}
+#music-panel .mp-row{display:flex;align-items:center;gap:8px}
+#music-panel .mp-row button{padding:7px 11px;border-radius:8px;border:1px solid rgba(255,193,7,.45);background:rgba(255,193,7,.13);color:#FFE082;cursor:pointer;font-size:13px}
+#music-panel .mp-row input[type=range]{flex:1;accent-color:#FFC107}
+#magic-btn{position:fixed;bottom:calc(88px + env(safe-area-inset-bottom,0));left:50%;transform:translateX(-50%);z-index:945;padding:14px 26px;border-radius:999px;border:2px solid #fff8e1;background:linear-gradient(135deg,rgba(255,235,59,.98),rgba(255,193,7,.98));color:#3b1f00;font-family:inherit;font-weight:800;font-size:14px;letter-spacing:.3px;display:flex;align-items:center;gap:9px;cursor:pointer;box-shadow:0 10px 32px rgba(255,193,7,.7),0 4px 14px rgba(0,0,0,.5);animation:magicPulse 2.2s ease-in-out infinite;transition:background .3s,border-color .3s,transform .15s;white-space:nowrap;max-width:92vw;opacity:0;pointer-events:none}
+#magic-btn.shown{opacity:1;pointer-events:auto}
+#magic-btn:active{transform:translateX(-50%) scale(.94)}
+#magic-btn .mb-icon{font-size:19px;line-height:1;display:inline-block;animation:wandWave 2.4s ease-in-out infinite;transform-origin:center bottom}
+@keyframes wandWave{0%,100%{transform:rotate(-12deg) scale(1)}50%{transform:rotate(16deg) scale(1.08)}}
+@keyframes magicPulse{0%,100%{box-shadow:0 10px 32px rgba(255,193,7,.7),0 4px 14px rgba(0,0,0,.5),0 0 0 0 rgba(255,215,0,.65)}50%{box-shadow:0 10px 32px rgba(255,193,7,.7),0 4px 14px rgba(0,0,0,.5),0 0 0 15px rgba(255,215,0,0)}}
+#magic-btn.active{background:linear-gradient(135deg,rgba(255,152,0,.98),rgba(245,124,0,.98));border-color:#FFE082;color:#fff}
+#magic-btn.active .mb-icon{animation:spinSlow 3s linear infinite}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+#premium-modal{position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px}
+#premium-modal.show{display:flex}
+#premium-box{width:100%;max-width:420px;background:linear-gradient(160deg,#2a1c00,#0e0900);border:2px solid rgba(255,193,7,.6);border-radius:22px;padding:26px 22px;text-align:center;box-shadow:0 0 90px rgba(255,160,0,.5);position:relative;max-height:88dvh;overflow-y:auto}
+#premium-box .crown{font-size:52px;margin-bottom:8px;filter:drop-shadow(0 0 20px rgba(255,193,7,.9))}
+#premium-box h2{font-family:"Dancing Script",cursive;font-size:1.9rem;background:linear-gradient(90deg,#FFD700,#FFA000,#FFD700);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s infinite;margin-bottom:6px;font-weight:700}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+#premium-box .subtitle{font-size:.85rem;color:#c9a76a;margin-bottom:16px}
+#premium-box .feat-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;text-align:left}
+#premium-box .feat-item{display:flex;gap:12px;align-items:center;background:rgba(255,193,7,.08);border:1px solid rgba(255,193,7,.28);border-radius:12px;padding:10px 12px}
+#premium-box .feat-icon{font-size:22px;flex-shrink:0}
+#premium-box .feat-item b{color:#FFD700;font-size:.85rem;display:block;margin-bottom:2px}
+#premium-box .feat-item p{color:#c9a76a;font-size:.72rem;line-height:1.3}
+#premium-box .price{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:2.2rem;color:#FFD700;margin-bottom:4px;text-shadow:0 0 22px rgba(255,193,7,.7)}
+#premium-box .price-note{font-size:.72rem;color:#8a7a5a;margin-bottom:16px}
+#premium-box .btn-upgrade{background:linear-gradient(135deg,#FFD700,#FF9800);color:#3b1f00;font-weight:800;padding:14px;border-radius:12px;border:none;width:100%;cursor:pointer;font-family:inherit;font-size:1rem;margin-bottom:10px;box-shadow:0 8px 24px rgba(255,152,0,.5)}
+#premium-box .btn-later{background:transparent;border:1px solid rgba(255,193,7,.35);color:#c9a76a;padding:12px;border-radius:12px;width:100%;cursor:pointer;font-family:inherit;font-size:.85rem}
+#premium-box .close-x{position:absolute;top:12px;right:14px;background:transparent;border:none;color:#c9a76a;font-size:26px;cursor:pointer;line-height:1}
+.controls{position:fixed;top:max(12px,env(safe-area-inset-top));left:12px;display:flex;flex-direction:column;gap:8px;z-index:30}
+.controls button{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,193,7,.5);background:rgba(20,14,0,.75);color:#FFD700;font-size:17px;cursor:pointer;backdrop-filter:blur(8px);box-shadow:0 4px 14px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
+.controls button:active{transform:scale(.9)}
+#btnPremium{background:linear-gradient(135deg,rgba(255,215,0,.9),rgba(255,152,0,.9));color:#3b1f00;border-color:#FFE082;animation:crownPulse 2.4s ease-in-out infinite}
+@keyframes crownPulse{0%,100%{box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 0 0 rgba(255,215,0,.65)}50%{box-shadow:0 4px 14px rgba(0,0,0,.4),0 0 0 12px rgba(255,215,0,0)}}
+#days{position:fixed;top:max(52px,calc(env(safe-area-inset-top)+40px));left:50%;transform:translateX(-50%);font-size:12px;color:#FFD700;opacity:.92;z-index:30;text-align:center;text-shadow:0 0 14px rgba(255,193,7,.85);font-weight:600;letter-spacing:.5px}
+</style>
+<script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<canvas id="galaxy-canvas"></canvas>
+<div id="intro-overlay">
+<div class="intro-rays"></div>
+<div class="intro-orbit"></div>
+<div class="intro-content">
+<div class="intro-top"><div class="intro-infinity">∞</div><div class="intro-love">— LOVE YOU —</div></div>
+<h1 class="intro-title">Flores Amarillas</h1>
+<h2 class="intro-subtitle">para Mi amor</h2>
+<div class="intro-character" id="intro-character"></div>
+<button id="intro-btn" class="intro-btn" type="button">CLICK AQUÍ<span class="arrow">→</span></button>
+</div>
+<div class="petal" style="top:18%;left:12%">🌻</div>
+<div class="petal" style="top:70%;left:8%;animation-duration:6.5s">✨</div>
+<div class="petal" style="top:28%;right:12%;animation-duration:5.5s">🌼</div>
+<div class="petal" style="top:78%;right:10%;animation-duration:7s">✨</div>
+</div>
+<div class="controls">
+<button id="btnFullscreen" title="Pantalla completa" type="button">⛶</button>
+<button id="btnPremium" title="Funciones Premium" type="b">👀</button>
+  
+</div>
+<a href="" class="watermark" target="_blank" rel="noopener">
+  ✨ Creado por<br>
+  𝐘𝐚𝐝𝐞𝐫<br>
+  </a>
+  <div id="days"></div>
+<button id="magic-btn" type="button"><span class="mb-text">Gley, haz click aquí y haz magia</span><span class="mb-icon">🪄</span></button>
+<button id="music-btn" type="button">🎵</button>
+<div id="music-panel">
+<div class="mp-title">🌻 Música de fondo</div>
+<div class="mp-progress" id="mpProgress"><div class="mp-bar" id="mpBar"></div></div>
+<div class="mp-time" id="mpTime">0:00 / 0:00</div>
+<div class="mp-row"><button id="mpPlay" type="button">▶︎</button><button id="mpLoop" type="button">🔁</button><input type="range" id="mpVol" min="0" max="1" step="0.01" value="0.75"></div>
+</div>
+<audio id="audio" preload="auto" loop></audio>
+<div id="premium-modal">
+<div id="premium-box">
+<button class="close-x" id="premium-close" type="button">X</button>
+<div class="crown">🌻</div>
+<h2>Te quiero conmigo</h2>
+<div class="subtitle">Te quiero mucho Gleysis</div>
+<div class="feat-list">
+</div>
+<div class="price">30/30 Gley</div>
+<div class="price-note">Eres mi persona favorita</div>
+<button class="btn-upgrade" id="premium-upgrade" type=""> Te anhelo</>
+<button class="btn-later" id="premium-later" type=""> Mi amor</></div>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+
+const CONFIG = {
+  subtitle: "Toca la pantalla para enviar energía ✨",
+  startDate: null,
+  isPremium: false,
+  phrases: [
+  "Te quiero 🌻",
+  "Eres mi girasol",
+  "Hoy, tu y solo tú",
+  "Eres mi alegría 🌹",
+  "Mi lugar favorito eres tú ❤️",
+  "Iluminas mis días ☀️",
+  "Eres mi casualidad más bonita",
+  "Mi corazón sonríe por ti 💛",
+  "Qué bonito es coincidir contigo",
+  "Eres mi pensamiento favorito",
+  "Contigo todo tiene sentido",
+  "Mi cielo tiene tu nombre ✨",
+  "Eres mi pequeña eternidad",
+  "Floreces en mis pensamientos 🌻",
+  "Mi corazón te eligió ❤️",
+  "Eres poesía hecha persona",
+  "Donde estés, florece mi cariño",
+  "Tu sonrisa es mi primavera 🌷",
+  "No hay distancia para mis sentimientos",
+  "Eres mi sueño más bonito",
+  "Cada latido lleva tu nombre",
+  "Mi amor por ti no conoce estaciones",
+  "Tú haces especial lo sencillo",
+  "Eres mi sol entre tantos días grises",
+  "Si florecer es amar, por ti soy primavera",
+  "Un girasol siempre busca la luz, y yo te busco a ti 🌻",
+  "Eres la melodía que abraza mi alma",
+  "Mi pensamiento siempre encuentra el camino hacia ti",
+  "Hay personas que se convierten en hogar, tú eres una de ellas",
+  "Que nunca te falten motivos para sonreír 💛"
+],  
+  palette: "dorado",
+  customMusic: null,
+  palettes: {"dorado":{"name":"Girasol Dorado","emoji":"🌻","premium":false,"colors":["#FFD700","#FFC107","#FFEB3B","#FFA000","#F57F17"]},"aurora":{"name":"Aurora","emoji":"🌊","premium":true,"colors":["#4facfe","#00f2fe","#43e97b","#38f9d7","#4484ce"]},"fuego":{"name":"Fuego","emoji":"🔥","premium":true,"colors":["#f857a6","#ff5858","#feca57","#ff6348","#ff9068"]},"romantico":{"name":"Romántico","emoji":"💗","premium":true,"colors":["#fbcfe8","#f9a8d4","#ec4899","#a855f7","#7c3aed"]},"violeta":{"name":"Nebulosa","emoji":"🌌","premium":true,"colors":["#667eea","#764ba2","#f093fb","#9d50bb","#6e48aa"]},"hielo":{"name":"Hielo","emoji":"❄️","premium":true,"colors":["#e0f2fe","#bae6fd","#7dd3fc","#38bdf8","#0ea5e9"]}}
+};
+const isPremium = CONFIG.isPremium;
+
+  const pal = CONFIG.palettes[CONFIG.palette] || CONFIG.palettes.dorado;
+const palColors = pal.colors.map(c => new THREE.Color(c));
+
+document.getElementById("intro-character").innerHTML = "<svg viewBox=\"0 0 340 400\" xmlns=\"http://www.w3.org/2000/svg\"><defs><radialGradient id=\"snoopyGlow\" cx=\"50%\" cy=\"55%\"><stop offset=\"0%\" stop-color=\"#FFD700\" stop-opacity=\"0.35\"/><stop offset=\"100%\" stop-color=\"#FFD700\" stop-opacity=\"0\"/></radialGradient><linearGradient id=\"petalGrad\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#FFF59D\"/><stop offset=\"45%\" stop-color=\"#FFEB3B\"/><stop offset=\"100%\" stop-color=\"#F9A825\"/></linearGradient><linearGradient id=\"petalGrad2\" x1=\"0%\" y1=\"0%\" x2=\"0%\" y2=\"100%\"><stop offset=\"0%\" stop-color=\"#FFF9C4\"/><stop offset=\"50%\" stop-color=\"#FFD54F\"/><stop offset=\"100%\" stop-color=\"#F57F17\"/></linearGradient><radialGradient id=\"centerGrad\" cx=\"50%\" cy=\"45%\"><stop offset=\"0%\" stop-color=\"#5a2e00\"/><stop offset=\"55%\" stop-color=\"#3d1f00\"/><stop offset=\"100%\" stop-color=\"#1a0a00\"/></radialGradient><radialGradient id=\"roseGrad\" cx=\"35%\" cy=\"35%\"><stop offset=\"0%\" stop-color=\"#FFFDE7\"/><stop offset=\"40%\" stop-color=\"#FFEB3B\"/><stop offset=\"100%\" stop-color=\"#F57F17\"/></radialGradient></defs><ellipse cx=\"170\" cy=\"220\" rx=\"170\" ry=\"195\" fill=\"url(#snoopyGlow)\"/><ellipse cx=\"170\" cy=\"382\" rx=\"115\" ry=\"9\" fill=\"rgba(0,0,0,0.35)\"/><ellipse cx=\"112\" cy=\"362\" rx=\"34\" ry=\"20\" fill=\"#ffffff\" stroke=\"#1a1a1a\" stroke-width=\"4\"/><path d=\"M 86 362 L 112 362 M 112 362 L 138 362\" stroke=\"#1a1a1a\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><ellipse cx=\"238\" cy=\"362\" rx=\"34\" ry=\"20\" fill=\"#ffffff\" stroke=\"#1a1a1a\" stroke-width=\"4\"/><path d=\"M 212 362 L 238 362 M 238 362 L 264 362\" stroke=\"#1a1a1a\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M 128 218 Q 108 290 118 355 L 232 355 Q 242 290 222 218 Z\" fill=\"#ffffff\" stroke=\"#1a1a1a\" stroke-width=\"4\" stroke-linejoin=\"round\"/><ellipse cx=\"72\" cy=\"140\" rx=\"54\" ry=\"102\" fill=\"#1a1a1a\" transform=\"rotate(-9 72 140)\"/><ellipse cx=\"198\" cy=\"115\" rx=\"120\" ry=\"90\" fill=\"#ffffff\" stroke=\"#1a1a1a\" stroke-width=\"4\" transform=\"rotate(-4 198 115)\"/><ellipse cx=\"262\" cy=\"98\" rx=\"24\" ry=\"16\" fill=\"#1a1a1a\"/><path d=\"M 188 64 Q 206 58 220 68\" stroke=\"#1a1a1a\" stroke-width=\"4\" fill=\"none\" stroke-linecap=\"round\"/><path d=\"M 214 148 Q 236 154 256 145\" stroke=\"#1a1a1a\" stroke-width=\"3.5\" fill=\"none\" stroke-linecap=\"round\"/><circle cx=\"228\" cy=\"158\" r=\"3\" fill=\"#1a1a1a\"/><ellipse cx=\"192\" cy=\"208\" rx=\"40\" ry=\"26\" fill=\"#ffffff\" stroke=\"#1a1a1a\" stroke-width=\"4\" transform=\"rotate(-8 192 208)\"/><ellipse cx=\"244\" cy=\"204\" rx=\"32\" ry=\"24\" fill=\"#ffffff\" stroke=\"#1a1a1a\" stroke-width=\"4\" transform=\"rotate(8 244 204)\"/><path d=\"M 178 208 L 185 220 M 194 208 L 200 220 M 210 208 L 216 218\" stroke=\"#1a1a1a\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><path d=\"M 232 204 L 238 214 M 248 204 L 252 214\" stroke=\"#1a1a1a\" stroke-width=\"2.5\" stroke-linecap=\"round\"/><g class=\"bouquet-svg\"><path d=\"M 218 200 Q 200 170 188 142\" stroke=\"#4a7c2a\" stroke-width=\"4.5\" fill=\"none\" stroke-linecap=\"round\"/><path d=\"M 218 200 L 210 138\" stroke=\"#4a7c2a\" stroke-width=\"4.5\" fill=\"none\" stroke-linecap=\"round\"/><path d=\"M 218 200 Q 240 170 250 145\" stroke=\"#4a7c2a\" stroke-width=\"4.5\" fill=\"none\" stroke-linecap=\"round\"/><g transform=\"translate(186 138)\"><g fill=\"url(#petalGrad)\"><ellipse cx=\"0\" cy=\"-24\" rx=\"7.5\" ry=\"12\"/><ellipse cx=\"17\" cy=\"-17\" rx=\"7.5\" ry=\"12\" transform=\"rotate(45 0 0)\"/><ellipse cx=\"24\" cy=\"0\" rx=\"7.5\" ry=\"12\" transform=\"rotate(90 0 0)\"/><ellipse cx=\"17\" cy=\"17\" rx=\"7.5\" ry=\"12\" transform=\"rotate(135 0 0)\"/><ellipse cx=\"0\" cy=\"24\" rx=\"7.5\" ry=\"12\"/><ellipse cx=\"-17\" cy=\"17\" rx=\"7.5\" ry=\"12\" transform=\"rotate(-135 0 0)\"/><ellipse cx=\"-24\" cy=\"0\" rx=\"7.5\" ry=\"12\" transform=\"rotate(-90 0 0)\"/><ellipse cx=\"-17\" cy=\"-17\" rx=\"7.5\" ry=\"12\" transform=\"rotate(-45 0 0)\"/></g><circle r=\"13\" fill=\"url(#centerGrad)\"/></g><g transform=\"translate(252 142)\"><g fill=\"url(#petalGrad)\"><ellipse cx=\"0\" cy=\"-21\" rx=\"7\" ry=\"11\"/><ellipse cx=\"14.8\" cy=\"-14.8\" rx=\"7\" ry=\"11\" transform=\"rotate(45 0 0)\"/><ellipse cx=\"21\" cy=\"0\" rx=\"7\" ry=\"11\" transform=\"rotate(90 0 0)\"/><ellipse cx=\"14.8\" cy=\"14.8\" rx=\"7\" ry=\"11\" transform=\"rotate(135 0 0)\"/><ellipse cx=\"0\" cy=\"21\" rx=\"7\" ry=\"11\"/><ellipse cx=\"-14.8\" cy=\"14.8\" rx=\"7\" ry=\"11\" transform=\"rotate(-135 0 0)\"/><ellipse cx=\"-21\" cy=\"0\" rx=\"7\" ry=\"11\" transform=\"rotate(-90 0 0)\"/><ellipse cx=\"-14.8\" cy=\"-14.8\" rx=\"7\" ry=\"11\" transform=\"rotate(-45 0 0)\"/></g><circle r=\"11\" fill=\"url(#centerGrad)\"/></g><g transform=\"translate(218 132)\"><circle r=\"21\" fill=\"url(#roseGrad)\"/><path d=\"M -12 -9 Q 0 -16 12 -9 Q 17 -1 9 8 Q 0 14 -9 8 Q -17 -1 -12 -9 Z\" fill=\"#FBC02D\" opacity=\"0.8\"/><path d=\"M -7 -5 Q 0 -9 7 -5 Q 10 0 6 5 Q 0 8 -6 5 Q -10 0 -7 -5 Z\" fill=\"#F9A825\"/><circle r=\"2\" fill=\"#E65100\"/></g></g><g class=\"hearts-svg\"><path d=\"M 302 128 C 294 118 281 118 276 128 C 271 140 285 152 302 166 C 319 152 333 140 328 128 C 323 118 310 118 302 128 Z\" fill=\"#e53935\" stroke=\"#1a1a1a\" stroke-width=\"3.5\" stroke-linejoin=\"round\"/><path d=\"M 268 180 C 263 173 254 173 251 180 C 247 188 257 198 268 208 C 279 198 289 188 285 180 C 282 173 273 173 268 180 Z\" fill=\"#e53935\" stroke=\"#1a1a1a\" stroke-width=\"3\" stroke-linejoin=\"round\"/></g></svg>";
+
+const audio = document.getElementById("audio");
+const musicBtn = document.getElementById("music-btn");
+const musicPanel = document.getElementById("music-panel");
+const mpPlay = document.getElementById("mpPlay");
+const mpLoop = document.getElementById("mpLoop");
+const mpVol = document.getElementById("mpVol");
+const mpProgress = document.getElementById("mpProgress");
+const mpBar = document.getElementById("mpBar");
+const mpTime = document.getElementById("mpTime");
+let isLoop = true;
+audio.loop = true;
+const DEFAULT_MUSIC = "https://github.com/yaders643-prog/M-sica-amor./raw/21f224b4728b4df797c0040ef040113f68a1d804/Nebulosa%20-%20mi%20%C3%BAltimo%20universo(MP3_160K).mp3";
+audio.src = CONFIG.customMusic || DEFAULT_MUSIC;
+musicBtn.addEventListener("click", (e) => { e.stopPropagation(); musicPanel.classList.toggle("show"); });
+mpPlay.addEventListener("click", async (e) => {
+  e.stopPropagation();
+  try {
+    if (audio.paused){ await audio.play(); mpPlay.textContent = "⏸︎"; musicBtn.classList.add("playing"); musicBtn.textContent = "🎶"; }
+    else { audio.pause(); mpPlay.textContent = "▶︎"; musicBtn.classList.remove("playing"); musicBtn.textContent = "🎵"; }
+  } catch(err){}
+});
+mpVol.oninput = () => audio.volume = mpVol.value;
+mpLoop.onclick = (e) => { e.stopPropagation(); isLoop = !isLoop; audio.loop = isLoop; mpLoop.style.opacity = isLoop ? "1" : "0.5"; };
+function fmtTime(s){ const m=Math.floor(s/60), sec=Math.floor(s%60); return m+":"+sec.toString().padStart(2,"0"); }
+audio.ontimeupdate = () => { if (audio.duration){ mpBar.style.width = (audio.currentTime/audio.duration*100)+"%"; mpTime.textContent = fmtTime(audio.currentTime)+" / "+fmtTime(audio.duration); } };
+mpProgress.addEventListener("click", (e) => { e.stopPropagation(); if (!audio.duration) return; const r = mpProgress.getBoundingClientRect(); audio.currentTime = ((e.clientX-r.left)/r.width)*audio.duration; });
+
+document.getElementById("btnFullscreen").onclick = (e) => { e.stopPropagation(); if (!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); };
+
+if (CONFIG.startDate) {
+  try {
+    const d0 = new Date(CONFIG.startDate);
+    const diff = Math.floor((Date.now()-d0.getTime())/86400000);
+    if (diff >= 0) document.getElementById("days").textContent = "Juntos desde hace "+diff.toLocaleString("es")+" días 🌻";
+  } catch(e){}
+}
+
+const premiumModal = document.getElementById("premium-modal");
+document.getElementById("btnPremium").onclick = (e) => { e.stopPropagation(); premiumModal.classList.add("show"); };
+document.getElementById("premium-close").onclick = () => premiumModal.classList.remove("show");
+document.getElementById("premium-later").onclick = () => premiumModal.classList.remove("show");
+premiumModal.onclick = (e) => { if (e.target === premiumModal) premiumModal.classList.remove("show"); };
+
+const canvas = document.getElementById("galaxy-canvas");
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x000000, 0.0022);
+const camera = new THREE.PerspectiveCamera(65, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.set(0, 10, 140);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x050300);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+function createStarfield() {
+  const count = isPremium ? 14000 : 7000;
+  const positions = [], colors = [], sizes = [];
+  for (let i = 0; i < count; i++) {
+    const r = THREE.MathUtils.randFloat(60, 180);
+    const phi = Math.acos(THREE.MathUtils.randFloatSpread(2));
+    const theta = THREE.MathUtils.randFloat(0, Math.PI * 2);
+    positions.push(r*Math.sin(phi)*Math.cos(theta), r*Math.sin(phi)*Math.sin(theta), r*Math.cos(phi));
+    const cc = Math.random();
+    if (cc < 0.55) colors.push(1, 0.84, 0.0);
+    else if (cc < 0.8) colors.push(1, 0.92, 0.4);
+    else if (cc < 0.95) colors.push(1, 1, 1);
+    else colors.push(1, 0.7, 0.1);
+    sizes.push(THREE.MathUtils.randFloat(0.15, 0.42));
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  geo.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+  geo.setAttribute("size", new THREE.Float32BufferAttribute(sizes, 1));
+  const mat = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 } },
+    vertexShader: "attribute float size; attribute vec3 color; varying vec3 vColor; uniform float uTime; void main(){ vColor=color; vec4 mv=modelViewMatrix*vec4(position,1.0); float tw=sin(uTime*2.0+position.x*100.0)*0.4+0.8; gl_PointSize=size*tw*(320.0/-mv.z); gl_Position=projectionMatrix*mv; }",
+    fragmentShader: "varying vec3 vColor; void main(){ vec2 c=gl_PointCoord-0.5; float d=length(c); if(d>0.5) discard; float core=1.0-smoothstep(0.0,0.18,d); float alpha=1.0-smoothstep(0.0,0.5,d); vec3 col=vColor*(1.0+core*0.9); gl_FragColor=vec4(col,alpha*0.9); }",
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  });
+  return new THREE.Points(geo, mat);
+}
+const starField = createStarfield();
+scene.add(starField);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.rotateSpeed = 0.6;
+controls.zoomSpeed = 0.9;
+controls.enableZoom = true;
+controls.enablePan = false;
+controls.minDistance = 6;
+controls.maxDistance = 130;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.25;
+
+const BASE_BLOOM = isPremium ? 2.0 : 1.7;
+const PHRASE_BLOOM = 0.25;
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), BASE_BLOOM, 0.7, 0.75);
+composer.addPass(bloomPass);
+composer.addPass(new OutputPass());
+
+const pulseUniforms = {
+  uTime: { value: 0.0 }, uMorph: { value: 0.0 },
+  uPulsePositions: { value: [new THREE.Vector3(1e3,1e3,1e3), new THREE.Vector3(1e3,1e3,1e3), new THREE.Vector3(1e3,1e3,1e3)] },
+  uPulseTimes: { value: [-1e3, -1e3, -1e3] },
+  uPulseColors: { value: [new THREE.Color(1,0.84,0), new THREE.Color(1,0.92,0.4), new THREE.Color(1,0.7,0.1)] },
+  uPulseSpeed: { value: isPremium ? 22.0 : 18.0 },
+  uBaseNodeSize: { value: 0.65 },
+  uPulseDuration: { value: isPremium ? 6.0 : 4.0 }
+};
+
+const NODE_VS = "uniform float uTime, uMorph;\nuniform vec3 uPulsePositions[3];\nuniform float uPulseTimes[3];\nuniform float uPulseSpeed, uBaseNodeSize, uPulseDuration;\nattribute float nodeSize, nodeType, distanceFromRoot;\nattribute vec3 nodeColor, targetPosition;\nvarying vec3 vColor; varying vec3 vPosition;\nvarying float vPulseIntensity, vDistanceFromRoot, vGlow, vMorph;\nvec3 mod289(vec3 x){return x - floor(x*(1.0/289.0))*289.0;}\nvec4 mod289(vec4 x){return x - floor(x*(1.0/289.0))*289.0;}\nvec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}\nvec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314*r;}\nfloat snoise(vec3 v){\n  const vec2 C = vec2(1.0/6.0, 1.0/3.0);\n  const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);\n  vec3 i = floor(v + dot(v, C.yyy));\n  vec3 x0 = v - i + dot(i, C.xxx);\n  vec3 g = step(x0.yzx, x0.xyz);\n  vec3 l = 1.0 - g;\n  vec3 i1 = min(g.xyz, l.zxy);\n  vec3 i2 = max(g.xyz, l.zxy);\n  vec3 x1 = x0 - i1 + C.xxx;\n  vec3 x2 = x0 - i2 + C.yyy;\n  vec3 x3 = x0 - D.yyy;\n  i = mod289(i);\n  vec4 p = permute(permute(permute(i.z + vec4(0.0, i1.z, i2.z, 1.0)) + i.y + vec4(0.0, i1.y, i2.y, 1.0)) + i.x + vec4(0.0, i1.x, i2.x, 1.0));\n  float n_ = 0.142857142857;\n  vec3 ns = n_ * D.wyz - D.xzx;\n  vec4 j = p - 49.0 * floor(p * ns.z * ns.z);\n  vec4 x_ = floor(j * ns.z);\n  vec4 y_ = floor(j - 7.0 * x_);\n  vec4 x = x_ * ns.x + ns.yyyy;\n  vec4 y = y_ * ns.x + ns.yyyy;\n  vec4 h = 1.0 - abs(x) - abs(y);\n  vec4 b0 = vec4(x.xy, y.xy);\n  vec4 b1 = vec4(x.zw, y.zw);\n  vec4 s0 = floor(b0)*2.0 + 1.0;\n  vec4 s1 = floor(b1)*2.0 + 1.0;\n  vec4 sh = -step(h, vec4(0.0));\n  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;\n  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;\n  vec3 p0 = vec3(a0.xy, h.x);\n  vec3 p1 = vec3(a0.zw, h.y);\n  vec3 p2 = vec3(a1.xy, h.z);\n  vec3 p3 = vec3(a1.zw, h.w);\n  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2,p2), dot(p3,p3)));\n  p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;\n  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);\n  m = m*m;\n  return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));\n}\nfloat getPulseIntensity(vec3 wp, vec3 pp, float pt){\n  if(pt < 0.0) return 0.0;\n  float tsc = uTime - pt;\n  if(tsc < 0.0 || tsc > uPulseDuration) return 0.0;\n  float pr = tsc * uPulseSpeed;\n  float dc = distance(wp, pp);\n  return smoothstep(3.0, 0.0, abs(dc - pr)) * smoothstep(uPulseDuration, 0.0, tsc);\n}\nvoid main(){\n  vColor = nodeColor;\n  vDistanceFromRoot = distanceFromRoot;\n  vMorph = uMorph;\n  vec3 finalPos = mix(position, targetPosition, uMorph);\n  vec3 wp = (modelMatrix * vec4(finalPos, 1.0)).xyz;\n  vPosition = wp;\n  float tp = 0.0;\n  for(int i=0;i<3;i++) tp += getPulseIntensity(wp, uPulsePositions[i], uPulseTimes[i]);\n  vPulseIntensity = min(tp, 1.0);\n  float breathe = sin(uTime*0.7 + distanceFromRoot*0.15)*0.15 + 0.85;\n  float ps = nodeSize * breathe * (1.0 + vPulseIntensity*2.2);\n  vGlow = 0.5 + 0.5*sin(uTime*0.5 + distanceFromRoot*0.2);\n  vec4 mv = modelViewMatrix * vec4(finalPos, 1.0);\n  float sizeFactor = mix(1000.0, 320.0, uMorph);\n  gl_PointSize = clamp(ps * uBaseNodeSize * (sizeFactor / -mv.z), 1.2, 5.5);\n  gl_Position = projectionMatrix * mv;\n}";
+const NODE_FS = "uniform float uTime;\nuniform vec3 uPulseColors[3];\nvarying vec3 vColor; varying vec3 vPosition;\nvarying float vPulseIntensity, vDistanceFromRoot, vGlow, vMorph;\nvoid main(){\n  vec2 c = 2.0*gl_PointCoord - 1.0;\n  float d = length(c);\n  if(d > 1.0) discard;\n  float bc = 0.92 + 0.08*sin(uTime*0.6 + vDistanceFromRoot*0.25);\n  vec3 base = vColor * bc;\n  float g1 = 1.0 - smoothstep(0.0, 0.40, d);\n  float g2 = 1.0 - smoothstep(0.0, 0.80, d);\n  float g3 = 1.0 - smoothstep(0.0, 1.00, d);\n  float glowN = pow(g1, 1.0) + g2*0.55 + g3*0.28;\n  vec3 colorN = base;\n  if(vPulseIntensity > 0.0){\n    vec3 pc = mix(vec3(1.0), uPulseColors[0], 0.3);\n    colorN = mix(base, pc, vPulseIntensity*0.85);\n    colorN *= (1.0 + vPulseIntensity*1.6);\n    glowN *= (1.0 + vPulseIntensity*1.1);\n  }\n  float coreN = smoothstep(0.55, 0.0, d);\n  colorN += vec3(1.0) * coreN * 0.55;\n  float alphaN = glowN * (1.0 - 0.22*d);\n  vec3 colorP = base * 1.4 + vec3(0.1, 0.08, 0.0);\n  float alphaP = (d < 0.7) ? 1.0 : 0.0;\n  vec3 finalColor = mix(colorN, colorP, vMorph);\n  float alpha = mix(alphaN, alphaP, vMorph);\n  float camDist = length(vPosition - cameraPosition);\n  float fade = smoothstep(100.0, 15.0, camDist);\n  finalColor *= (1.0 + vGlow*0.18);\n  gl_FragColor = vec4(finalColor, alpha * fade);\n}";
+const CONN_VS = "uniform float uTime, uMorph;\nuniform vec3 uPulsePositions[3];\nuniform float uPulseTimes[3];\nuniform float uPulseSpeed, uPulseDuration;\nattribute vec3 startPoint, endPoint, connectionColor;\nattribute float connectionStrength, pathIndex;\nvarying vec3 vColor;\nvarying float vConnectionStrength, vPulseIntensity, vPathPosition, vDistanceFromCamera, vMorph;\nvec3 mod289(vec3 x){return x - floor(x*(1.0/289.0))*289.0;}\nvec4 mod289(vec4 x){return x - floor(x*(1.0/289.0))*289.0;}\nvec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}\nvec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314*r;}\nfloat snoise(vec3 v){\n  const vec2 C = vec2(1.0/6.0, 1.0/3.0);\n  const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);\n  vec3 i = floor(v + dot(v, C.yyy));\n  vec3 x0 = v - i + dot(i, C.xxx);\n  vec3 g = step(x0.yzx, x0.xyz);\n  vec3 l = 1.0 - g;\n  vec3 i1 = min(g.xyz, l.zxy);\n  vec3 i2 = max(g.xyz, l.zxy);\n  vec3 x1 = x0 - i1 + C.xxx;\n  vec3 x2 = x0 - i2 + C.yyy;\n  vec3 x3 = x0 - D.yyy;\n  i = mod289(i);\n  vec4 p = permute(permute(permute(i.z + vec4(0.0, i1.z, i2.z, 1.0)) + i.y + vec4(0.0, i1.y, i2.y, 1.0)) + i.x + vec4(0.0, i1.x, i2.x, 1.0));\n  float n_ = 0.142857142857;\n  vec3 ns = n_ * D.wyz - D.xzx;\n  vec4 j = p - 49.0 * floor(p * ns.z * ns.z);\n  vec4 x_ = floor(j * ns.z);\n  vec4 y_ = floor(j - 7.0 * x_);\n  vec4 x = x_ * ns.x + ns.yyyy;\n  vec4 y = y_ * ns.x + ns.yyyy;\n  vec4 h = 1.0 - abs(x) - abs(y);\n  vec4 b0 = vec4(x.xy, y.xy);\n  vec4 b1 = vec4(x.zw, y.zw);\n  vec4 s0 = floor(b0)*2.0 + 1.0;\n  vec4 s1 = floor(b1)*2.0 + 1.0;\n  vec4 sh = -step(h, vec4(0.0));\n  vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;\n  vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;\n  vec3 p0 = vec3(a0.xy, h.x);\n  vec3 p1 = vec3(a0.zw, h.y);\n  vec3 p2 = vec3(a1.xy, h.z);\n  vec3 p3 = vec3(a1.zw, h.w);\n  vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2,p2), dot(p3,p3)));\n  p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;\n  vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);\n  m = m*m;\n  return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));\n}\nfloat getPulseIntensity(vec3 wp, vec3 pp, float pt){\n  if(pt < 0.0) return 0.0;\n  float tsc = uTime - pt;\n  if(tsc < 0.0 || tsc > uPulseDuration) return 0.0;\n  float pr = tsc * uPulseSpeed;\n  float dc = distance(wp, pp);\n  return smoothstep(3.0, 0.0, abs(dc - pr)) * smoothstep(uPulseDuration, 0.0, tsc);\n}\nvoid main(){\n  float t = position.x;\n  vPathPosition = t;\n  vec3 mid = mix(startPoint, endPoint, 0.5);\n  vec3 perp = normalize(cross(normalize(endPoint - startPoint), vec3(0.0, 1.0, 0.0)));\n  if(length(perp) < 0.1) perp = vec3(1.0, 0.0, 0.0);\n  mid += perp * sin(t * 3.14159) * 0.15;\n  vec3 p0 = mix(startPoint, mid, t);\n  vec3 p1 = mix(mid, endPoint, t);\n  vec3 finalPos = mix(p0, p1, t);\n  finalPos += perp * snoise(vec3(pathIndex*0.08, t*0.6, uTime*0.15)) * 0.12;\n  vec3 wp = (modelMatrix * vec4(finalPos, 1.0)).xyz;\n  float tp = 0.0;\n  for(int i=0;i<3;i++) tp += getPulseIntensity(wp, uPulsePositions[i], uPulseTimes[i]);\n  vPulseIntensity = min(tp, 1.0);\n  vColor = connectionColor;\n  vConnectionStrength = connectionStrength;\n  vMorph = uMorph;\n  vDistanceFromCamera = length(wp - cameraPosition);\n  gl_Position = projectionMatrix * modelViewMatrix * vec4(finalPos, 1.0);\n}";
+const CONN_FS = "uniform float uTime;\nuniform vec3 uPulseColors[3];\nvarying vec3 vColor;\nvarying float vConnectionStrength, vPulseIntensity, vPathPosition, vDistanceFromCamera, vMorph;\nvoid main(){\n  float f1 = sin(vPathPosition*25.0 - uTime*4.0)*0.5 + 0.5;\n  float f2 = sin(vPathPosition*15.0 - uTime*2.5 + 1.57)*0.5 + 0.5;\n  float flow = (f1 + f2*0.5) / 1.5;\n  vec3 base = vColor * (0.9 + 0.2*sin(uTime*0.6 + vPathPosition*12.0));\n  float flowInt = 0.5 * flow * vConnectionStrength;\n  vec3 finalColor = base;\n  if(vPulseIntensity > 0.0){\n    vec3 pc = mix(vec3(1.0), uPulseColors[0], 0.25);\n    finalColor = mix(base, pc*1.3, vPulseIntensity*0.7);\n    flowInt += vPulseIntensity*0.9;\n  }\n  finalColor *= (1.0 + flowInt + vConnectionStrength*0.55);\n  float alpha = 0.75 * vConnectionStrength + flow*0.3;\n  alpha = mix(alpha, min(1.0, alpha*2.5), vPulseIntensity);\n  alpha *= (1.0 - vMorph*0.99);\n  float fade = smoothstep(100.0, 15.0, vDistanceFromCamera);\n  gl_FragColor = vec4(finalColor, alpha * fade);\n}";
+const FILLER_VS = "uniform float uTime, uMorph;\nattribute vec3 targetPosition, aColor, aRand;\nattribute float aActive;\nvarying vec3 vColor;\nvarying float vMorph, vAlpha;\nvoid main(){\n  vec3 finalPos = mix(position, targetPosition, uMorph);\n  float noise = sin(uTime*0.9 + aRand.x*6.283) * 0.15 * (1.0 - uMorph);\n  finalPos += vec3(noise, noise*0.7, noise*0.5);\n  vColor = aColor;\n  vMorph = uMorph;\n  float activeMod = mix(1.0, aActive, uMorph);\n  vAlpha = (0.15 + uMorph*0.85) * activeMod;\n  vec4 mv = modelViewMatrix * vec4(finalPos, 1.0);\n  gl_Position = projectionMatrix * mv;\n  float sizeFactor = mix(250.0, 210.0, uMorph);\n  gl_PointSize = clamp((1.15 + aRand.y*0.55) * (sizeFactor / -mv.z), 1.0, 4.5);\n}";
+const FILLER_FS = "varying vec3 vColor;\nvarying float vMorph, vAlpha;\nvoid main(){\n  vec2 uv = gl_PointCoord - vec2(0.5);\n  float d = length(uv);\n  if(d > 0.5) discard;\n  float alphaN = smoothstep(0.5, 0.15, d);\n  float coreN = smoothstep(0.18, 0.0, d);\n  vec3 colorN = vColor * 0.9 + vec3(1.0, 0.9, 0.4) * coreN * 0.25;\n  float alphaP = (d < 0.62) ? 1.0 : 0.0;\n  vec3 colorP = vColor * 1.35 + vec3(0.1, 0.08, 0.0);\n  float alpha = mix(alphaN, alphaP, vMorph);\n  vec3 finalColor = mix(colorN, colorP, vMorph);\n  gl_FragColor = vec4(finalColor, alpha * vAlpha);\n}";
+const SPARKLE_VS = "uniform float uTime, uMorph;\nattribute vec3 aColor, aRand, aPos;\nattribute float aSize;\nvarying vec3 vColor;\nvarying float vAlpha, vGlow;\nvoid main(){\n  vec3 finalPos = aPos;\n  finalPos += vec3(\n    sin(uTime*0.4 + aRand.x*6.283)*0.6,\n    cos(uTime*0.5 + aRand.y*6.283)*0.6,\n    sin(uTime*0.3 + aRand.z*6.283)*0.4\n  ) * uMorph;\n  vColor = aColor;\n  float tw = sin(uTime*(2.0 + aRand.x*4.0) + aRand.y*6.283)*0.5 + 0.5;\n  tw = pow(tw, 1.8);\n  vGlow = tw;\n  vAlpha = tw * uMorph;\n  vec4 mv = modelViewMatrix * vec4(finalPos, 1.0);\n  gl_Position = projectionMatrix * mv;\n  float sizeFactor = mix(300.0, 170.0, uMorph);\n  gl_PointSize = clamp(aSize * (1.0 + tw*2.2) * uMorph * (sizeFactor / -mv.z), 1.0, 4.2);\n}";
+const SPARKLE_FS = "varying vec3 vColor;\nvarying float vAlpha, vGlow;\nvoid main(){\n  vec2 uv = gl_PointCoord - vec2(0.5);\n  float d = length(uv);\n  if(d > 0.5) discard;\n  float core = 1.0 - smoothstep(0.0, 0.22, d);\n  float halo = 1.0 - smoothstep(0.0, 0.5, d);\n  float alpha = (core*1.5 + halo*0.55) * vAlpha;\n  vec3 finalColor = vColor * (1.2 + vGlow*1.6) + vec3(1.0, 0.9, 0.5)*core*0.25;\n  gl_FragColor = vec4(finalColor, alpha);\n}";
+
+function makeSunflowerTexture() {
+  const size = 128;
+  const c = document.createElement("canvas");
+  c.width = c.height = size;
+  const g = c.getContext("2d");
+  const cx = size/2, cy = size/2;
+  g.fillStyle = "#FFC107";
+  for(let i=0;i<16;i++){ g.save(); g.translate(cx,cy); g.rotate(i*Math.PI*2/16); g.beginPath(); g.ellipse(0,-38,9,18,0,0,Math.PI*2); g.fill(); g.restore(); }
+  g.fillStyle = "#FFEB3B";
+  for(let i=0;i<16;i++){ g.save(); g.translate(cx,cy); g.rotate(i*Math.PI*2/16+Math.PI/16); g.beginPath(); g.ellipse(0,-30,7,14,0,0,Math.PI*2); g.fill(); g.restore(); }
+  const grd = g.createRadialGradient(cx,cy,2,cx,cy,22);
+  grd.addColorStop(0,"#4a2800"); grd.addColorStop(1,"#1a0e00");
+  g.fillStyle = grd; g.beginPath(); g.arc(cx,cy,22,0,Math.PI*2); g.fill();
+  g.fillStyle = "#8B5A2B";
+  for(let i=0;i<20;i++){ g.beginPath(); const a=Math.random()*Math.PI*2; const r=Math.random()*16; g.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,1.3,0,Math.PI*2); g.fill(); }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+function makeSunflowers() {
+  const tex = makeSunflowerTexture();
+  const count = isPremium ? 60 : 30;
+  const group = new THREE.Group();
+  for (let i=0;i<count;i++){
+    const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.85 });
+    const s = new THREE.Sprite(mat);
+    const r = 14 + Math.random()*22;
+    const a = Math.random()*Math.PI*2;
+    const h = (Math.random()-0.5)*18;
+    s.position.set(Math.cos(a)*r, h, Math.sin(a)*r);
+    const scale = 1.4 + Math.random()*1.6;
+    s.scale.set(scale, scale, 1);
+    s.userData = { baseY: s.position.y, speed: 0.3 + Math.random()*0.5, phase: Math.random()*6.283 };
+    group.add(s);
+  }
+  scene.add(group);
+  return group;
+}
+const sunflowerGroup = makeSunflowers();
+
+class Node {
+  constructor(pos, level=0, type=0){
+    this.position = pos; this.connections = []; this.level = level; this.type = type;
+    this.size = type===0 ? THREE.MathUtils.randFloat(0.8,1.4) : THREE.MathUtils.randFloat(0.5,1.0);
+    this.distanceFromRoot = 0;
+  }
+  addConnection(n, s=1.0){
+    if(!this.isConnectedTo(n)){ this.connections.push({node:n, strength:s}); n.connections.push({node:this, strength:s}); }
+  }
+  isConnectedTo(n){ return this.connections.some(c => c.node === n); }
+}
+function generateNetwork(f=1.0){
+  const nodes = [];
+  const root = new Node(new THREE.Vector3(0,0,0), 0, 0);
+  root.size = 2.2; nodes.push(root);
+  const layers = 5;
+  const GR = (1+Math.sqrt(5))/2;
+  for(let L=1; L<=layers; L++){
+    const radius = L*4;
+    const N = Math.floor(L*12*f);
+    for(let i=0;i<N;i++){
+      const phi = Math.acos(1 - 2*(i+0.5)/N);
+      const theta = 2*Math.PI*i/GR;
+      const pos = new THREE.Vector3(radius*Math.sin(phi)*Math.cos(theta), radius*Math.sin(phi)*Math.sin(theta), radius*Math.cos(phi));
+      const isLeaf = L===layers || Math.random()<0.3;
+      const n = new Node(pos, L, isLeaf?1:0);
+      n.distanceFromRoot = radius;
+      nodes.push(n);
+      if(L > 1){
+        const prev = nodes.filter(x => x.level===L-1 && x!==root);
+        prev.sort((a,b)=> pos.distanceTo(a.position)-pos.distanceTo(b.position));
+        for(let j=0;j<Math.min(3, prev.length);j++){
+          const d = pos.distanceTo(prev[j].position);
+          n.addConnection(prev[j], Math.max(0.3, 1 - d/(radius*2)));
+        }
+      } else { root.addConnection(n, 0.9); }
+    }
+    const lNodes = nodes.filter(x => x.level===L && x!==root);
+    for(const n of lNodes){
+      const near = lNodes.filter(x => x!==n).sort((a,b)=> n.position.distanceTo(a.position)-n.position.distanceTo(b.position)).slice(0,5);
+      for(const nn of near){
+        if(n.position.distanceTo(nn.position) < radius*0.8 && !n.isConnectedTo(nn)) n.addConnection(nn, 0.6);
+      }
+    }
+  }
+  return { nodes, root };
+}
+
+let nodesMesh=null, connectionsMesh=null, fillerMesh=null, sparkleMesh=null;
+let phraseBounds = { w: 24, h: 12 };
+
+function bakePhrase(text){
+  const cvs = document.createElement("canvas");
+  cvs.width = 1600; cvs.height = 800;
+  const g = cvs.getContext("2d", { willReadFrequently: true });
+  g.fillStyle = "#fff"; g.strokeStyle = "#fff";
+  g.textAlign = "center"; g.textBaseline = "middle";
+  g.lineJoin = "round"; g.lineCap = "round";
+  let fs = 260;
+  const len = text.length;
+  if(len > 8) fs = 215;
+  if(len > 14) fs = 178;
+  if(len > 22) fs = 145;
+  if(len > 32) fs = 118;
+  g.font = "900 " + fs + "px Cormorant Garamond, Arial Black, -apple-system, Segoe UI, Arial, sans-serif";
+  const maxW = cvs.width - 300;
+  const words = text.split(/\s+/);
+  const lines = [];
+  let line = "";
+  for(const w of words){
+    const test = line ? line+" "+w : w;
+    if(g.measureText(test).width > maxW && line){ lines.push(line); line = w; }
+    else line = test;
+  }
+  if(line) lines.push(line);
+  const lh = fs * 1.15;
+  const totalH = lines.length * lh;
+  const startY = cvs.height/2 - totalH/2 + lh/2;
+  g.lineWidth = Math.max(4, fs*0.04);
+  lines.forEach((l,i) => {
+    const y = startY + i*lh;
+    g.strokeText(l, cvs.width/2, y);
+    g.fillText(l, cvs.width/2, y);
+  });
+  const data = g.getImageData(0,0,cvs.width,cvs.height).data;
+  const pts = [];
+  const step = 3;
+  for(let y=0;y<cvs.height;y+=step){
+    for(let x=0;x<cvs.width;x+=step){
+      const i = (y*cvs.width + x)*4;
+      if(data[i+3] > 60) pts.push({x,y});
+    }
+  }
+  if(!pts.length) pts.push({x:cvs.width/2, y:cvs.height/2});
+  let minX=cvs.width, maxX=0, minY=cvs.height, maxY=0;
+  pts.forEach(p => {
+    if(p.x<minX) minX=p.x; if(p.x>maxX) maxX=p.x;
+    if(p.y<minY) minY=p.y; if(p.y>maxY) maxY=p.y;
+  });
+  const pad = 8;
+  minX = Math.max(0, minX-pad); maxX = Math.min(cvs.width, maxX+pad);
+  minY = Math.max(0, minY-pad); maxY = Math.min(cvs.height, maxY+pad);
+  const cxPx = (minX+maxX)/2;
+  const cyPx = (minY+maxY)/2;
+  const tW = Math.max(1, maxX-minX);
+  const tH = Math.max(1, maxY-minY);
+  const aspect = tW/tH;
+  const maxW2 = 24, maxH2 = 12;
+  let WORLD_W, WORLD_H;
+  if(aspect > maxW2/maxH2){ WORLD_W = maxW2; WORLD_H = maxW2/aspect; }
+  else { WORLD_H = maxH2; WORLD_W = maxH2*aspect; }
+  phraseBounds.w = WORLD_W;
+  phraseBounds.h = WORLD_H;
+  for(let i=pts.length-1; i>0; i--){ const j = Math.floor(Math.random()*(i+1)); const t = pts[i]; pts[i]=pts[j]; pts[j]=t; }
+  return pts.map(p => ({ x: ((p.x - cxPx)/tW) * WORLD_W, y: -((p.y - cyPx)/tH) * WORLD_H, z: 0 }));
+}
+
+function buildFillerParticles(){
+  const count = isPremium ? 25000 : 10000;
+  const positions = new Float32Array(count*3);
+  const targets = new Float32Array(count*3);
+  const colors = new Float32Array(count*3);
+  const randoms = new Float32Array(count*3);
+  const actives = new Float32Array(count);
+  for(let i=0;i<count;i++){
+    const r = 6 + Math.random()*22;
+    const theta = Math.random()*Math.PI*2;
+    const phi = Math.acos(2*Math.random()-1);
+    positions[i*3] = r*Math.sin(phi)*Math.cos(theta);
+    positions[i*3+1] = r*Math.sin(phi)*Math.sin(theta) + 2;
+    positions[i*3+2] = r*Math.cos(phi);
+    targets[i*3] = positions[i*3]; targets[i*3+1] = positions[i*3+1]; targets[i*3+2] = positions[i*3+2];
+    const c = palColors[Math.floor(Math.random()*palColors.length)];
+    colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+    randoms[i*3] = Math.random(); randoms[i*3+1] = Math.random(); randoms[i*3+2] = Math.random();
+    actives[i] = 1.0;
+  }
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  geom.setAttribute("targetPosition", new THREE.Float32BufferAttribute(targets, 3));
+  geom.setAttribute("aColor", new THREE.Float32BufferAttribute(colors, 3));
+  geom.setAttribute("aRand", new THREE.Float32BufferAttribute(randoms, 3));
+  geom.setAttribute("aActive", new THREE.Float32BufferAttribute(actives, 1));
+  const mat = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uMorph: { value: 0 } },
+    vertexShader: FILLER_VS, fragmentShader: FILLER_FS,
+    transparent: true, depthWrite: false, depthTest: false, blending: THREE.NormalBlending
+  });
+  fillerMesh = new THREE.Points(geom, mat);
+  scene.add(fillerMesh);
+}
+
+function buildSparkles(){
+  const count = isPremium ? 2200 : 800;
+  const positions = new Float32Array(count*3);
+  const aPositions = new Float32Array(count*3);
+  const colors = new Float32Array(count*3);
+  const randoms = new Float32Array(count*3);
+  const sizes = new Float32Array(count);
+  for(let i=0;i<count;i++){
+    positions[i*3] = (Math.random()-0.5)*100;
+    positions[i*3+1] = (Math.random()-0.5)*100;
+    positions[i*3+2] = (Math.random()-0.5)*100;
+    aPositions[i*3] = (Math.random()-0.5)*40;
+    aPositions[i*3+1] = (Math.random()-0.5)*25;
+    aPositions[i*3+2] = (Math.random()-0.5)*8;
+    const c = palColors[Math.floor(Math.random()*palColors.length)].clone();
+    c.lerp(new THREE.Color(1,1,1), Math.random()*0.4);
+    colors[i*3] = c.r; colors[i*3+1] = c.g; colors[i*3+2] = c.b;
+    randoms[i*3] = Math.random(); randoms[i*3+1] = Math.random(); randoms[i*3+2] = Math.random();
+    const r = Math.random();
+    sizes[i] = r < 0.85 ? (0.6 + Math.random()*0.9) : (1.6 + Math.random()*1.4);
+  }
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  geom.setAttribute("aPos", new THREE.Float32BufferAttribute(aPositions, 3));
+  geom.setAttribute("aColor", new THREE.Float32BufferAttribute(colors, 3));
+  geom.setAttribute("aRand", new THREE.Float32BufferAttribute(randoms, 3));
+  geom.setAttribute("aSize", new THREE.Float32BufferAttribute(sizes, 1));
+  const mat = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uMorph: { value: 0 } },
+    vertexShader: SPARKLE_VS, fragmentShader: SPARKLE_FS,
+    transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending
+  });
+  sparkleMesh = new THREE.Points(geom, mat);
+  scene.add(sparkleMesh);
+}
+
+function buildVisualization(){
+  if(nodesMesh){ scene.remove(nodesMesh); nodesMesh.geometry.dispose(); nodesMesh.material.dispose(); }
+  if(connectionsMesh){ scene.remove(connectionsMesh); connectionsMesh.geometry.dispose(); connectionsMesh.material.dispose(); }
+  if(fillerMesh){ scene.remove(fillerMesh); fillerMesh.geometry.dispose(); fillerMesh.material.dispose(); }
+  if(sparkleMesh){ scene.remove(sparkleMesh); sparkleMesh.geometry.dispose(); sparkleMesh.material.dispose(); }
+  const { nodes } = generateNetwork(1.0);
+  const nPos=[], nTypes=[], nSizes=[], nColors=[], nDist=[], nTarget=[];
+  nodes.forEach((n) => {
+    nPos.push(n.position.x, n.position.y, n.position.z);
+    nTypes.push(n.type); nSizes.push(n.size); nDist.push(n.distanceFromRoot);
+    const ci = Math.min(n.level, palColors.length-1);
+    const c = palColors[ci].clone();
+    c.offsetHSL(THREE.MathUtils.randFloatSpread(0.03), THREE.MathUtils.randFloatSpread(0.08), THREE.MathUtils.randFloatSpread(0.08));
+    nColors.push(c.r, c.g, c.b);
+    nTarget.push(n.position.x, n.position.y, n.position.z);
+  });
+  const nodeGeom = new THREE.BufferGeometry();
+  nodeGeom.setAttribute("position", new THREE.Float32BufferAttribute(nPos, 3));
+  nodeGeom.setAttribute("nodeType", new THREE.Float32BufferAttribute(nTypes, 1));
+  nodeGeom.setAttribute("nodeSize", new THREE.Float32BufferAttribute(nSizes, 1));
+  nodeGeom.setAttribute("nodeColor", new THREE.Float32BufferAttribute(nColors, 3));
+  nodeGeom.setAttribute("distanceFromRoot", new THREE.Float32BufferAttribute(nDist, 1));
+  nodeGeom.setAttribute("targetPosition", new THREE.Float32BufferAttribute(nTarget, 3));
+  nodesMesh = new THREE.Points(nodeGeom, new THREE.ShaderMaterial({
+    uniforms: THREE.UniformsUtils.clone(pulseUniforms),
+    vertexShader: NODE_VS, fragmentShader: NODE_FS,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  }));
+  scene.add(nodesMesh);
+  const cPos=[], cCol=[], cStr=[], cStart=[], cEnd=[], cPath=[];
+  const processed = new Set();
+  let pid = 0;
+  nodes.forEach((n, ni) => {
+    n.connections.forEach(c => {
+      const ci = nodes.indexOf(c.node);
+      if(ci === -1) return;
+      const key = [Math.min(ni,ci), Math.max(ni,ci)].join("-");
+      if(processed.has(key)) return;
+      processed.add(key);
+      for(let i=0;i<20;i++){
+        const t = i/19;
+        cPos.push(t,0,0);
+        cStart.push(n.position.x, n.position.y, n.position.z);
+        cEnd.push(c.node.position.x, c.node.position.y, c.node.position.z);
+        cPath.push(pid); cStr.push(c.strength);
+        const avgLvl = Math.min(Math.floor((n.level + c.node.level)/2), palColors.length-1);
+        const cc = palColors[avgLvl].clone();
+        cc.offsetHSL(THREE.MathUtils.randFloatSpread(0.03), THREE.MathUtils.randFloatSpread(0.08), THREE.MathUtils.randFloatSpread(0.08));
+        cCol.push(cc.r, cc.g, cc.b);
+      }
+      pid++;
+    });
+  });
+  const connGeom = new THREE.BufferGeometry();
+  connGeom.setAttribute("position", new THREE.Float32BufferAttribute(cPos, 3));
+  connGeom.setAttribute("startPoint", new THREE.Float32BufferAttribute(cStart, 3));
+  connGeom.setAttribute("endPoint", new THREE.Float32BufferAttribute(cEnd, 3));
+  connGeom.setAttribute("connectionStrength", new THREE.Float32BufferAttribute(cStr, 1));
+  connGeom.setAttribute("connectionColor", new THREE.Float32BufferAttribute(cCol, 3));
+  connGeom.setAttribute("pathIndex", new THREE.Float32BufferAttribute(cPath, 1));
+  connectionsMesh = new THREE.LineSegments(connGeom, new THREE.ShaderMaterial({
+    uniforms: THREE.UniformsUtils.clone(pulseUniforms),
+    vertexShader: CONN_VS, fragmentShader: CONN_FS,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  }));
+  scene.add(connectionsMesh);
+  palColors.slice(0,3).forEach((color, i) => {
+    nodesMesh.material.uniforms.uPulseColors.value[i].copy(color);
+    connectionsMesh.material.uniforms.uPulseColors.value[i].copy(color);
+  });
+  buildFillerParticles();
+  buildSparkles();
+  updatePhraseTargets(CONFIG.phrases[0]);
+}
+
+function updatePhraseTargets(phrase){
+  const pts = bakePhrase(phrase);
+  const total = pts.length;
+  if(!total) return;
+  if(nodesMesh){
+    const a = nodesMesh.geometry.attributes.targetPosition;
+    const arr = a.array;
+    for(let i=0;i<a.count;i++){
+      const p = pts[i%total];
+      arr[i*3] = p.x + (Math.random()-0.5)*0.05;
+      arr[i*3+1] = p.y + (Math.random()-0.5)*0.05;
+      arr[i*3+2] = (Math.random()-0.5)*0.12;
+    }
+    a.needsUpdate = true;
+  }
+  if(fillerMesh){
+    const a = fillerMesh.geometry.attributes.targetPosition;
+    const act = fillerMesh.geometry.attributes.aActive;
+    const arr = a.array, actArr = act.array;
+    const toP = Math.min(9000, Math.floor(a.count * 0.40));
+    for(let i=0;i<a.count;i++){
+      if(i < toP){
+        const p = pts[i%total];
+        arr[i*3] = p.x + (Math.random()-0.5)*0.05;
+        arr[i*3+1] = p.y + (Math.random()-0.5)*0.05;
+        arr[i*3+2] = (Math.random()-0.5)*0.12;
+        actArr[i] = 1.0;
+      } else {
+        arr[i*3] = (Math.random()-0.5)*100;
+        arr[i*3+1] = (Math.random()-0.5)*100;
+        arr[i*3+2] = (Math.random()-0.5)*60;
+        actArr[i] = 0.0;
+      }
+    }
+    a.needsUpdate = true; act.needsUpdate = true;
+  }
+  if(sparkleMesh){
+    const a = sparkleMesh.geometry.attributes.aPos;
+    const arr = a.array;
+    for(let i=0;i<a.count;i++){
+      arr[i*3] = (Math.random()-0.5) * (phraseBounds.w * 2);
+      arr[i*3+1] = (Math.random()-0.5) * (phraseBounds.h * 2);
+      arr[i*3+2] = (Math.random()-0.5)*6;
+    }
+    a.needsUpdate = true;
+  }
+}
+
+let phraseIdx = 0;
+let morphValue = 0;
+let morphStart = 0;
+let currentState = "network";
+let started = false;
+const frontCamPos = new THREE.Vector3(0, 0, 40);
+const originTarget = new THREE.Vector3(0, 0, 0);
+const clock = new THREE.Clock();
+
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+const interactionPlane = new THREE.Plane(new THREE.Vector3(0,0,1), 0);
+const interactionPoint = new THREE.Vector3();
+let lastPulseIdx = 0;
+
+function triggerPulse(cx, cy){
+  pointer.x = (cx / window.innerWidth) * 2 - 1;
+  pointer.y = -(cy / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(pointer, camera);
+  interactionPlane.normal.copy(camera.position).normalize();
+  interactionPlane.constant = -interactionPlane.normal.dot(camera.position) + camera.position.length()*0.5;
+  if(raycaster.ray.intersectPlane(interactionPlane, interactionPoint)){
+    const t = clock.getElapsedTime();
+    if(nodesMesh && connectionsMesh){
+      lastPulseIdx = (lastPulseIdx + 1) % 3;
+      nodesMesh.material.uniforms.uPulsePositions.value[lastPulseIdx].copy(interactionPoint);
+      nodesMesh.material.uniforms.uPulseTimes.value[lastPulseIdx] = t;
+      connectionsMesh.material.uniforms.uPulsePositions.value[lastPulseIdx].copy(interactionPoint);
+      connectionsMesh.material.uniforms.uPulseTimes.value[lastPulseIdx] = t;
+      const rc = palColors[Math.floor(Math.random()*palColors.length)];
+      nodesMesh.material.uniforms.uPulseColors.value[lastPulseIdx].copy(rc);
+      connectionsMesh.material.uniforms.uPulseColors.value[lastPulseIdx].copy(rc);
+    }
+  }
+}
+
+function computeNeededDistance(){
+  const fovRad = camera.fov * Math.PI / 180;
+  const aspect = Math.max(0.35, camera.aspect);
+  const viewH = 2 * Math.tan(fovRad / 2);
+  const dH = (phraseBounds.h * 1.25) / viewH;
+  const dW = (phraseBounds.w * 1.25) / (viewH * aspect);
+  return Math.max(dH, dW);
+}
+
+const magicBtn = document.getElementById("magic-btn");
+
+function triggerPhrase(){
+  if(currentState !== "network") return;
+
+  // Detenerse cuando ya se mostraron todas las frases
+  if(phraseIdx >= CONFIG.phrases.length) return;
+
+  currentState = "toPhrase";
+  morphStart = clock.getElapsedTime();
+
+  // Mostrar la siguiente frase en orden
+  updatePhraseTargets(CONFIG.phrases[phraseIdx]);
+  phraseIdx++;
+
+  const needed = computeNeededDistance();
+  frontCamPos.set(0, 0, needed * 1.05);
+
+  controls.autoRotate = false;
+  magicBtn.classList.add("active");
+  magicBtn.querySelector(".mb-text").textContent = "Volver a la galaxia";
+  magicBtn.querySelector(".mb-icon").textContent = "🌻";
+}
+
+
+function releasePhrase(){
+  if(currentState !== "phrase" && currentState !== "toPhrase") return;
+
+  currentState = "toNetwork";
+  morphStart = clock.getElapsedTime();
+  controls.autoRotate = true;
+  magicBtn.classList.remove("active");
+  magicBtn.querySelector(".mb-text").textContent = "Haz click aquí y haz magia";
+  magicBtn.querySelector(".mb-icon").textContent = "🪄";
+}
+
+magicBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if(currentState === "network") triggerPhrase();
+  else releasePhrase();
+});
+
+function handleTap(cx, cy){
+  if(!started) return;
+  if(currentState === "phrase" || currentState === "toPhrase") triggerPulse(cx, cy);
+}
+window.addEventListener("click", (e) => {
+  if(!started) return;
+  if(e.target.closest("#music-btn") || e.target.closest("#music-panel") ||
+     e.target.closest(".controls") || e.target.closest(".watermark") ||
+     e.target.closest("#magic-btn") || e.target.closest("#premium-modal") ||
+     e.target.closest("#intro-overlay")) return;
+  handleTap(e.clientX, e.clientY);
+});
+window.addEventListener("touchstart", (e) => {
+  if(!started) return;
+  const t = e.touches[0]; if(!t) return;
+  const el = document.elementFromPoint(t.clientX, t.clientY);
+  if(el && (el.closest("#music-btn") || el.closest("#music-panel") || el.closest(".controls") ||
+            el.closest(".watermark") || el.closest("#magic-btn") || el.closest("#premium-modal") ||
+            el.closest("#intro-overlay"))) return;
+  handleTap(t.clientX, t.clientY);
+}, { passive: true });
+
+window.addEventListener("resize", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  composer.setSize(window.innerWidth, window.innerHeight);
+  bloomPass.resolution.set(window.innerWidth, window.innerHeight);
+});
+
+const introOverlay = document.getElementById("intro-overlay");
+const introBtn = document.getElementById("intro-btn");
+let zoomStartTime = 0;
+let zoomDone = false;
+introBtn.addEventListener("click", () => {
+  if(started) return;
+  started = true;
+  introOverlay.classList.add("zooming");
+  setTimeout(() => { introOverlay.classList.add("hidden"); magicBtn.classList.add("shown"); }, 1400);
+  audio.play().then(() => { mpPlay.textContent = "⏸︎"; musicBtn.classList.add("playing"); musicBtn.textContent = "🎶"; }).catch(() => {});
+});
+
+function animate(){
+  requestAnimationFrame(animate);
+  const t = clock.getElapsedTime();
+  if(started && !zoomDone){
+    if(zoomStartTime === 0) zoomStartTime = t;
+    const p = Math.min(1, (t - zoomStartTime) / 2.4);
+    const e = 1 - Math.pow(1 - p, 3);
+    camera.position.z = THREE.MathUtils.lerp(140, 28, e);
+    camera.position.y = THREE.MathUtils.lerp(10, 8, e);
+    if(p >= 1){ zoomDone = true; }
+  }
+  if(currentState === "toPhrase" || currentState === "toNetwork"){
+    const p = Math.min(1, (t - morphStart) / 1.6);
+    const e = p < 0.5 ? 4*p*p*p : 1 - Math.pow(-2*p+2, 3)/2;
+    morphValue = currentState === "toPhrase" ? e : 1 - e;
+    if(p >= 1){
+      if(currentState === "toPhrase") currentState = "phrase";
+      else { currentState = "network"; morphValue = 0; }
+    }
+  }
+  if(currentState === "toPhrase"){
+    camera.position.lerp(frontCamPos, 0.08);
+    controls.target.lerp(originTarget, 0.12);
+  }
+  const targetBloom = BASE_BLOOM + (PHRASE_BLOOM - BASE_BLOOM) * morphValue;
+  bloomPass.strength += (targetBloom - bloomPass.strength) * 0.08;
+  if(nodesMesh){
+    nodesMesh.material.uniforms.uTime.value = t;
+    nodesMesh.material.uniforms.uMorph.value = morphValue;
+    nodesMesh.rotation.y = Math.sin(t*0.04)*0.05*(1-morphValue);
+  }
+  if(connectionsMesh){
+    connectionsMesh.material.uniforms.uTime.value = t;
+    connectionsMesh.material.uniforms.uMorph.value = morphValue;
+    connectionsMesh.rotation.y = Math.sin(t*0.04)*0.05*(1-morphValue);
+  }
+  if(fillerMesh){
+    fillerMesh.material.uniforms.uTime.value = t;
+    fillerMesh.material.uniforms.uMorph.value = morphValue;
+    fillerMesh.rotation.y = Math.sin(t*0.04)*0.05*(1-morphValue);
+  }
+  if(sparkleMesh){
+    sparkleMesh.material.uniforms.uTime.value = t;
+    sparkleMesh.material.uniforms.uMorph.value = morphValue;
+    sparkleMesh.rotation.y = Math.sin(t*0.04)*0.05*(1-morphValue);
+  }
+  sunflowerGroup.children.forEach(s => {
+    s.position.y = s.userData.baseY + Math.sin(t * s.userData.speed + s.userData.phase) * 1.2;
+  });
+  sunflowerGroup.rotation.y += 0.0008;
+  starField.rotation.y += 0.0002;
+  starField.material.uniforms.uTime.value = t;
+  controls.update();
+  composer.render();
+}
+
+buildVisualization();
+animate();
+</script>
+</body>
+</html>
