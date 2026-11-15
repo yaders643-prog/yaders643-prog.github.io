@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Título -->
+    <title>Gleysis</title>
+
+    <!-- Imagen del Favicon -->
+    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/dd11ffb546174c34009913cb39ae3c0f1df6c1d0/yader..jpg">
+    
+   
+    <!-- Autor -->
+    <meta name="author" content="Yader Sanchez">
+    <meta name="copyright" content="Todos los derechos reservados Yader Sanchez">
+
+    <!-- Open Graph (Facebook / WhatsApp) -->
+    <meta property="og:title" content="Gleysis te quiero💞.">
+
+    <!-- Mensaje en la descripción -->
+<meta property="og:description" content="Entre tantas casualidades, apareciste tú para darle un brillo especial a mis días. Hay algo en ti que simplemente me encanta. 🌷❤️✨">
+        
+    <!-- Imagen arriba en la descripcion -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/amor6.jpg">
+    
+    <!-- Links del archivo/Nombre-->
+    <meta property="og:url" content="https://yaders643-prog.github.io/Libreat...html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image"> 
+<style>
+
+body {
+    background-color: #fce4ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', cursive;
+    overflow: hidden;
+}
+
+
+.book{
+display:flex;
+background:white;
+padding:10px;
+border-radius:10px;
+box-shadow:0 10px 40px rgba(0,0,0,0.15);
+border:8px solid #d1c4e9;
+width:710px;
+min-height:70px;
+}
+
+.page{
+width:50%;
+padding:25px;
+box-sizing:border-box;
+display:flex;
+flex-direction:column;
+}
+
+.page:first-child{
+border-right:4px solid #d1c4e9;
+}
+
+h2{
+    color:#7b1fa2;
+    text-align:center;
+    margin-top:-15px;
+    margin-bottom:15px;
+    position:relative;
+    top:-10px;
+}
+
+.typewriter-text{
+line-height:1.8;
+color:#4a148c;
+font-size:1.05rem;
+font-family: 'Georgia', serif;
+    font-size: 0.90rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;}
+
+#lapiz{
+position:fixed;
+font-size:3rem;
+z-index:1000;
+pointer-events:none;
+display:none;
+transform:rotate(-20deg);
+}
+
+.question-box{
+margin-top:auto;
+background:#f3e5f5;
+padding:15px;
+border-radius:12px;
+opacity:0;
+position:relative;
+height:100px;
+text-align:center;
+}
+
+#btn-si, #btn-no {
+    min-width: 50px;
+    padding: 8px 14px;
+    border: 2px solid;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: white;
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    transition: all 0.3s ease;
+}
+
+#btn-si {
+    background: #ba68c8;
+    border-color: #8e24aa;
+    left: 20%;
+}
+
+#btn-no {
+    background: #ef9a9a;
+    border-color: #e57373;
+    right: 20%;
+}
+
+#btn-si:hover {
+    background: #8e24aa;
+    transform: translateY(-50%) scale(1.05);
+}
+
+#btn-no:hover {
+    background: #e57373;
+}
+
+#mensaje-final {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 240px;
+    max-width: 85%;
+    padding: 10px;
+    border: 4px solid #7b1fa2;
+    border-radius: 18px;
+    text-align: center;
+    z-index: 100;
+    box-sizing: border-box;
+    box-shadow: 0 0 18px rgba(123, 31, 162, 0.35);
+}
+  
+  
+ .imagen-dibujada {
+    width: 100px;
+    height: 100px;
+    margin: 15px auto;
+    border: 3px solid #7b1fa2;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.imagen-dibujada img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.imagen-dibujada img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.imagen-dibujada.mostrar{
+    opacity:1;
+    transform:scale(1);
+}
+  #lapiz {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    z-index: 1000;
+    pointer-events: none;
+    display: none;
+}
+
+#lapiz img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: rotate(-10deg);
+}
+  
+  .imagen-dibujada {
+    width: 100px;
+    height: 100px;
+    margin: 1ppx auto;
+    opacity: 1;
+    transform: scale(1);
+    overflow: hidden;
+    border-radius: 15px;
+    border: 4px solid #d1c4e9;
+}
+
+.imagen-dibujada img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+  
+ .controls {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 2000;
+}
+
+#btnFullscreen {
+    width: 38px;
+    height: 38px;
+    background: #7b1fa2;
+    color: white;
+    border: 2px solid #d1c4e9;
+    border-radius: 6px;
+    font-size: 23px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+#btnFullscreen:hover {
+    background: #9c27b0;
+} 
+  
+  /* SUBIR LOS SUBTÍTULOS */
+h2 {
+    position: relative;
+    top: -20px;
+    margin-bottom: 10px;
+}
+
+/* SUBIR LOS TEXTOS */
+.typewriter-text {
+    position: relative;
+    top: -15px;
+}
+  /* IMAGEN DESPUÉS DEL PRIMER TEXTO */
+.imagen-entre-textos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px auto;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.imagen-entre-textos img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border: 3px solid #d1c4e9;
+    border-radius: 12px;
+    position: relative;
+    top: -2px;
+}
+
+/* PALABRAS DEBAJO DE LA IMAGEN */
+#texto-imagen {
+    width: 100%;
+    margin-top: 12px;
+    color: #7b1fa2;
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 1.5;
+    top: 0;
+}
+
+.imagen-entre-textos.mostrar {
+    opacity: 1;
+    transform: scale(1);
+}
+    /* PANTALLA DE BIENVENIDA */
+
+#pantalla-inicio {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #fce4ec, #e1bee7);
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.inicio-contenido {
+    padding: 25px;
+    animation: aparecerInicio 2s ease;
+}
+
+.corazon-inicio {
+    font-size: 65px;
+    animation: latido 1.5s infinite;
+}
+
+.inicio-contenido h1 {
+    color: #7b1fa2;
+    font-family: Georgia, serif;
+    font-size: 2rem;
+}
+
+.inicio-contenido p {
+    color: #6a1b9a;
+    font-family: Georgia, serif;
+    font-size: 1.1rem;
+}
+
+.tocar-inicio {
+    margin-top: 35px;
+    padding: 13px 20px;
+    border: 2px solid #ba68c8;
+    border-radius: 12px;
+    color: #7b1fa2;
+    font-weight: bold;
+    animation: brillo 2s infinite;
+}
+
+.decoracion-inicio {
+    margin-top: 25px;
+    font-size: 25px;
+}
+
+@keyframes latido {
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes brillo {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes aparecerInicio {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#pantalla-inicio.ocultar {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+    
+/* CORAZONES QUE APARECEN AL TOCAR LA PANTALLA */
+.corazon-flotante {
+    position: fixed;
+    z-index: 5000;
+    pointer-events: none;
+    font-size: 8px;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    animation: dispersarCorazon 0.5s ease-out forwards;
+}
+
+@keyframes dispersarCorazon {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.5) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(
+            var(--dx),
+            var(--dy)
+        ) scale(1.4) rotate(var(--rot));
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(
+            calc(var(--dx) * 1.5),
+            calc(var(--dy) * 1.5)
+        ) scale(0.5) rotate(var(--rot));
+    }
+}
+
+   
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.book {
+    max-height: 90dvh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+ 
+</style>
+</head>
+
+<body onclick="playMusica()">
+
+    <div id="pantalla-inicio" onclick="iniciarExperiencia()">
+
+    <div class="inicio-contenido">
+
+        <div class="corazon-inicio">💗</div>
+
+        <h1>Para mi ti Gley</h1>
+
+        <p>He preparado algo especial para ti... Gira el telefono</p>
+
+        <div class="tocar-inicio">
+            Toca la pantalla para comenzar ✨
+        </div>
+
+        <div class="decoracion-inicio">🌹 🥺 💖</div>
+
+    </div>
+
+</div>
+  <div class="controls">
+    <button id="btnFullscreen" title="Pantalla completa" type="button">⛶</button>
+</div>
+  
+<audio id="musica" loop>
+<source src="https://github.com/yaders643-prog/M-sica-amor./raw/cbd68bf4d2c19bb0267dd58921a526726cb23185/peque%C3%B1a.mp3">
+</audio>
+
+<div id="lapiz">
+    <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/lapiz.png" alt="Lápiz escribiendo">
+</div>
+<div class="book">
+
+<div class="page">
+    <h2>✨Me encatas✨</h2>
+
+    <div id="text1" class="typewriter-text"></div>
+
+    <!-- AQUÍ VA LA IMAGEN Y LAS PALABRAS -->
+    <div id="imagen-texto1" class="imagen-entre-textos">
+        <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/migo.gif" alt="Para mi niña">
+        <div id="texto-imagen" class="typewriter-text"></div>
+    </div>
+
+</div>
+
+  
+<div class="page">
+<h2>✨Te quiero✨</h2>
+<div id="text2" class="typewriter-text"></div>
+
+<div id="pregunta" class="question-box">
+<p>¿Te gustaría caminar a mi lado y construir algo bonito juntos?</p>
+<button id="btn-si" onclick="mostrarFinal()">Sí</button>
+<button id="btn-no" onmouseover="moverBoton()">No</button>
+</div>
+</div>
+
+</div>
+
+<div id="mensaje-final">
+    <h3>Amor, prometo cuidarte y hacerte sonreír siempre 💝</h3>
+
+    <div class="imagen-dibujada mostrar">
+        <img
+            src="https://i.pinimg.com/originals/6c/bf/28/6cbf28264b871dac7f1eac409ea03bfd.gif"
+            alt="Para mi niña">
+    </div>
+
+    <br>
+    <button onclick="document.getElementById('mensaje-final').style.display='none'">
+    Cerrar
+</button>
+  <script>
+
+  
+const frases = {
+    t1: `🌷
+
+Me gustas más de lo que imaginas. Hay algo en ti que hace que mis días sean más bonitos y que mi sonrisa tenga un motivo especial. 💗✨`,
+
+    imagen: `Eres mi bonita casualidad. ❤️`,
+
+    t2: `💭
+
+❤️Aquí me quedo… con el corazón abierto, el alma tranquila y el amor puesto en ti, sin fecha de vencimiento ♾️🐢`
+};
+
+const lapiz=document.getElementById("lapiz");
+const VELOCIDAD=160;
+
+function escribir(id,texto,cb){
+let i=0;
+const el=document.getElementById(id);
+lapiz.style.display="block";
+const int=setInterval(()=>{
+if(i<texto.length){
+const s=document.createElement("span");
+s.textContent=texto.charAt(i);
+el.appendChild(s);
+const r=s.getBoundingClientRect();
+lapiz.style.left=r.left+"px";
+lapiz.style.top=(r.top-55)+"px";
+i++;
+}else{
+clearInterval(int);
+lapiz.style.display="none";
+if(cb)cb();
+}
+},VELOCIDAD);
+}
+
+let experienciaIniciada = false;
+
+function iniciarExperiencia() {
+
+    if (experienciaIniciada) return;
+
+    experienciaIniciada = true;
+
+    const pantalla = document.getElementById("pantalla-inicio");
+    const musica = document.getElementById("musica");
+
+    pantalla.classList.add("ocultar");
+
+    musica.volume = 0.6;
+
+    musica.play().catch(error => {
+        console.log("No se pudo iniciar la música:", error);
+    });
+
+    setTimeout(() => {
+
+        escribir("text1", frases.t1, () => {
+
+            const imagen = document.getElementById("imagen-texto1");
+
+            imagen.classList.add("mostrar");
+
+            setTimeout(() => {
+
+                escribir("texto-imagen", frases.imagen, () => {
+
+                    setTimeout(() => {
+
+                        escribir("text2", frases.t2, () => {
+                            document.getElementById("pregunta").style.opacity = 1;
+                        });
+
+                    }, 1000);
+
+                });
+
+            }, 1200);
+
+        });
+
+    }, 800);
+}
+
+function playMusica(){
+const m=document.getElementById("musica");
+if(m.paused) m.play();
+}
+
+function moverBoton(){
+
+    const b = document.getElementById("btn-no");
+    const c = document.querySelector(".question-box");
+
+    const margen = 10;
+
+    const maxX = c.clientWidth - b.offsetWidth - margen;
+    const maxY = c.clientHeight - b.offsetHeight - margen;
+
+    const x = margen + Math.random() * Math.max(0, maxX - margen);
+    const y = margen + Math.random() * Math.max(0, maxY - margen);
+
+    b.style.left = x + "px";
+    b.style.top = y + "px";
+    b.style.right = "auto";
+    b.style.transform = "none";
+}
+
+function mostrarFinal(){
+document.getElementById("mensaje-final").style.display="block";
+}
+  
+  const btnFullscreen = document.getElementById("btnFullscreen");
+
+btnFullscreen.addEventListener("click", async () => {
+    try {
+        if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+            btnFullscreen.textContent = "⛶";
+        } else {
+            await document.exitFullscreen();
+            btnFullscreen.textContent = "⛶";
+        }
+    } catch (error) {
+        console.log("No se pudo activar pantalla completa:", error);
+    }
+});
+
+document.addEventListener("fullscreenchange", () => {
+    btnFullscreen.textContent = "⛶";
+});
+    
+    
+/* CORAZONES AL PRESIONAR LA PANTALLA */
+
+document.addEventListener("click", function(e) {
+
+    const cantidad = 9;
+
+    for (let i = 0; i < cantidad; i++) {
+
+        const corazon = document.createElement("div");
+
+        corazon.className = "corazon-flotante";
+
+        const corazones = ["💗", "💖", "💕", "❤️", "🌹", "💘"];
+
+        corazon.textContent =
+            corazones[Math.floor(Math.random() * corazones.length)];
+
+        corazon.style.left = e.clientX + "px";
+        corazon.style.top = e.clientY + "px";
+
+        const angulo = Math.random() * Math.PI * 2;
+        const distancia = 50 + Math.random() * 110;
+
+        const dx = Math.cos(angulo) * distancia;
+        const dy = Math.sin(angulo) * distancia;
+
+        corazon.style.setProperty("--dx", dx + "px");
+        corazon.style.setProperty("--dy", dy + "px");
+        corazon.style.setProperty(
+            "--rot",
+            (Math.random() * 90 - 45) + "deg"
+        );
+
+        corazon.style.fontSize =
+            (18 + Math.random() * 18) + "px";
+
+        document.body.appendChild(corazon);
+
+        setTimeout(() => {
+            corazon.remove();
+        }, 1600);
+    }
+
+});
+
+</script>
+
+</body>
+</html>
