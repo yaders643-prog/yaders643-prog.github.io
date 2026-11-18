@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+<!-- Título -->
+<title>Gleysis - Yader 🌼</title>
+
+<!-- Imagen del Favicon -->
+<link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/c0df1da7a8a8a71f40d3e848aa0999c67bd12852/1000033027.jpg">
+
+<!-- Autor -->
+<meta name="author" content="Yader Sanchez">
+<meta name="copyright" content="Todos los derechos reservados Yader Sanchez">
+
+<!-- Open Graph (Facebook / WhatsApp) -->
+<meta property="og:title" content="🌼 Gerberas para ti, Gleysis 💐">
+
+<!-- Mensaje en la descripción -->
+<meta property="og:description" content="Entre tantas gerberas, hay una que destaca por su encanto: tú. 🌼 Así como estas flores llenan de color cada jardín, tu presencia ilumina mis días con una dulzura difícil de describir. Si pudiera regalarte un jardín entero, elegiría cada flor pensando en ti. 💗✨">
+
+<!-- Imagen arriba en la descripción -->
+<meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/ecda2113e94dbf713b44bd1582528ab1381bdd73/images%20(1).jpeg">
+
+<!-- Links del archivo/Nombre -->
+<meta property="og:url" content="https://yaders643-prog.github.io/Galaxia.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F7EFE4;
+    --ivory-deep:#EFE2CE;
+    --ink:#2B2420;
+    --wine:#7A2E43;
+    --wine-deep:#4E1B2B;
+    --coral:#E1657A;
+    --gold:#C79A44;
+    --leaf:#5B7553;
+    --leaf-light:#8AA378;
+    --tint-coral:#F8E4E7;
+    --tint-gold:#F9EFDA;
+    --tint-leaf:#EBF1E3;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Karla',sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    padding-bottom:84px;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  .bg-texture{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    opacity:.09;
+    pointer-events:none;
+  }
+
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 22px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    height:86vh;
+    min-height:460px;
+    max-height:760px;
+    overflow:hidden;
+  }
+  .hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(20,14,12,.82) 0%, rgba(20,14,12,.35) 42%, rgba(20,14,12,0) 68%);
+    z-index:1;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1px solid rgba(247,239,228,.5);
+    z-index:2;
+    pointer-events:none;
+  }
+  .hero-text{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    padding:0 22px 40px;
+    color:var(--ivory);
+    z-index:4;
+  }
+  .hero-eyebrow{
+    font-family:'Karla',sans-serif;
+    font-weight:500;
+    font-size:.82rem;
+    letter-spacing:.03em;
+    color:var(--ivory-deep);
+    opacity:.85;
+    margin:0 0 12px;
+  }
+  .hero-emblem{
+    width:44px;
+    height:auto;
+    color:var(--gold);
+    opacity:.95;
+    margin:0 0 14px;
+    display:block;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(2.4rem,9vw,3.4rem);
+    line-height:1.05;
+    margin:0 0 14px;
+    max-width:11ch;
+  }
+  .hero p{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:1.05rem;
+    max-width:32ch;
+    margin:0;
+    color:var(--ivory-deep);
+  }
+
+  .petal{
+    position:absolute;
+    top:-40px;
+    width:14px;
+    height:18px;
+    background:var(--coral);
+    border-radius:0 60% 0 60%;
+    opacity:0;
+    animation:drift 4.5s ease-in forwards;
+    z-index:3;
+  }
+  @keyframes drift{
+    0%{opacity:0; transform:translateY(0) rotate(0deg);}
+    8%{opacity:.85;}
+    100%{opacity:0; transform:translateY(90vh) rotate(200deg);}
+  }
+
+  /* ---------- DIVIDER (sprig ornament) ---------- */
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    padding:0 0 30px;
+    color:var(--leaf);
+  }
+  .divider svg{width:36px;height:auto;}
+  .divider svg.mirror{transform:scaleX(-1);}
+  .divider-dot{
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--gold);
+    flex:none;
+  }
+
+  /* ---------- BLOOM BANDS ---------- */
+  .bloom-band{
+    border-radius:50% 50% 0 0/60px 60px 0 0;
+    padding:78px 0 52px;
+  }
+  .tint-coral{background:var(--tint-coral);}
+  .tint-gold{background:var(--tint-gold);}
+  .tint-leaf{background:var(--tint-leaf);}
+
+  .tint-coral .bloom-text::before{color:var(--coral);}
+  .tint-gold .bloom-text::before{color:var(--gold);}
+  .tint-leaf .bloom-text::before{color:var(--leaf);}
+
+  .bloom{
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+  }
+  .bloom-media{
+    position:relative;
+  }
+  .bloom-media-inner{
+    border-radius:4px 22px 4px 22px;
+    overflow:hidden;
+    box-shadow:
+      0 14px 30px -18px rgba(43,36,32,.55),
+      0 0 0 6px var(--ivory),
+      0 0 0 7px var(--gold);
+  }
+  .bloom-media-inner img{
+    width:100%;
+    display:block;
+    transition:transform .5s ease;
+  }
+  .bloom-media:hover .bloom-media-inner img{
+    transform:scale(1.035);
+  }
+  .corner-sprig{
+    position:absolute;
+    bottom:-15px;
+    left:-11px;
+    width:42px;
+    height:auto;
+    color:var(--ivory);
+    z-index:2;
+    filter:drop-shadow(0 2px 3px rgba(20,14,12,.35));
+    pointer-events:none;
+  }
+  .bloom-text{
+    order:-1;
+    position:relative;
+    padding-top:.4rem;
+  }
+  .bloom.img-first .bloom-text{
+    order:1;
+    padding-top:0;
+  }
+  .bloom-text::before{
+    content:"\201C";
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:3.6rem;
+    line-height:1;
+    position:absolute;
+    top:-1.7rem;
+    left:-4px;
+    opacity:.32;
+    pointer-events:none;
+  }
+  .bloom-text blockquote{
+    margin:0;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.28rem;
+    line-height:1.42;
+    color:var(--wine-deep);
+    max-width:30ch;
+  }
+  .bloom-text .aside{
+    margin:12px 0 0;
+    font-family:'Karla',sans-serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:.93rem;
+    line-height:1.5;
+    color:var(--wine);
+    opacity:.82;
+    max-width:32ch;
+  }
+
+  @media (min-width:680px){
+    .bloom{
+      flex-direction:row;
+      align-items:center;
+      gap:40px;
+    }
+    .bloom-media,.bloom-text{flex:1 1 0;}
+    .bloom-text{order:0;padding-top:0;}
+    .bloom.img-first .bloom-text{order:0;}
+    .bloom.reverse{flex-direction:row-reverse;}
+  }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    margin-top:0;
+    background:var(--wine);
+    color:var(--ivory);
+    padding:60px 22px 64px;
+    text-align:center;
+  }
+  .wreath{
+    display:flex;
+    justify-content:center;
+    gap:4px;
+    color:var(--gold);
+    opacity:.85;
+  }
+  .wreath.top{margin-bottom:20px;}
+  .wreath.bottom{margin-top:24px;}
+  .wreath svg{width:46px;height:auto;}
+  .wreath svg.mirror{transform:scaleX(-1);}
+  .wreath svg.flip{transform:scaleY(-1);}
+  .wreath svg.flip.mirror{transform:scale(-1,-1);}
+  .closing p{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.3rem,5vw,1.7rem);
+    line-height:1.4;
+    max-width:26ch;
+    margin:0 auto;
+  }
+  .closing .signature{
+    margin-top:20px;
+    font-family:'Karla',sans-serif;
+    font-style:normal;
+    font-size:.85rem;
+    letter-spacing:.02em;
+    color:var(--gold);
+  }
+  .closing .ps{
+    margin-top:12px;
+    font-family:'Karla',sans-serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:.85rem;
+    color:var(--ivory-deep);
+    opacity:.9;
+  }
+
+  /* ---------- PLAYER ---------- */
+  .player{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:20;
+    background:var(--ivory-deep);
+    padding:10px 16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .player::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .player-disc{
+    width:38px;height:38px;
+    flex:none;
+    border-radius:50%;
+    background:radial-gradient(circle at center, var(--wine-deep) 0 22%, var(--ink) 23% 40%, var(--wine-deep) 41% 100%);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    border:none;
+    padding:0;
+  }
+  .player-disc span{
+    width:6px;height:6px;border-radius:50%;background:var(--gold);
+  }
+  .player-disc.spinning{
+    animation:spin 3.2s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .player-info{
+    flex:none;
+    min-width:0;
+  }
+  .player-info .title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:.92rem;
+    color:var(--ink);
+    white-space:nowrap;
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
+  .title-sprig{width:14px;height:auto;color:var(--leaf);flex:none;}
+  .player-info .sub{
+    font-family:'Karla',sans-serif;
+    font-size:.72rem;
+    color:var(--leaf);
+  }
+
+  .player-btn{
+    flex:none;
+    width:34px;height:34px;
+    border-radius:50%;
+    border:1px solid var(--wine);
+    background:transparent;
+    color:var(--wine);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+  }
+  .player-btn:hover{background:var(--wine);color:var(--ivory);}
+  .player-btn svg{width:14px;height:14px;}
+
+  .player-progress-wrap{
+    flex:1 1 auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+  }
+  .player-time{
+    font-size:.7rem;
+    color:var(--ink);
+    opacity:.65;
+    flex:none;
+    width:30px;
+  }
+  .player-progress-wrap input[type="range"]{
+    -webkit-appearance:none;
+    appearance:none;
+    flex:1 1 auto;
+    height:3px;
+    border-radius:2px;
+    background:rgba(74,27,43,.2);
+    outline:none;
+  }
+  .player-progress-wrap input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:11px;height:11px;
+    border-radius:50%;
+    background:var(--wine);
+    cursor:pointer;
+  }
+  .player-progress-wrap input[type="range"]::-moz-range-thumb{
+    width:11px;height:11px;border:none;border-radius:50%;background:var(--wine);cursor:pointer;
+  }
+
+  @media (max-width:420px){
+    .player-time{display:none;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .petal{animation:none;display:none;}
+    .player-disc.spinning{animation:none;}
+    .bloom-media:hover .bloom-media-inner img{transform:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- GALERÍA DE FLORES AÑADIDA ---------- */
+  .flower-gallery{
+    padding:70px 0 34px;
+    background:linear-gradient(180deg, rgba(247,239,228,.96), rgba(248,228,231,.72));
+  }
+  .flower-gallery .gallery-intro{
+    text-align:center;
+    margin-bottom:30px;
+  }
+  .flower-gallery .gallery-kicker{
+    margin:0 0 7px;
+    color:var(--wine);
+    font-size:.78rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .flower-gallery h2{
+    margin:0 auto 10px;
+    font-family:'Fraunces',serif;
+    color:var(--wine-deep);
+    font-size:clamp(2rem,8vw,2.7rem);
+    line-height:1.08;
+    font-weight:600;
+  }
+  .flower-gallery .gallery-intro p{
+    margin:0 auto;
+    max-width:36ch;
+    color:#66534c;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+  }
+  .flower-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:26px;
+  }
+  .flower-card{
+    margin:0;
+    background:rgba(255,255,255,.72);
+    border-radius:18px 6px 18px 6px;
+    padding:9px 9px 16px;
+    box-shadow:0 14px 30px -20px rgba(43,36,32,.65);
+    border:1px solid rgba(199,154,68,.35);
+  }
+  .flower-card img{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:12px 4px 12px 4px;
+  }
+  .flower-card figcaption{
+    padding:14px 10px 2px;
+    text-align:center;
+    color:var(--wine-deep);
+    font-family:'Fraunces',serif;
+    font-size:1.08rem;
+    line-height:1.42;
+    font-style:italic;
+  }
+  .flower-card .flower-name{
+    display:block;
+    margin-bottom:4px;
+    color:var(--wine);
+    font-family:'Karla',sans-serif;
+    font-size:.72rem;
+    font-style:normal;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  @media (min-width:560px){
+    .flower-grid{grid-template-columns:1fr 1fr;}
+    .flower-card:first-child{grid-column:1 / -1;}
+  }
+
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sprig" viewBox="0 0 60 40">
+      <path d="M3 37 C16 28, 22 16, 36 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="13" cy="29" rx="6" ry="3" transform="rotate(-35 13 29)" fill="currentColor"/>
+      <ellipse cx="23" cy="17" rx="6" ry="3" transform="rotate(-18 23 17)" fill="currentColor"/>
+      <ellipse cx="31" cy="8" rx="5" ry="2.6" transform="rotate(8 31 8)" fill="currentColor"/>
+      <circle cx="37" cy="4" r="3" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<svg class="bg-texture" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="leafPattern" width="140" height="140" patternUnits="userSpaceOnUse" patternTransform="rotate(8)">
+      <path d="M10 70 Q30 30 65 25 Q55 55 30 65 Q55 65 68 45" fill="none" stroke="#5B7553" stroke-width="2"/>
+      <g transform="translate(96,96)">
+        <circle r="3" fill="#C79A44"/>
+        <circle cx="7" r="2.3" fill="#E1657A"/>
+        <circle cx="-7" r="2.3" fill="#E1657A"/>
+        <circle cy="7" r="2.3" fill="#E1657A"/>
+        <circle cy="-7" r="2.3" fill="#E1657A"/>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#leafPattern)"/>
+</svg>
+<section class="hero">
+  <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola01.jpeg" alt="Amapolas">
+  <span class="petal" style="left:18%; animation-delay:.2s;"></span>
+  <span class="petal" style="left:34%; animation-delay:.9s;"></span>
+  <span class="petal" style="left:52%; animation-delay:.1s;"></span>
+  <span class="petal" style="left:68%; animation-delay:1.3s;"></span>
+  <span class="petal" style="left:82%; animation-delay:.6s;"></span>
+  <span class="petal" style="left:46%; animation-delay:1.8s;"></span>
+  <div class="hero-text">
+    <p class="hero-eyebrow">Un rincón florecido para ti</p>
+    <svg class="hero-emblem" viewBox="0 0 60 40" aria-hidden="true"><use href="#sprig"/></svg>
+    <h1>Tan bella como una amapola</h1>
+    <p>Hay flores que cautivan por sus colores, y personas que iluminan el mundo con su manera de ser.</p>
+  </div>
+</section>
+
+<section class="bloom-band tint-coral">
+  <div class="wrap">
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 60 40"><use href="#sprig"/></svg>
+      <span class="divider-dot"></span>
+      <svg class="mirror" viewBox="0 0 60 40"><use href="#sprig"/></svg>
+    </div>
+    <div class="bloom img-first">
+      <div class="bloom-media">
+        <div class="bloom-media-inner">
+          <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola2.jpg" alt="Amapolas">
+        </div>
+        <svg class="corner-sprig" style="transform:rotate(-14deg)" viewBox="0 0 60 40" aria-hidden="true"><use href="#sprig"/></svg>
+      </div>
+      <div class="bloom-text">
+        <blockquote>La amapola no necesita competir con otras flores; simplemente florece y deja que su belleza hable por ella.</blockquote>
+        <p class="aside">Y hay personas que tienen esa misma forma de ser: destacan sin proponérselo, con la naturalidad de quien lleva algo especial en su esencia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloom-band tint-gold">
+  <div class="wrap">
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 60 40"><use href="#sprig"/></svg>
+      <span class="divider-dot"></span>
+      <svg class="mirror" viewBox="0 0 60 40"><use href="#sprig"/></svg>
+    </div>
+    <div class="bloom reverse">
+      <div class="bloom-media">
+        <div class="bloom-media-inner">
+          <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola3.jpg" alt="Amapolas">
+        </div>
+        <svg class="corner-sprig" style="transform:rotate(9deg)" viewBox="0 0 60 40" aria-hidden="true"><use href="#sprig"/></svg>
+      </div>
+      <div class="bloom-text">
+        <blockquote>Sus pétalos parecen guardar pequeños fragmentos de luz, como si la primavera hubiera decidido quedarse a vivir en ellos.</blockquote>
+        <p class="aside">Quizá por eso me recuerdan a ti: tienes una manera particular de hacer que hasta los momentos más sencillos se vuelvan especiales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloom-band tint-leaf">
+  <div class="wrap">
+    <div class="divider" aria-hidden="true">
+      <svg viewBox="0 0 60 40"><use href="#sprig"/></svg>
+      <span class="divider-dot"></span>
+      <svg class="mirror" viewBox="0 0 60 40"><use href="#sprig"/></svg>
+    </div>
+    <div class="bloom img-first">
+      <div class="bloom-media">
+        <div class="bloom-media-inner">
+          <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola10.jpeg" alt="Amapolas">
+        </div>
+        <svg class="corner-sprig" style="transform:rotate(-8deg)" viewBox="0 0 60 40" aria-hidden="true"><use href="#sprig"/></svg>
+      </div>
+      <div class="bloom-text">
+        <blockquote>Hay flores que adornan un jardín y otras que, sin saberlo, terminan convirtiéndose en un recuerdo bonito para alguien.</blockquote>
+        <p class="aside">Estas amapolas llevan un pequeño pensamiento entre sus pétalos: que nunca te falten motivos para florecer y razones para sonreír.</p>
+      </div>
+    </div>
+  </div>
+</section>
+  
+</section>
+
+<div class="closing">
+  <div class="wreath top" aria-hidden="true">
+    <svg viewBox="0 0 60 40"><use href="#sprig"/></svg>
+    <svg class="mirror" viewBox="0 0 60 40"><use href="#sprig"/></svg>
+  </div>
+  <p>Que este jardín, aunque sea pequeño, siga floreciendo cada vez que alguien vuelva a mirarlo.</p>
+  <p class="signature">— pensado en ti</p>
+  <p class="ps">Que estas flores te recuerden lo especial que eres y que siempre hay un motivo para sonreír. 🌷💐</p>
+  <div class="wreath bottom" aria-hidden="true">
+    <svg class="flip" viewBox="0 0 60 40"><use href="#sprig"/></svg>
+    <svg class="flip mirror" viewBox="0 0 60 40"><use href="#sprig"/></svg>
+  </div>
+</div>
+
+<section class="flower-gallery">
+  <div class="wrap">
+    <div class="gallery-intro">
+      <p class="gallery-kicker">Un detalle para ti</p>
+      <h2>Flores que hablan sin palabras</h2>
+      <p>Porque hay sentimientos que se dicen mejor con colores, pétalos y un pequeño recuerdo.</p>
+    </div>
+    <div class="flower-grid">
+      <figure class="flower-card">
+        <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola5.jpeg" alt="Imagen">     
+        <figcaption><span class="flower-name">Flores que alegran el corazón</span>A veces, un poco de color basta para cambiar todo el día.</figcaption>
+      </figure>
+      <figure class="flower-card">
+        <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola6.jpeg" alt="Imagen">     
+        <figcaption><span class="flower-name">Un campo para soñar</span>Que nunca te falten motivos para mirar hacia adelante con ilusión.</figcaption>
+      </figure>
+      <figure class="flower-card">
+         <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola7.jpg" alt="Imagen">    
+        <figcaption><span class="flower-name">Donde florecen los sueños</span>Hay lugares que parecen hechos para guardar recuerdos bonitos.</figcaption>
+      </figure>
+      <figure class="flower-card">
+        <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/images%20(8).jpeg" alt="Imagen"> 
+        <figcaption><span class="flower-name">Belleza en cada pétalo</span>Lo más bonito no siempre hace ruido; a veces simplemente florece.</figcaption>
+      </figure>
+      <figure class="flower-card">
+        <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola9.jpeg" alt="Imagen">     
+        <figcaption><span class="flower-name">Un detalle lleno de color</span>Que la vida siempre te regale momentos tan bonitos como estas flores.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="player">
+  <button class="player-disc" id="player-disc" aria-hidden="true" tabindex="-1"><span></span></button>
+  <div class="player-info">
+    <div class="title"><svg class="title-sprig" viewBox="0 0 60 40" aria-hidden="true"><use href="#sprig"/></svg>Época de Oro</div>
+    <div class="sub" id="player-status">en pausa</div>
+
+  </div>
+  <button class="player-btn" id="play-btn" aria-label="Reproducir">
+    <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+  </button>
+  <div class="player-progress-wrap">
+    <span class="player-time" id="time-current">0:00</span>
+    <input type="range" id="progress" value="0" min="0" max="100" step="1" aria-label="Progreso de la canción">
+    <span class="player-time" id="time-total">0:00</span>
+  </div>
+  <audio
+  id="bg-audio"
+  src="https://raw.githubusercontent.com/yaders643-prog/M-sica-amor./2cedd2022f358a55b4c00994e2d2172bd4b129af/Amapolas%20-%20Leo%20Rizzi%20(V%C3%ADdeo%20Oficial)(MP3_160K).mp3"
+  preload="auto">
+  </audio>
+</div>
+  <script>
+  const audio = document.getElementById('bg-audio');
+  const playBtn = document.getElementById('play-btn');
+  const iconPlay = document.getElementById('icon-play');
+  const iconPause = document.getElementById('icon-pause');
+  const disc = document.getElementById('player-disc');
+  const status = document.getElementById('player-status');
+  const progress = document.getElementById('progress');
+  const timeCurrent = document.getElementById('time-current');
+  const timeTotal = document.getElementById('time-total');
+
+  function formatTime(sec){
+    if(!isFinite(sec) || isNaN(sec)) return '0:00';
+    const m = Math.floor(sec/60);
+    const s = Math.floor(sec%60).toString().padStart(2,'0');
+    return m + ':' + s;
+  }
+
+  audio.addEventListener('loadedmetadata', () => {
+    progress.max = Math.floor(audio.duration) || 100;
+    timeTotal.textContent = formatTime(audio.duration);
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    if(!isFinite(audio.duration)) return;
+    progress.value = audio.currentTime;
+    timeCurrent.textContent = formatTime(audio.currentTime);
+  });
+
+  progress.addEventListener('input', () => {
+    audio.currentTime = progress.value;
+  });
+
+  function setPlayingUI(playing){
+    iconPlay.style.display = playing ? 'none' : 'block';
+    iconPause.style.display = playing ? 'block' : 'none';
+    playBtn.setAttribute('aria-label', playing ? 'Pausar' : 'Reproducir');
+    disc.classList.toggle('spinning', playing);
+    status.textContent = playing ? 'sonando ahora' : 'en pausa';
+  }
+
+  playBtn.addEventListener('click', () => {
+    if(audio.paused){
+      audio.play();
+      setPlayingUI(true);
+    } else {
+      audio.pause();
+      setPlayingUI(false);
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    setPlayingUI(false);
+    progress.value = 0;
+    timeCurrent.textContent = '0:00';
+  });
+</script>
+
+</body>
+</html>
