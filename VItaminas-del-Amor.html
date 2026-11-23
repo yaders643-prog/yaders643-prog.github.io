@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<!-- Título -->
+<title> Fadel 🌼</title>
+
+<!-- Imagen del Favicon -->
+<link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/c0df1da7a8a8a71f40d3e848aa0999c67bd12852/1000033027.jpg">
+
+<!-- Autor -->
+<meta name="author" content="Yader Sanchez">
+<meta name="copyright" content="Todos los derechos reservados Yader Sanchez">
+
+<!-- Open Graph (Facebook / WhatsApp) -->
+<meta property="og:title" content="Fadel, Tu mi vitamina. ❤️">
+
+<!-- Mensaje en la descripción -->
+<meta property="og:description" content="Entre tantas vitaminas, hay una que me quita el estres... Y ese eres tú, el que me complementas">
+  
+<!-- Imagen arriba en la descripción -->
+<meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/7436ced86a0b5b4c4ad15b3ec3f769d482784ac2/Amapola5.jpeg">
+
+<!-- Links del archivo/Nombre -->
+<meta property="og:url" content="https://yaders643-prog.github.io/Galaxia.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">  
+  <style>
+  
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  background:radial-gradient(circle at center,#ffeaf7 0%,#ffd4eb 100%);
+  color:#a00568;
+  text-align:center;
+  min-height:100vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  position:relative;
+background:linear-gradient(135deg,#ffd6ec,#c9e9ff,#fff0f8);
+background-size:400% 400%;
+animation:moveBg 3s ease infinite;
+}
+@keyframes moveBg{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+
+/* ===== CORAZONES Y PASTILLAS flotantes ===== */
+.fondo{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  z-index:0;
+  pointer-events:none;
+}
+.fondo span{
+  position:absolute;
+  font-size:18px;
+  opacity:0.9;
+  animation:float 10s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(110vh) scale(0.8);opacity:1}
+  100%{transform:translateY(-10vh) scale(1.4);opacity:0}
+}
+
+/* ===== TEXTO ===== */
+h1{
+  font-size:clamp(24px,6vw,40px);
+  font-weight:800;
+  margin-bottom:10px;
+  letter-spacing:1px;
+  position:relative;
+  z-index:2;
+  animation:heartbeat 2s ease-in-out infinite;
+ font-size: 15px;
+}
+@keyframes heartbeat{
+  0%,100%{transform:scale(1);}
+  25%{transform:scale(1.08);}
+  50%{transform:scale(0.95);}
+  75%{transform:scale(1.05);}
+}
+.intro{
+  max-width:620px;
+  margin:0 auto 28px;
+  font-size:clamp(18px,4vw,22px);
+  line-height:1.5;
+  position:relative;
+  z-index:2;
+  color:#000; /* 🔹 texto negro */
+  font-size: 10px;
+  text-align: center;
+}
+
+
+/* ===== FRASCOS ===== */
+.grid{
+  display:grid;
+  gap:24px;
+  grid-template-columns:repeat(2, 1fr); /* 🔹 Siempre dos columnas */
+  justify-items:center;
+  align-items:center;
+  max-width:700px; /* Puedes ajustar el ancho total si lo deseas */
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+}
+
+.jar{
+  width:min(40vw,230px);
+  height:auto;
+  cursor:pointer;
+  transition:transform .25s ease, filter .3s ease;
+  border-radius:12px;
+  animation:gentleBeat 5s ease-in-out infinite; /* 💖 Movimiento suave */
+}
+.jar:hover{
+  transform:scale(1.05);
+  filter:brightness(1.1);
+}
+
+@keyframes gentleBeat{
+  0%,100%{transform:scale(1);}
+  25%{transform:scale(1.03);}
+  50%{transform:scale(0.97);}
+  75%{transform:scale(1.04);}
+}
+
+
+@keyframes sway{
+  0%,100%{transform:rotate(-3deg);}
+  50%{transform:rotate(3deg);}
+}
+.jar{
+  transform-origin:center bottom;
+  animation:sway 3s ease-in-out infinite;
+}
+
+
+
+/* ===== MODAL ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  visibility:hidden;
+  opacity:0;
+  transition:opacity .6s ease, visibility .6s ease;
+  z-index:50;
+}
+.modal.show{
+  visibility:visible;
+  opacity:1;
+}
+.box{
+  width:min(92vw,420px);
+  background:#fff;
+  border-radius:20px;
+  padding:22px 20px;
+  text-align:center;
+  box-shadow:0 14px 36px rgba(0,0,0,.3);
+  transform:scale(0.7);
+  opacity:0;
+  transition:transform .6s ease, opacity .6s ease;
+  position:relative;
+  overflow:hidden;
+}
+.modal.show .box{
+  transform:scale(1);
+  opacity:1;
+}
+.box img{width:100%;border-radius:14px;margin-bottom:14px}
+.box h3{margin:6px 0 8px;color:#ff5ca4;font-size:1.6em}
+.box p{font-size:1.1em;color:#333}
+.close{
+  border:0;
+  border-radius:999px;
+  padding:12px 22px;
+  background:#ff5ca4;
+  color:#fff;
+  font-weight:700;
+  margin-top:14px;
+  cursor:pointer;
+  font-size:1em;
+  transition:background .3s ease;
+}
+.close:hover{background:#d74a8b}
+
+/* ===== EXPLOSIÓN ===== */
+.explosion{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  z-index:100;
+}
+.particle{
+  position:absolute;
+  font-size:22px;
+  animation:burst 1s ease-out forwards;
+}
+@keyframes burst{
+  0%{transform:translate(0,0) scale(1);opacity:1;}
+  100%{transform:translate(var(--x),var(--y)) scale(0.3);opacity:0;}
+}
+  /* ===== SUBIR TODO EL CONTENIDO ===== */
+
+h1,
+.intro,
+.grid {
+  position: relative;
+  top: -60px;
+}
+ #avisoMusica {
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#avisoMusica.oculto {
+  opacity: 0;
+  transform: translateY(-15px);
+  visibility: hidden;
+} 
+</style>
+</head>
+<body>
+
+<!-- Fondo animado -->
+<div class="fondo" id="fondo"></div>
+
+  <audio id="musica" loop preload="auto" playsinline>
+  <source src="https://github.com/yaders643-prog/M-sica-amor./raw/59c56f0931276fd9b6c3988b6585f11d5e7bd193/CRIS%20CHIL%20-%20VITAMINA%20(Official%20Lyric%20Video)(MP3_160K).mp3" type="audio/mpeg">
+  </audio>
+<h1>💊 Vitaminas del Amor💕</h1>
+  <h1>Toca cada frasco</h1>
+<p class="intro">
+  <strong>Mi Fadel, amorcito, me siento un poco débil… creo que me falta una buena dosis de tus 
+    <span style="color:#ff4f9e; font-weight:900; font-size:1.3em;">
+      vitaminas A, B, C
+    </span>
+    & 
+    <span style="color:#ff4f9e; font-weight:900; font-size:1.3em;">
+      D
+    </span>
+    😍 😍
+  </strong>
+</p>
+<h1 id="avisoMusica">Toca aquí para que suene la música</h1>
+<div class="grid">
+  <img src="https://adfy2.icu/img/frascos/a.webp"" alt="Vitamina A" class="jar" data-i="0">
+  <img src="https://adfy2.icu/img/frascos/b.webp"" alt="Vitamina B" class="jar" data-i="1">
+  <img src="https://adfy2.icu/img/frascos/c.webp"" alt="Vitamina C" class="jar" data-i="2">
+  <img src="https://adfy2.icu/img/frascos/d.webp"" alt="Vitamina D" class="jar" data-i="3">
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="box" id="box">
+    <img id="gif" alt="">
+    <h3 id="title"></h3>
+    <p id="text"></p>
+    <button class="close" id="close">Cerrar 💗</button>
+  </div>
+</div>
+
+<script>
+/* ===== MÚSICA AL PRIMER TOQUE ===== */
+
+const musica = document.getElementById('musica');
+
+musica.volume = 0.8;
+
+let reproduciendo = false;
+
+document.addEventListener('pointerdown', () => {
+
+  if (!reproduciendo) {
+
+    musica.play().then(() => {
+      reproduciendo = true;
+      document.getElementById('avisoMusica').classList.add('oculto');
+      console.log("💕 Música activada");
+    }).catch(error => {
+      console.log("Error al reproducir:", error);
+    });
+
+  }
+
+}, { passive: true });
+  
+/* ==== Fondo animado ==== */
+const fondo=document.getElementById('fondo');
+const icons=['💗','💊','💞','💖','💓'];
+setInterval(()=>{
+  const span=document.createElement('span');
+  span.textContent=icons[Math.floor(Math.random()*icons.length)];
+  span.style.left=Math.random()*100+'vw';
+  span.style.fontSize=(16+Math.random()*20)+'px';
+  span.style.animationDuration=(8+Math.random()*5)+'s';
+  fondo.appendChild(span);
+  setTimeout(()=>span.remove(),12000);
+},50);
+
+/* ==== Datos ==== */
+const data=[
+  {t:'A = Abrazos 💗', x:'Uno gigante para ti 🤗💞', g:'https://media.giphy.com/media/X9Y9qYPUp1VMQ/giphy.gif'},
+  {t:'B = Besitos 😘', x:'Dosis ilimitada 😚💋',     g:'https://media.giphy.com/media/h1QtppV27igCI/giphy.gif'},
+  {t:'C = Caricias 💞', x:'Suaves y llenas de amor 💖',g:'https://media.giphy.com/media/3oEduSbSGpGaRX2Vri/giphy.gif'},
+  {t:'D = Delicioso 🔥😈', x:'Las veces que tu quieras 😏💘',       g:'https://media.giphy.com/media/aEXP6scfSSwQo/giphy.gif'}
+];
+
+const modal=document.getElementById('modal');
+const box=document.getElementById('box');
+const gif=document.getElementById('gif');
+const closeBtn=document.getElementById('close');
+
+/* ==== Abrir ==== */
+document.querySelectorAll('.jar').forEach((j,idx)=>{
+  j.addEventListener('click', ()=>{
+    gif.src=data[idx].g;
+    document.getElementById('title').textContent=data[idx].t;
+    document.getElementById('text').textContent=data[idx].x;
+    modal.classList.add('show');
+  });
+});
+
+/* ==== Explosión al cerrar ==== */
+function explosionEffect(){
+  const explosion=document.createElement('div');
+  explosion.className='explosion';
+  box.appendChild(explosion);
+  const items=['💗','💊','💞','💖','💓'];
+  for(let i=0;i<25;i++){
+    const p=document.createElement('span');
+    p.className='particle';
+    p.textContent=items[Math.floor(Math.random()*items.length)];
+    const angle=Math.random()*2*Math.PI;
+    const distance=80+Math.random()*120;
+    const x=Math.cos(angle)*distance;
+    const y=Math.sin(angle)*distance;
+    p.style.setProperty('--x',`${x}px`);
+    p.style.setProperty('--y',`${y}px`);
+    explosion.appendChild(p);
+  }
+  setTimeout(()=>explosion.remove(),1000);
+}
+
+/* ==== Cierre ==== */
+closeBtn.addEventListener('click', ()=>{
+  explosionEffect();
+  setTimeout(()=>{modal.classList.remove('show');},200);
+});
+</script>
+</body>
+</html>
