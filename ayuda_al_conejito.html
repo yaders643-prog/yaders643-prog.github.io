@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+   
+
+           <!-- Título -->
+    <title>Sánchez</title>
+
+    <!-- Imagen del Favicon -->
+    <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yaders643-prog/favicons/1e55d8b47274b6f7d8a3b609d985a6d6ce22f383/IMG-20261125-WA1292.jpg">
+    
+   
+    <!-- Autor -->
+    <meta name="author" content="Yader Sanchez">
+    <meta name="copyright" content="Todos los derechos reservados Yader Sanchez">
+
+    <!-- Open Graph (Facebook / WhatsApp) -->
+    <meta property="og:title" content="Para - ti - Gleysis.💓💞.">
+
+    <!-- Mensaje en la descripcion -->
+<meta property="og:description" content="Hay personas que llegan y despiertan sentimientos difíciles de explicar. Tú tienes algo especial que me hace querer conocerte más, cuidar cada instante y, si la vida nos lo permite, escribir una bonita historia juntos. ❤️✨">
+    
+    <!-- Imagen arriba en la descripcion -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/refs/heads/main/Oye%20mi%20amor%20%F0%9F%AB%A3%F0%9F%A5%BA%20_fypreels%E3%82%B7%E3%82%9A%20_fypage(JPG)_1.jpg">
+    
+    <!-- Links del archivo/Nombre-->
+    <meta property="og:url" content="https://yaders643-prog.github.io/Galaxia.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    
+ <!-- Aquí seguiría tu CSS o scripts -->
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e6f7ff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            height: 100vh;
+            margin-top: 5vh;
+        }
+
+        .contenedor {
+            width: 90vw;
+            background-color: #ffffff;
+            border-radius: 2vh;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pantalla {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 100%;
+            display: none;
+            flex-direction: column;
+            transition: left 0.5s;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        #pantalla1:checked~.pantalla1,
+        #pantalla2:checked~.pantalla2,
+        #pantalla3:checked~.pantalla3,
+        #pantalla4:checked~.pantalla4,
+        #pantallaIncorrecta:checked~.pantallaIncorrecta {
+            display: flex;
+        }
+
+        .marco {
+            width: 100%;
+            height: 50vh;
+            background-color: #000;
+            position: relative;
+        }
+
+        .marco img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .texto {
+            padding: 2vh 2vw;
+            font-size: 2.5vh;
+            color: #333;
+            text-align: center;
+            flex: 1;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-around;
+            padding: 2vh 2vw;
+            background-color: #f0f0f0;
+        }
+
+        .boton {
+            padding: 1.5vh 5vw;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            font-size: 2.5vh;
+            border-radius: 1vh;
+            cursor: pointer;
+            flex: 1;
+            margin: 0 1vw;
+            text-align: center;
+        }
+
+        .boton:hover {
+            background-color: #0056b3;
+        }
+
+        .boton:active {
+            background-color: #004080;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Contenedor principal -->
+    <div class="contenedor">
+        <!-- Controles de navegación ocultos -->
+        <input type="radio" name="pantalla" id="pantalla1" checked>
+        <input type="radio" name="pantalla" id="pantalla2">
+        <input type="radio" name="pantalla" id="pantalla3">
+        <input type="radio" name="pantalla" id="pantalla4">
+        <input type="radio" name="pantalla" id="pantallaIncorrecta">
+
+        <!-- Pantalla 1 -->
+        <div class="pantalla pantalla1">
+            <div class="marco">
+                <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/264ee3cd3535250801237bc00a86e75e30698a66/Primera-imagen.webp" alt="Escena 1">
+                          </div>
+            <div class="texto">
+                Un conejito ha caído en una trampa. La tormenta empeora y tiene mucho frío.
+            </div>
+            <div class="botones">
+                <label for="pantalla2" class="boton">Continuar</label>
+            </div>
+        </div>
+
+        <!-- Pantalla 2 -->
+        <div class="pantalla pantalla2">
+            <div class="marco">
+               <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/5a94923fdc8096517be0ad8a675ae3fa80100e06/Segunda-imagen.webp" alt="Escena 2">         
+            </div>
+            <div class="texto">
+                El tiempo se está agotando. Solo hay una manera de romper la jaula y salvarlo. Responder correctamente a una pregunta.
+            </div>
+            <div class="botones">
+                <label for="pantalla3" class="boton">Ayudar al conejo</label>
+            </div>
+        </div>
+
+        <!-- Pantalla 3 -->
+        <div class="pantalla pantalla3">
+            <div class="marco">
+                <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/19df891d5fbebb81dd8d4648f2ed9fb9c723fffa/Tercera-imagen.webp" alt="Escena 3">
+            </div>
+            <div class="texto">
+                La pregunta para abrir el candado es:
+                <br>
+                ¿Quieres salir conmigo?
+            </div>
+            <div class="botones">
+                <label for="pantallaIncorrecta" class="boton">No</label>
+                <label for="pantalla4" class="boton">Sí</label>
+            </div>
+        </div>
+
+        <!-- Pantalla Incorrecta -->
+        <div class="pantalla pantallaIncorrecta">
+            <div class="marco">
+            <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/d638580319e5278a9162439508c532173d9d6785/Cuarta-imagen.webp" alt="Escena 4">
+   
+            </div>
+            <div class="texto">
+                ¡Oh, no! El conejito está en peligro. El tiempo se está acabando, pero aún puedes intentarlo de nuevo. ¡Debes salvarlo!
+            </div>
+            <div class="botones">
+                <label for="pantalla3" class="boton">Intentar de nuevo</label>
+            </div>
+        </div>
+
+        <!-- Pantalla 4 -->
+        <div class="pantalla pantalla4">
+            <div class="marco">
+                <img src="https://raw.githubusercontent.com/yaders643-prog/imagenes-web/4d81ee5a1a219918f8e1050aec22666d3822daa3/Quinta-imagen.webp" alt="Escena 5"> 
+            </div>
+            <div class="texto">
+                ¡Lo has logrado! Gracias a tu respuesta, el conejito está a salvo y tu y yo somos novios. ¡Qué gran final! ❤️
+            </div>
+            <div class="botones">
+                <!-- Puedes agregar más opciones aquí si lo deseas -->
+            </div>
+        </div>
+    </div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const primeraPantalla = document.querySelector(".pantalla1");
+
+    const musica = document.createElement("audio");
+
+    musica.src = "https://github.com/yaders643-prog/M-sica-amor./raw/refs/heads/main/peque%C3%B1a.mp3";
+
+    musica.loop = true;
+    musica.volume = 0.7;
+    musica.preload = "auto";
+
+    document.body.appendChild(musica);
+
+    let reproduciendo = false;
+
+    function iniciarMusica() {
+
+        if (reproduciendo) return;
+
+        musica.play().then(function () {
+
+            reproduciendo = true;
+            console.log("Música iniciada correctamente");
+
+        }).catch(function (error) {
+
+            console.error("No se pudo iniciar la música:", error);
+
+        });
+
+    }
+
+    primeraPantalla.addEventListener("click", iniciarMusica);
+
+    primeraPantalla.addEventListener("touchend", iniciarMusica);
+
+});
+</script>
+</body>
+</html>
